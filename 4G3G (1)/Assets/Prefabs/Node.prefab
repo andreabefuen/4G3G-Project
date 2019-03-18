@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4505998600554190160}
   - component: {fileID: 4505998600554190163}
   - component: {fileID: 6447142189593995936}
+  - component: {fileID: 2907192910920781331}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -110,3 +111,18 @@ MonoBehaviour:
   neighbours: []
   gridX: 0
   gridY: 0
+--- !u!114 &2907192910920781331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505998600554190162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1118b92910a00c34f9fb656b8f8e9eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0.9811321, g: 0.8593783, b: 0, a: 0}
+  normalColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0}
+  buildingThere: {fileID: 0}
