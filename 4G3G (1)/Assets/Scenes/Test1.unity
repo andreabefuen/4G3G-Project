@@ -473,6 +473,7 @@ GameObject:
   - component: {fileID: 1328966160}
   - component: {fileID: 1328966158}
   - component: {fileID: 1328966157}
+  - component: {fileID: 1328966159}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -509,6 +510,25 @@ MonoBehaviour:
     type: 3}
   gridWorldSize: {x: 20, y: 20}
   nodeRadius: 1
+--- !u!114 &1328966159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328966156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f561a2dcbb64840b6b614c70f8246b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perspectiveZoomSpeed: 0.5
+  orthoZoomSpeed: 0.5
+  panSpeed: 20
+  panBorderThickness: 10
+  scrollSpeed: 5
+  minY: 2
+  maxY: 80
 --- !u!4 &1328966160
 Transform:
   m_ObjectHideFlags: 0
