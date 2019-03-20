@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : MonoBehaviour
+public class Node
 {
-    //public GameObject nodeGameobject;
+    public GameObject nodeGameobject;
     public Transform nodeTransform;
     public Vector3 worldPosition;
 

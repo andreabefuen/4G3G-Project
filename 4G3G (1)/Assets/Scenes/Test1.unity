@@ -506,10 +506,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 0.5
+  numStage: 5
   prefabNode: {fileID: 4505998600554190162, guid: 379c2279119d2cd43a2a64e576aa696b,
     type: 3}
-  gridWorldSize: {x: 20, y: 20}
+  gridWorldSize: {x: 30, y: 30}
   nodeRadius: 1
+  centerNode: {fileID: 0}
 --- !u!114 &1328966159
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class CreateEnvironment : MonoBehaviour
 
 
     public float offset;
+    public int numStage;
 
     public GameObject prefabNode;
 
@@ -20,7 +21,11 @@ public class CreateEnvironment : MonoBehaviour
     float nodeDiameter;
 
     private int rows, columns;
+    private int stageRows, stageColumns;
     private GameObject grid;
+
+    int indexCenterRow, indexCenterColumn;
+    public GameObject centerNode;
 
 
     private void Awake()
@@ -32,6 +37,12 @@ public class CreateEnvironment : MonoBehaviour
 
         rows = gridSizeX;
         columns = gridSizeY;
+
+        stageColumns = rows / numStage;
+        stageRows = rows / numStage;
+
+        indexCenterColumn = columns / 2;
+        indexCenterRow = rows / 2;
 
         prefabNode.gameObject.transform.localScale = new Vector3(nodeDiameter, prefabNode.transform.localScale.y, nodeDiameter);
 
@@ -53,10 +64,27 @@ public class CreateEnvironment : MonoBehaviour
                 startPos = new Vector3((offset + nodeDiameter)*c, 0 , startPos.z);
 
                 matrixNodes[f, c] = new Node(aux.transform.position, f, c);
+                matrixNodes[f, c].nodeGameobject = aux;
 
             }
 
             startPos = new Vector3(0, 0, (offset + nodeDiameter)* f);
+        }
+        centerNode = matrixNodes[indexCenterRow, indexCenterColumn].nodeGameobject;
+        //matrixNodes[0, 0].nodeGameobject.SetActive(false);
+
+        CreateStage();
+    }
+
+
+    void CreateStage()
+    {
+        for (int i = indexCenterRow - stageRows; i < indexCenterRow + stageRows; i++)
+        {
+            for (int j = indexCenterColumn - stageColumns; j < indexCenterColumn + stageColumns; j++)
+            {
+                matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
+            }
         }
     }
 
