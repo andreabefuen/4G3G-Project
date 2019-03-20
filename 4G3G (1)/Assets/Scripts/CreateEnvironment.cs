@@ -28,6 +28,11 @@ public class CreateEnvironment : MonoBehaviour
     public GameObject centerNode;
 
 
+    [Header("Spawn things")]
+    public GameObject housePrefab;
+    public int numHouses;
+
+
     private void Awake()
     {
         nodeDiameter = nodeRadius * 2;
@@ -74,6 +79,7 @@ public class CreateEnvironment : MonoBehaviour
         //matrixNodes[0, 0].nodeGameobject.SetActive(false);
 
         CreateStage();
+        SpawnHouses();
     }
 
 
@@ -86,6 +92,38 @@ public class CreateEnvironment : MonoBehaviour
                 matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
             }
         }
+        centerNode.GetComponent<Renderer>().material.color = Color.cyan;
+
+    }
+
+    void SpawnHouses()
+    {
+        int cont = 0;
+        while(cont <= numHouses)
+        {
+            int rdnX = Random.Range(indexCenterRow - stageRows, indexCenterRow + stageRows);
+            int rdnY = Random.Range(indexCenterColumn - stageColumns, indexCenterColumn + stageColumns);
+
+            if(rdnX == indexCenterRow && rdnY == indexCenterColumn)
+            {
+                continue;
+            }
+
+            if (matrixNodes[rdnX, rdnY].objectInNode != null)
+            {
+                Debug.Log("Cant spawn here");
+                continue;
+            }
+            NodeTouch aux = matrixNodes[rdnX, rdnY].nodeGameobject.GetComponent<NodeTouch>();
+
+            GameObject spawnHouse = Instantiate(housePrefab, aux.GetBuildPosition(), housePrefab.transform.rotation);
+
+            aux.buildingThere = spawnHouse;
+            matrixNodes[rdnX, rdnY].objectInNode = spawnHouse;
+            aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            cont++;
+        }
+       
     }
 
     // Update is called once per frame

@@ -146,6 +146,10 @@ MonoBehaviour:
       type: 3}
     cost: 0
     nodeAsociate: {fileID: 0}
+  houseStructure:
+    prefab: {fileID: 0}
+    cost: 0
+    nodeAsociate: {fileID: 0}
 --- !u!4 &85208408
 Transform:
   m_ObjectHideFlags: 0
@@ -512,6 +516,9 @@ MonoBehaviour:
   gridWorldSize: {x: 30, y: 30}
   nodeRadius: 1
   centerNode: {fileID: 0}
+  housePrefab: {fileID: 5717501630876137839, guid: 09b394002cc353e40b02ca474ff38a62,
+    type: 3}
+  numHouses: 5
 --- !u!114 &1328966159
 MonoBehaviour:
   m_ObjectHideFlags: 0

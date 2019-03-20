@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryBuilding : MonoBehaviour
 {
     public StructureBlueprint windmillStructure;
+    public StructureBlueprint houseStructure;
 
     List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 

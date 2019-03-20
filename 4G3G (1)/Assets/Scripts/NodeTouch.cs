@@ -47,8 +47,13 @@ public class NodeTouch : MonoBehaviour
         if(buildingThere != null)
         {
             Debug.Log("Can't build there!");
+            return;
         }
-
+        if(buildManager.GetStructureToBuild() == null)
+        {
+            Debug.Log("Nothing to construct, buy something");
+            return;
+        }
 
         buildManager.BuildStructureOn(this);
         
