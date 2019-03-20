@@ -10,6 +10,7 @@ public class BuildManager : MonoBehaviour
     private StructureBlueprint structureToBuild;
     private NodeTouch selectedNode;
 
+    public NodeUI nodeUI;
 
     private void Awake()
     {
@@ -39,11 +40,12 @@ public class BuildManager : MonoBehaviour
         if(selectedNode == node)
         {
             node.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            selectedNode = null;
+            DeselectNode();
             return;
         }
         selectedNode = node;
         structureToBuild = null;
+        nodeUI.SetTarget(node);
     }
 
     public StructureBlueprint GetStructureToBuild()
@@ -51,11 +53,18 @@ public class BuildManager : MonoBehaviour
         return structureToBuild;
     }
 
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
+    }
+
+
     public void SelectStructureToBuild (StructureBlueprint structure)
     {
         structureToBuild = structure;
-        
 
+        DeselectNode();
 
     }
 

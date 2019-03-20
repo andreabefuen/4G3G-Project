@@ -39,19 +39,21 @@ public class NodeTouch : MonoBehaviour
 
     private void OnMouseDown()
     {
-       // if (EventSystem.current.IsPointerOverGameObject())
-       // {
-       //     return;
-       // }
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
 
         if(buildingThere != null)
         {
             Debug.Log("Can't build there!");
+            buildManager.SelectNode(this);
             return;
         }
         if(buildManager.GetStructureToBuild() == null)
         {
             Debug.Log("Nothing to construct, buy something");
+            buildManager.DeselectNode();
             return;
         }
 
