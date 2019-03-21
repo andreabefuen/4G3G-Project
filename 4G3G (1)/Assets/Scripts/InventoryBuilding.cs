@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryBuilding : MonoBehaviour
 {
     public StructureBlueprint windmillStructure;
-    public StructureBlueprint houseStructure;
+    public StructureBlueprint solarPanelStructure;
 
     List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
@@ -25,6 +25,12 @@ public class InventoryBuilding : MonoBehaviour
     {
         buildManager.SelectStructureToBuild(windmillStructure);
         Debug.Log("Selected windmill");
+    }
+
+    public void SelectSolarPanelStructure()
+    {
+        buildManager.SelectStructureToBuild(solarPanelStructure);
+        Debug.Log("Selected solar panel");
     }
 
     // Update is called once per frame

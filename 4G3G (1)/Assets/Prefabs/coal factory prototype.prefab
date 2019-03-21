@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1031616387095398931}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0061265044, y: 0.018904366, z: 0.072795786}
-  m_LocalScale: {x: 6.7470946, y: 3.7523224, z: 5.0504985}
+  m_LocalScale: {x: 11.316081, y: 6.293314, z: 8.470587}
   m_Children: []
   m_Father: {fileID: 9001846385310524271}
   m_RootOrder: 0
@@ -103,8 +103,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2215710795066399252}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.036017794, y: 0.049801536, z: 0.027778897}
-  m_LocalScale: {x: 0.758419, y: 4.9375067, z: 0.758419}
+  m_LocalPosition: {x: -0.0488, y: 0.0758, z: 0.0023}
+  m_LocalScale: {x: 1.4027274, y: 9.132124, z: 1.4027274}
   m_Children: []
   m_Father: {fileID: 9001846385310524271}
   m_RootOrder: 1
@@ -180,8 +180,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4150957665422593153}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.023982204, y: 0.049801536, z: 0.027778897}
-  m_LocalScale: {x: 0.758419, y: 4.9375067, z: 0.758419}
+  m_LocalPosition: {x: 0.0394, y: 0.0758, z: 0.002299996}
+  m_LocalScale: {x: 1.4027274, y: 9.132124, z: 1.4027274}
   m_Children: []
   m_Father: {fileID: 9001846385310524271}
   m_RootOrder: 3
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 9001846385310524271}
   m_Layer: 0
   m_Name: coal factory prototype
-  m_TagString: Untagged
+  m_TagString: Factory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 5698977550723012357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 8277744683050236870}
   - {fileID: 6731874333315698905}
@@ -291,8 +291,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7935281816484837894}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0060177944, y: 0.049801536, z: 0.027778897}
-  m_LocalScale: {x: 0.758419, y: 4.9375067, z: 0.758419}
+  m_LocalPosition: {x: -0.0060177944, y: 0.0758, z: 0.002299996}
+  m_LocalScale: {x: 1.4027274, y: 9.132124, z: 1.4027274}
   m_Children: []
   m_Father: {fileID: 9001846385310524271}
   m_RootOrder: 2

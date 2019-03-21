@@ -31,6 +31,8 @@ public class CreateEnvironment : MonoBehaviour
     [Header("Spawn things")]
     public GameObject housePrefab;
     public int numHouses;
+    public GameObject coalFactory;
+    public int numCoalFactories;
 
 
     private void Awake()
@@ -80,6 +82,7 @@ public class CreateEnvironment : MonoBehaviour
 
         CreateStage();
         SpawnHouses();
+        SpawnCoalFactories();
     }
 
 
@@ -124,6 +127,35 @@ public class CreateEnvironment : MonoBehaviour
             cont++;
         }
        
+    }
+
+    void SpawnCoalFactories()
+    {
+        int cont = 0;
+        while (cont <= numCoalFactories)
+        {
+            int rdnX = Random.Range(indexCenterRow - stageRows, indexCenterRow + stageRows);
+            int rdnY = Random.Range(indexCenterColumn - stageColumns, indexCenterColumn + stageColumns);
+
+            if (rdnX == indexCenterRow && rdnY == indexCenterColumn)
+            {
+                continue;
+            }
+
+            if (matrixNodes[rdnX, rdnY].objectInNode != null)
+            {
+                Debug.Log("Cant spawn here");
+                continue;
+            }
+            NodeTouch aux = matrixNodes[rdnX, rdnY].nodeGameobject.GetComponent<NodeTouch>();
+
+            GameObject spawnFactory = Instantiate(coalFactory, aux.GetBuildPosition(), coalFactory.transform.rotation);
+
+            aux.buildingThere = spawnFactory;
+            matrixNodes[rdnX, rdnY].objectInNode = spawnFactory;
+            aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            cont++;
+        }
     }
 
     // Update is called once per frame

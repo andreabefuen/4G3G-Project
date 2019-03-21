@@ -4,33 +4,50 @@ using UnityEngine;
 
 public class NodeUI : MonoBehaviour
 {
-    public GameObject ui;
+    public GameObject uiReplaceFactory;
+
+    public GameObject uiHouses;
 
     private NodeTouch target;
 
-    public void SetTarget(NodeTouch t)
+    private BuildManager buildManager;
+
+    private void Start()
+    {
+        buildManager = BuildManager.instance;
+    }
+
+    public void SetTargetReplaceFactory(NodeTouch t)
     {
         target = t;
 
         transform.position = target.GetBuildPosition();
 
-        ui.SetActive(true);
+        uiReplaceFactory.SetActive(true);
     }
 
-    public void Hide()
+    public void SetTargetHouses (NodeTouch t)
     {
-        ui.SetActive(false);
+        target = t;
+        transform.position = target.GetBuildPosition();
+        uiHouses.SetActive(true);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void HideReplaceFactory()
     {
-        
+        uiReplaceFactory.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HideHouses()
     {
-        
+        uiHouses.SetActive(false);
     }
+    
+    public void ReplaceButton()
+    {
+        GameObject aux = target.buildingThere;
+        Destroy(aux);
+        buildManager.BuildStructureOn(target);
+    }
+
 }

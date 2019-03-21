@@ -43,9 +43,23 @@ public class BuildManager : MonoBehaviour
             DeselectNode();
             return;
         }
-        selectedNode = node;
-        structureToBuild = null;
-        nodeUI.SetTarget(node);
+        if(node.buildingThere.tag == "Factory")
+        {
+            DeselectNode();
+            selectedNode = node;
+            structureToBuild = null;
+            nodeUI.SetTargetReplaceFactory(node);
+            return;
+        }
+        else //House
+        {
+            DeselectNode();
+            Debug.Log("Is not a factory");
+            selectedNode = node;
+            structureToBuild = null;
+            nodeUI.SetTargetHouses(node);
+        }
+       
     }
 
     public StructureBlueprint GetStructureToBuild()
@@ -56,7 +70,8 @@ public class BuildManager : MonoBehaviour
     public void DeselectNode()
     {
         selectedNode = null;
-        nodeUI.Hide();
+        nodeUI.HideReplaceFactory();
+        nodeUI.HideHouses();
     }
 
 
