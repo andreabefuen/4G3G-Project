@@ -25,15 +25,15 @@ public class PinchZoom : MonoBehaviour
 
     void Update()
     {
+
+        
         // If there are two touches on the device...
         if (Input.touchCount == 2)
         {
             TouchZoom();
         }
-        else
-        {
-            MouseZoom();
-        }
+        MouseZoom();
+
     }
 
     void TouchZoom()
@@ -53,23 +53,31 @@ public class PinchZoom : MonoBehaviour
         // Find the difference in the distances between each frame.
         float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-        // If the camera is orthographic...
-        if (camera.orthographic)
-        {
-            // ... change the orthographic size based on the change in distance between the touches.
-            camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 
-            // Make sure the orthographic size never drops below zero.
-            camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
-        }
-        else
-        {
-            // Otherwise change the field of view based on the change in distance between the touches.
-            camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+        Vector3 pos = camera.transform.position; //current position
 
-            // Clamp the field of view to make sure it's between 0 and 180.
-            camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 0.1f, 179.9f);
-        }
+        pos.y += deltaMagnitudeDiff  * scrollSpeed * Time.deltaTime;
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+        camera.transform.position = pos;
+      //
+      // // If the camera is orthographic...
+      // if (camera.orthographic)
+      // {
+      //     // ... change the orthographic size based on the change in distance between the touches.
+      //     camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+      //
+      //     // Make sure the orthographic size never drops below zero.
+      //     camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+      // }
+      // else
+      // {
+      //     // Otherwise change the field of view based on the change in distance between the touches.
+      //     camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+      //
+      //     // Clamp the field of view to make sure it's between 0 and 180.
+      //     camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 0.1f, 179.9f);
+      // }
     }
 
     void MouseZoom()
