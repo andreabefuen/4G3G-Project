@@ -12,4 +12,6 @@ public class StructureBlueprint
     public int cost;
 
     public NodeTouch nodeAsociate;
+
+    public float timeEnergy;
 }

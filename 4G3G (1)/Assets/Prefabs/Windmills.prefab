@@ -247,19 +247,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SelectSolarPanelStructure
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: ReplaceButton
+      - m_Target: {fileID: 2269188240367003181}
+        m_MethodName: CollectEnergy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -280,6 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2045035973555702402}
+  - component: {fileID: 2269188240367003181}
   m_Layer: 0
   m_Name: Windmills
   m_TagString: Untagged
@@ -305,6 +295,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!114 &2269188240367003181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045035973555702413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd743cddfa2d51b41b5578f7f639258d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyCanvas: {fileID: 1790360432266518203}
 --- !u!1 &4562776584665216432
 GameObject:
   m_ObjectHideFlags: 0
