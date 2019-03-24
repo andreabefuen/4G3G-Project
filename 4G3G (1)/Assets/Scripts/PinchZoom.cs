@@ -16,6 +16,9 @@ public class PinchZoom : MonoBehaviour
 
     bool cameraMovementActivate = true;
 
+    Vector2 startPos;
+    Vector2 direction;
+
     Camera camera;
 
     private void Awake()
@@ -27,13 +30,40 @@ public class PinchZoom : MonoBehaviour
     {
 
         
-        // If there are two touches on the device...
-        if (Input.touchCount == 2)
+       // // If there are two touches on the device...
+       // if (Input.touchCount == 2)
+       // {
+       //     TouchZoom();
+       // }
+       // MouseZoom();
+
+
+        if(Input.touchCount == 1)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    startPos = touch.position;
+                    break;
+                case TouchPhase.Moved:
+                    direction = touch.position - startPos;
+                    Vector3 movement = new Vector3(direction.normalized.x * panSpeed , 7.55f, direction.normalized.y * panSpeed);
+                   
+                    camera.transform.Translate(movement * Time.deltaTime, Space.World);
+                    
+                    break;
+                case TouchPhase.Ended:
+                    break;
+            }
+         
+        }
+        else if (Input.touchCount == 2)
         {
             TouchZoom();
         }
         MouseZoom();
-
     }
 
     void TouchZoom()
@@ -79,7 +109,7 @@ public class PinchZoom : MonoBehaviour
       //     camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 0.1f, 179.9f);
       // }
     }
-
+    
     void MouseZoom()
     {
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
