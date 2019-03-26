@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreateEnvironment : MonoBehaviour
 {
 
-
+    
     public float offset;
     public int numStage;
 
@@ -13,7 +13,9 @@ public class CreateEnvironment : MonoBehaviour
 
     public Node[,] matrixNodes;
 
-    Vector3 startPos = new Vector3(0, 0, 0);
+    Vector3 startPos;
+    Vector3 actualPos;
+    
 
     public Vector2 gridWorldSize;
     public float nodeRadius;
@@ -54,6 +56,9 @@ public class CreateEnvironment : MonoBehaviour
         prefabNode.gameObject.transform.localScale = new Vector3(nodeDiameter, prefabNode.transform.localScale.y, nodeDiameter);
 
         grid = GameObject.Find("Grid");
+
+        startPos = grid.transform.position;
+        actualPos = startPos;
     }
 
     // Start is called before the first frame update
@@ -67,17 +72,20 @@ public class CreateEnvironment : MonoBehaviour
             {
                 GameObject aux = Instantiate(prefabNode);
                 aux.transform.parent = grid.transform;
-                aux.transform.position = startPos;
-                startPos = new Vector3((offset + nodeDiameter)*c, 0 , startPos.z);
+                aux.transform.position = actualPos;
+                actualPos = new Vector3((offset + nodeDiameter + actualPos.x) , 0 , actualPos.z);
 
                 matrixNodes[f, c] = new Node(aux.transform.position, f, c);
                 matrixNodes[f, c].nodeGameobject = aux;
+                matrixNodes[f, c].nodeGameobject.GetComponent<MeshRenderer>().enabled = false;
+
 
             }
 
-            startPos = new Vector3(0, 0, (offset + nodeDiameter)* f);
+            actualPos = new Vector3(startPos.x, startPos.y, (offset + nodeDiameter + actualPos.z));
         }
         centerNode = matrixNodes[indexCenterRow, indexCenterColumn].nodeGameobject;
+        
         //matrixNodes[0, 0].nodeGameobject.SetActive(false);
 
         CreateStage();
@@ -92,11 +100,24 @@ public class CreateEnvironment : MonoBehaviour
         {
             for (int j = indexCenterColumn - stageColumns; j < indexCenterColumn + stageColumns; j++)
             {
-                matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
+                if(matrixNodes[i,j].nodeGameobject.GetComponent<NodeTouch>().isUnlock == true)
+                {
+                    continue;
+                }
+                matrixNodes[i, j].nodeGameobject.GetComponent<MeshRenderer>().enabled = true;
+                matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().isUnlock = true;
+               // matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
             }
         }
         centerNode.GetComponent<Renderer>().material.color = Color.cyan;
 
+    }
+
+    public void NextStageButton()
+    {
+        stageRows += 1;
+        stageColumns += 1;
+        CreateStage();
     }
 
     void SpawnHouses()

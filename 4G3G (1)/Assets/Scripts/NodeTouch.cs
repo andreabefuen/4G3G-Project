@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class NodeTouch : MonoBehaviour
 {
 
+    public bool isUnlock = false;
+
     public Color hoverColor;
     public Color normalColor;
 
@@ -54,6 +56,10 @@ public class NodeTouch : MonoBehaviour
         {
             Debug.Log("Nothing to construct, buy something");
             buildManager.DeselectNode();
+            return;
+        }
+        if (this.isUnlock == false)
+        {
             return;
         }
 

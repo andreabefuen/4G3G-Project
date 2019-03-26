@@ -37,6 +37,7 @@ public class BuildManager : MonoBehaviour
 
     public void SelectNode(NodeTouch node)
     {
+       
         if(selectedNode == node)
         {
             node.gameObject.GetComponent<MeshRenderer>().enabled = false;
