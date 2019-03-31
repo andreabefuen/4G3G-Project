@@ -33,6 +33,8 @@ public class BuildManager : MonoBehaviour
         //Hide the node
         node.gameObject.GetComponent<MeshRenderer>().enabled = false;
 
+        structureToBuild = null;
+
     }
 
     public void SelectNode(NodeTouch node)
@@ -58,7 +60,7 @@ public class BuildManager : MonoBehaviour
             Debug.Log("Is not a factory");
             selectedNode = node;
             structureToBuild = null;
-            nodeUI.SetTargetHouses(node);
+            //nodeUI.SetTargetHouses(node);
         }
        
     }

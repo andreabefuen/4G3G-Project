@@ -14,4 +14,6 @@ public class StructureBlueprint
     public NodeTouch nodeAsociate;
 
     public float timeEnergy;
+
+    public int energyPerTap;
 }

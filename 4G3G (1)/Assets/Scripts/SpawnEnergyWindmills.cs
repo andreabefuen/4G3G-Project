@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnEnergyWindmills : MonoBehaviour
@@ -7,16 +8,20 @@ public class SpawnEnergyWindmills : MonoBehaviour
     public GameObject energyCanvas;
 
     InventoryBuilding inventory;
+    TextMeshProUGUI moneyText;
 
     float timer;
     float spawnTimer;
+    int energy;
 
     // Start is called before the first frame update
     void Start()
     {
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
+        moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         spawnTimer = inventory.windmillStructure.timeEnergy;
+        energy = inventory.windmillStructure.energyPerTap;
     }
 
     // Update is called once per frame
@@ -34,6 +39,10 @@ public class SpawnEnergyWindmills : MonoBehaviour
     {
         Debug.Log("Collected the energy");
         energyCanvas.SetActive(false);
+        int total = int.Parse(moneyText.text);
+
+        total += energy;
+        moneyText.text = total.ToString();
         timer = 0f;
     }
 }

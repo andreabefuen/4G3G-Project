@@ -123,7 +123,7 @@ public class CreateEnvironment : MonoBehaviour
     void SpawnHouses()
     {
         int cont = 0;
-        while(cont <= numHouses)
+        while(cont < numHouses)
         {
             int rdnX = Random.Range(indexCenterRow - stageRows, indexCenterRow + stageRows);
             int rdnY = Random.Range(indexCenterColumn - stageColumns, indexCenterColumn + stageColumns);
@@ -153,7 +153,7 @@ public class CreateEnvironment : MonoBehaviour
     void SpawnCoalFactories()
     {
         int cont = 0;
-        while (cont <= numCoalFactories)
+        while (cont < numCoalFactories)
         {
             int rdnX = Random.Range(indexCenterRow - stageRows, indexCenterRow + stageRows);
             int rdnY = Random.Range(indexCenterColumn - stageColumns, indexCenterColumn + stageColumns);
