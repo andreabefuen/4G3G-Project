@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class NodeTouch : MonoBehaviour
 {
-
+    
     public bool isUnlock = false;
 
     public Color hoverColor;
@@ -15,11 +15,14 @@ public class NodeTouch : MonoBehaviour
     public GameObject buildingThere;
 
 
+    Vector3 offset;
+
     Renderer rend;
     Color startColor;
 
 
     BuildManager buildManager;
+
 
 
     // Start is called before the first frame update
@@ -31,11 +34,13 @@ public class NodeTouch : MonoBehaviour
 
 
         buildManager = BuildManager.instance;
+
+        offset = new Vector3(0f, 0, 0f);
     }
 
     public Vector3 GetBuildPosition()
     {
-        return transform.position;
+        return transform.position + offset;
     }
 
 
@@ -45,6 +50,11 @@ public class NodeTouch : MonoBehaviour
         {
             return;
         }
+        if(buildManager.haveCityHall == false)
+        {
+            buildManager.SelectNode(this);
+            return;
+        }
 
         if(buildingThere != null)
         {
@@ -52,6 +62,7 @@ public class NodeTouch : MonoBehaviour
             buildManager.SelectNode(this);
             return;
         }
+        
         if(buildManager.GetStructureToBuild() == null)
         {
             Debug.Log("Nothing to construct, buy something");

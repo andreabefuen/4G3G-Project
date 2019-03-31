@@ -85,6 +85,7 @@ public class CreateEnvironment : MonoBehaviour
             actualPos = new Vector3(startPos.x, startPos.y, (offset + nodeDiameter + actualPos.z));
         }
         centerNode = matrixNodes[indexCenterRow, indexCenterColumn].nodeGameobject;
+        centerNode.tag = "CityPlace";
         
         //matrixNodes[0, 0].nodeGameobject.SetActive(false);
 

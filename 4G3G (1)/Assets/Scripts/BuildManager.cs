@@ -5,12 +5,14 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
-
+    public GameObject cityHall;
 
     private StructureBlueprint structureToBuild;
     private NodeTouch selectedNode;
 
     public NodeUI nodeUI;
+
+    public bool haveCityHall = false;
 
     private void Awake()
     {
@@ -36,34 +38,63 @@ public class BuildManager : MonoBehaviour
         structureToBuild = null;
 
     }
+    void BuildCityHall(NodeTouch node)
+    {
+        GameObject structure = Instantiate(cityHall, node.GetBuildPosition(), cityHall.transform.rotation);
+
+        node.buildingThere = structure;
+
+        Debug.Log("City hall did it");
+        node.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+        structureToBuild = null;
+    }
 
     public void SelectNode(NodeTouch node)
     {
+        if (node.tag == "CityPlace")
+        {
+            BuildCityHall(node);
+            DeselectNode();
+            haveCityHall = true;
+            return;
+        }
+        if (haveCityHall)
+        {
+            if (selectedNode == node)
+            {
+                node.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                DeselectNode();
+                return;
+            }
+
+            if (node.buildingThere.tag == "Factory")
+            {
+                DeselectNode();
+                selectedNode = node;
+                structureToBuild = null;
+                nodeUI.SetTargetReplaceFactory(node);
+                return;
+            }
+            if (node.buildingThere.tag == "CityHall")
+            {
+                Debug.Log("Menu city hall");
+                DeselectNode();
+                return;
+            }
+            else //House
+            {
+                DeselectNode();
+                Debug.Log("Is not a factory");
+                selectedNode = node;
+                structureToBuild = null;
+                //nodeUI.SetTargetHouses(node);
+            }
+        }
        
-        if(selectedNode == node)
-        {
-            node.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            DeselectNode();
-            return;
-        }
-        if(node.buildingThere.tag == "Factory")
-        {
-            DeselectNode();
-            selectedNode = node;
-            structureToBuild = null;
-            nodeUI.SetTargetReplaceFactory(node);
-            return;
-        }
-        else //House
-        {
-            DeselectNode();
-            Debug.Log("Is not a factory");
-            selectedNode = node;
-            structureToBuild = null;
-            //nodeUI.SetTargetHouses(node);
-        }
        
     }
+
 
     public StructureBlueprint GetStructureToBuild()
     {

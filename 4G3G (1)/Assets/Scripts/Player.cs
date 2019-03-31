@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
 
     public List<Quest> activeQuest;
 
+   
+
     TextMeshProUGUI moneyText;
+
 
     private void Start()
     {

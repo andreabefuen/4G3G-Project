@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class PinchZoom : MonoBehaviour
 {
+    public GameObject cameraRig;
+
     public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
     public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
 
     public float panSpeed = 30f;
     public float panBorderThickness = 10f;
     public float scrollSpeed = 5f;
-    public float minY = 10f;
-    public float maxY = 80f;
+    public float minY;
+    public float maxY;
+    public float minX;
+    public float maxX;
+    public float minZ;
+    public float maxZ;
 
 
     bool cameraMovementActivate = true;
 
-    Vector2 startPos;
+    Vector3 startPos;
     Vector2 direction;
 
     Camera camera;
@@ -42,28 +48,54 @@ public class PinchZoom : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            switch (touch.phase)
+            if(touch.phase == TouchPhase.Began)
             {
-                case TouchPhase.Began:
-                    startPos = touch.position;
-                    break;
-                case TouchPhase.Moved:
-                    direction = touch.position - startPos;
-                    Vector3 movement = new Vector3(direction.normalized.x * panSpeed , 7.55f, direction.normalized.y * panSpeed);
-                   
-                    camera.transform.Translate(movement * Time.deltaTime, Space.World);
-                    
-                    break;
-                case TouchPhase.Ended:
-                    break;
+                startPos = this.GetWorldPoint(touch.position);
             }
+            if(touch.phase == TouchPhase.Moved)
+            {
+                Vector3 mov = this.GetWorldPoint(touch.position) - startPos;
+               
+                cameraRig.transform.Translate(-mov.x, 0, -mov.z);
+
+                Vector3 pos = cameraRig.transform.position;
+                pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
+                pos.x = Mathf.Clamp(pos.x, minX, maxX);
+
+                cameraRig.transform.position = pos;
+
+
+            }
+
+           // switch (touch.phase)
+           // {
+           //     case TouchPhase.Began:
+           //         startPos = touch.position;
+           //         break;
+           //     case TouchPhase.Moved:
+           //         direction = touch.position - startPos;
+           //         Vector3 movement = new Vector3(direction.normalized.x * panSpeed , 7.55f, direction.normalized.y * panSpeed);
+           //        
+           //         camera.transform.Translate(movement * Time.deltaTime, Space.World);
+           //         
+           //         break;
+           //     case TouchPhase.Ended:
+           //         break;
+           // }
          
         }
         else if (Input.touchCount == 2)
         {
             TouchZoom();
         }
-        MouseZoom();
+        //MouseZoom();
+    }
+
+    Vector3 GetWorldPoint(Vector2 screenPoint)
+    {
+        RaycastHit hit;
+        Physics.Raycast(camera.ScreenPointToRay(screenPoint), out hit);
+        return hit.point;
     }
 
     void TouchZoom()
