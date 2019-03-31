@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 2036773894737311127}
   m_Layer: 0
   m_Name: CityHall
-  m_TagString: Untagged
+  m_TagString: CityHall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

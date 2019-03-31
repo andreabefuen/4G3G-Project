@@ -8,6 +8,7 @@ public class NodeUI : MonoBehaviour
 
     public GameObject uiHouses;
 
+
     private NodeTouch target;
 
     private BuildManager buildManager;
@@ -33,6 +34,7 @@ public class NodeUI : MonoBehaviour
         uiHouses.SetActive(true);
     }
 
+
     public void HideReplaceFactory()
     {
         uiReplaceFactory.SetActive(false);
@@ -42,6 +44,7 @@ public class NodeUI : MonoBehaviour
     {
         uiHouses.SetActive(false);
     }
+
     
     public void ReplaceButton()
     {

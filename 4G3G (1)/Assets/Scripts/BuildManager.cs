@@ -6,6 +6,7 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
     public GameObject cityHall;
+    public GameObject uiAllQuests;
 
     private StructureBlueprint structureToBuild;
     private NodeTouch selectedNode;
@@ -49,10 +50,13 @@ public class BuildManager : MonoBehaviour
 
         structureToBuild = null;
     }
-
+    public void HideUIQuest()
+    {
+        uiAllQuests.SetActive(false);
+    }
     public void SelectNode(NodeTouch node)
     {
-        if (node.tag == "CityPlace")
+        if (node.tag == "CityPlace" && haveCityHall == false)
         {
             BuildCityHall(node);
             DeselectNode();
@@ -80,6 +84,7 @@ public class BuildManager : MonoBehaviour
             {
                 Debug.Log("Menu city hall");
                 DeselectNode();
+                uiAllQuests.SetActive(true);
                 return;
             }
             else //House
