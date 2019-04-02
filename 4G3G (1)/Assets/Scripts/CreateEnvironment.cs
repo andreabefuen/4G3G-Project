@@ -91,7 +91,8 @@ public class CreateEnvironment : MonoBehaviour
 
         CreateStage();
         SpawnHouses();
-        SpawnCoalFactories();
+        //SpawnHouseAllScenario();
+        //SpawnCoalFactories();
     }
 
 
@@ -149,6 +150,35 @@ public class CreateEnvironment : MonoBehaviour
             cont++;
         }
        
+    }
+
+    void SpawnHouseAllScenario()
+    {
+        int cont = 0;
+        while (cont < numHouses)
+        {
+            int rdnX = Random.Range(1, rows-1);
+            int rdnY = Random.Range(1, columns-1);
+
+            if (rdnX == indexCenterRow && rdnY == indexCenterColumn)
+            {
+                continue;
+            }
+
+            if (matrixNodes[rdnX, rdnY].objectInNode != null)
+            {
+                Debug.Log("Cant spawn here");
+                continue;
+            }
+            NodeTouch aux = matrixNodes[rdnX, rdnY].nodeGameobject.GetComponent<NodeTouch>();
+
+            GameObject spawnHouse = Instantiate(housePrefab, aux.GetBuildPosition(), housePrefab.transform.rotation);
+
+            aux.buildingThere = spawnHouse;
+            matrixNodes[rdnX, rdnY].objectInNode = spawnHouse;
+            aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            cont++;
+        }
     }
 
     void SpawnCoalFactories()

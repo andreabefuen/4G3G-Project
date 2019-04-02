@@ -47,6 +47,9 @@ public class QuestGiver : MonoBehaviour
             //To open all the quest
             //OpenQuestWindow();
         }
+
+       
+        
         
     }
 }

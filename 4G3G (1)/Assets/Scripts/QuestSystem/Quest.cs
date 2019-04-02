@@ -7,6 +7,8 @@ public class Quest
 {
     public bool isActive;
 
+    public bool isOnTheList = false;
+
     public string title;
     public string description;
 

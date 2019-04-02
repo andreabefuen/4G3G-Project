@@ -98,4 +98,9 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    public List<Quest> GetActiveQuests()
+    {
+        return activeQuest;
+    }
 }

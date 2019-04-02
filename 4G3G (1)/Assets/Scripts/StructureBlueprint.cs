@@ -23,5 +23,7 @@ public class StructureBlueprint
 
     public int amountOfPollution;
 
+    public int costOfDemolition;
+
 
 }

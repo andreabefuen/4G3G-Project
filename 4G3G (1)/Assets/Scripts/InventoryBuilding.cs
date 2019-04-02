@@ -7,6 +7,8 @@ public class InventoryBuilding : MonoBehaviour
     public StructureBlueprint windmillStructure;
     public StructureBlueprint solarPanelStructure;
 
+    public StructureBlueprint coalFactoryStructure;
+
     List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
 
@@ -30,6 +32,14 @@ public class InventoryBuilding : MonoBehaviour
         windmillStructure.informationPanel.SetActive(false);
 
     }
+    public void SelectShowInfoCoalFactory()
+    {
+        coalFactoryStructure.informationPanel.SetActive(true);
+    }
+    public void HideInfoCoalFactory()
+    {
+        coalFactoryStructure.informationPanel.SetActive(false);
+    }
 
     public void SelectShowInfoSolarpanel()
     {
@@ -51,6 +61,12 @@ public class InventoryBuilding : MonoBehaviour
     {
         buildManager.SelectStructureToBuild(solarPanelStructure);
         Debug.Log("Selected solar panel");
+    }
+
+    public void SelectCoalFactoryStructure()
+    {
+        buildManager.SelectStructureToBuild(coalFactoryStructure);
+        Debug.Log("Selected coal factory");
     }
 
     // Update is called once per frame
