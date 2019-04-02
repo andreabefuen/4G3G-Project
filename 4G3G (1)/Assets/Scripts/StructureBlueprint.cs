@@ -18,4 +18,10 @@ public class StructureBlueprint
     public float timeEnergy;
 
     public int energyPerTap;
+
+    public int amountOfHappiness;
+
+    public int amountOfPollution;
+
+
 }

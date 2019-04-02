@@ -9,8 +9,8 @@ public class SpawnEnergySolarPanels : MonoBehaviour
     public GameObject energyCanvas;
 
     InventoryBuilding inventory;
-    TextMeshProUGUI moneyText;
 
+    Player player;
     float timer;
     float spawnTimer;
     int energy;
@@ -20,9 +20,11 @@ public class SpawnEnergySolarPanels : MonoBehaviour
     {
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
-        moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+
         spawnTimer = inventory.solarPanelStructure.timeEnergy;
         energy = inventory.solarPanelStructure.energyPerTap;
+
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -40,10 +42,8 @@ public class SpawnEnergySolarPanels : MonoBehaviour
     {
         Debug.Log("Collected the energy");
         energyCanvas.SetActive(false);
-        int total = int.Parse(moneyText.text);
+        player.IncreaseMoney(energy);
 
-        total += energy;
-        moneyText.text = total.ToString();
         timer = 0f;
     }
 }

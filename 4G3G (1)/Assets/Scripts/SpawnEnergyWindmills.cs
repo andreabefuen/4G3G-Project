@@ -8,8 +8,9 @@ public class SpawnEnergyWindmills : MonoBehaviour
     public GameObject energyCanvas;
 
     InventoryBuilding inventory;
-    TextMeshProUGUI moneyText;
 
+
+    Player player;
     float timer;
     float spawnTimer;
     int energy;
@@ -19,9 +20,10 @@ public class SpawnEnergyWindmills : MonoBehaviour
     {
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
-        moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         spawnTimer = inventory.windmillStructure.timeEnergy;
         energy = inventory.windmillStructure.energyPerTap;
+
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -39,10 +41,9 @@ public class SpawnEnergyWindmills : MonoBehaviour
     {
         Debug.Log("Collected the energy");
         energyCanvas.SetActive(false);
-        int total = int.Parse(moneyText.text);
 
-        total += energy;
-        moneyText.text = total.ToString();
+        player.IncreaseMoney(energy);
+       
         timer = 0f;
     }
 }

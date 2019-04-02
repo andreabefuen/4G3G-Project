@@ -18,6 +18,8 @@ public class BuildManager : MonoBehaviour
 
     public bool haveCityHall = false;
 
+    private Player player;
+
     private void Awake()
     {
         if(instance != null)
@@ -26,10 +28,21 @@ public class BuildManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     public void BuildStructureOn(NodeTouch node)
     {
+        if (!HasEnoughMoney())
+        {
+            Debug.Log("Not enough money!");
+            return;
+        }
+
+        player.DecreaseMoney(structureToBuild.cost);
+        player.IncreaseHappiness(structureToBuild.amountOfHappiness);
+
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
 
         node.buildingThere = structure;
@@ -41,6 +54,11 @@ public class BuildManager : MonoBehaviour
 
         structureToBuild = null;
 
+    }
+
+    bool HasEnoughMoney()
+    {
+        return structureToBuild.cost < player.GetTotalMoney();
     }
     void BuildCityHall(NodeTouch node)
     {

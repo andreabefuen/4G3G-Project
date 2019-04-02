@@ -422,18 +422,22 @@ MonoBehaviour:
     prefab: {fileID: 2045035973555702413, guid: 52e714e69afcc2b4490531e39941be5b,
       type: 3}
     informationPanel: {fileID: 301975515}
-    cost: 0
+    cost: 2000
     nodeAsociate: {fileID: 0}
     timeEnergy: 10
     energyPerTap: 200
+    amountOfHappiness: 3
+    amountOfPollution: 0
   solarPanelStructure:
     prefab: {fileID: 4348625375440608773, guid: b149acafc0064cb4790bb2c8d6a0c401,
       type: 3}
     informationPanel: {fileID: 1283897007}
-    cost: 0
+    cost: 3000
     nodeAsociate: {fileID: 0}
     timeEnergy: 10
     energyPerTap: 300
+    amountOfHappiness: 2
+    amountOfPollution: 0
 --- !u!4 &85208408
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,8 +1054,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 85.3, y: 0}
+  m_SizeDelta: {x: -27.6, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &238634571
 GameObject:
@@ -2302,8 +2306,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 85.3, y: 0}
+  m_SizeDelta: {x: -8.1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &516058422
 MonoBehaviour:
@@ -2993,8 +2997,9 @@ GameObject:
   m_Component:
   - component: {fileID: 688665066}
   - component: {fileID: 688665067}
+  - component: {fileID: 688665068}
   m_Layer: 5
-  m_Name: HappinessIcon
+  m_Name: HappinessSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3014,7 +3019,7 @@ RectTransform:
   - {fileID: 516058421}
   - {fileID: 2121823654}
   - {fileID: 227215442}
-  - {fileID: 1889543794}
+  - {fileID: 1451047510}
   m_Father: {fileID: 2121929968}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3066,12 +3071,28 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 86.5
+  m_Value: 46.9
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &688665068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688665065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a996e901bdc0fcc43bfde085a3631baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeImagen: {fileID: 1451047511}
+  normalHappiness: {fileID: 21300014, guid: 688237d397b835e4d895d9e07f5a4c0a, type: 3}
+  highHappiness: {fileID: 21300012, guid: 688237d397b835e4d895d9e07f5a4c0a, type: 3}
+  lowHappiness: {fileID: 21300016, guid: 688237d397b835e4d895d9e07f5a4c0a, type: 3}
 --- !u!1 &794990195
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,9 +4770,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalCurrency: 10000
-  totalHappiness: 0
+  totalHappiness: 38
+  totalPollution: 42
   levelCity: 0
   activeQuest: []
+  happinessSlider: {fileID: 688665067}
+  pollutionSlider: {fileID: 1633397018}
 --- !u!4 &1291294925
 Transform:
   m_ObjectHideFlags: 0
@@ -5410,6 +5434,80 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450326635}
+  m_CullTransparentMesh: 0
+--- !u!1 &1451047509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1451047510}
+  - component: {fileID: 1451047512}
+  - component: {fileID: 1451047511}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1451047510
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451047509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 688665066}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1451047511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451047509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300012, guid: 688237d397b835e4d895d9e07f5a4c0a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1451047512
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451047509}
   m_CullTransparentMesh: 0
 --- !u!1 &1451316153
 GameObject:
@@ -7338,13 +7436,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 688665066}
-  m_RootOrder: 3
+  m_Father: {fileID: 2121823654}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.5, y: 0}
+  m_SizeDelta: {x: 5, y: 47.149998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889543795
 MonoBehaviour:
@@ -8040,13 +8138,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 670936043}
+  - {fileID: 1889543794}
   m_Father: {fileID: 688665066}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 2.5, y: 0}
-  m_SizeDelta: {x: -5, y: 0}
+  m_AnchoredPosition: {x: 87.7, y: 0}
+  m_SizeDelta: {x: -13, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2121929967
 GameObject:
