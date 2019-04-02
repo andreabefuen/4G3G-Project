@@ -9,6 +9,8 @@ public class StructureBlueprint
 {
     public GameObject prefab;
 
+    public GameObject informationPanel;
+
     public int cost;
 
     public NodeTouch nodeAsociate;

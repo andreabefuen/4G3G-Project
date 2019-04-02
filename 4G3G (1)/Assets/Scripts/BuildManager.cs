@@ -5,8 +5,11 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
+
+    [Header("Panels and UI")]
     public GameObject cityHall;
     public GameObject uiAllQuests;
+    public GameObject buildPanel;
 
     private StructureBlueprint structureToBuild;
     private NodeTouch selectedNode;
@@ -65,41 +68,62 @@ public class BuildManager : MonoBehaviour
         }
         if (haveCityHall)
         {
-            if (selectedNode == node)
+            if (node.isUnlock)
             {
-                node.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                DeselectNode();
-                return;
-            }
+                if (selectedNode == node)
+                {
+                    //node.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    DeselectNode();
+                    return;
+                }
+                if (structureToBuild == null && node.buildingThere == null)
+                {
+                    buildPanel.SetActive(true);
+                    selectedNode = node;
+                    return;
+                }
+                if (structureToBuild != null && node.buildingThere == null)
+                {
+                    BuildStructureOn(node);
+                    //buildPanel.SetActive(false);
+                    DeselectNode();
+                    structureToBuild = null;
+                    return;
+                }
 
-            if (node.buildingThere.tag == "Factory")
+                if (node.buildingThere.tag == "Factory")
+                {
+                    DeselectNode();
+                    selectedNode = node;
+                    structureToBuild = null;
+                    nodeUI.SetTargetReplaceFactory(node);
+                    return;
+                }
+                if (node.buildingThere.tag == "CityHall")
+                {
+                    Debug.Log("Menu city hall");
+                    DeselectNode();
+                    uiAllQuests.SetActive(true);
+                    return;
+                }
+                else //House
+                {
+                    DeselectNode();
+                    Debug.Log("Is not a factory");
+                    selectedNode = node;
+                    structureToBuild = null;
+                    //nodeUI.SetTargetHouses(node);
+                }
+            }
+            else
             {
                 DeselectNode();
-                selectedNode = node;
-                structureToBuild = null;
-                nodeUI.SetTargetReplaceFactory(node);
-                return;
             }
-            if (node.buildingThere.tag == "CityHall")
-            {
-                Debug.Log("Menu city hall");
-                DeselectNode();
-                uiAllQuests.SetActive(true);
-                return;
-            }
-            else //House
-            {
-                DeselectNode();
-                Debug.Log("Is not a factory");
-                selectedNode = node;
-                structureToBuild = null;
-                //nodeUI.SetTargetHouses(node);
-            }
+            
         }
        
        
     }
-
 
     public StructureBlueprint GetStructureToBuild()
     {
@@ -111,6 +135,7 @@ public class BuildManager : MonoBehaviour
         selectedNode = null;
         nodeUI.HideReplaceFactory();
         nodeUI.HideHouses();
+        buildPanel.SetActive(false);
     }
 
 

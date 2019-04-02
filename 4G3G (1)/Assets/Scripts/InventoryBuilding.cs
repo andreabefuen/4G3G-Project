@@ -21,6 +21,26 @@ public class InventoryBuilding : MonoBehaviour
         listOfBlueprints.Add(windmillStructure);
     }
 
+    public void SelectShowInfoWindmill()
+    {
+        windmillStructure.informationPanel.SetActive(true);
+    }
+    public void HideInfoWindmill()
+    {
+        windmillStructure.informationPanel.SetActive(false);
+
+    }
+
+    public void SelectShowInfoSolarpanel()
+    {
+        solarPanelStructure.informationPanel.SetActive(true);
+    }
+    public void HideInfoSolarpanel()
+    {
+        solarPanelStructure.informationPanel.SetActive(false);
+
+    }
+
     public void SelectWindmillStructure()
     {
         buildManager.SelectStructureToBuild(windmillStructure);

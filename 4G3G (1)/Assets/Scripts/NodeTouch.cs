@@ -55,13 +55,20 @@ public class NodeTouch : MonoBehaviour
             buildManager.SelectNode(this);
             return;
         }
-
-        if(buildingThere != null)
+        if (buildingThere == null)
         {
-            Debug.Log("Can't build there!");
+            Debug.Log("Selected a free node");
             buildManager.SelectNode(this);
             return;
         }
+
+        if (buildingThere != null)
+        {
+            Debug.Log("Can't build there!");
+            buildManager.DeselectNode();
+            return;
+        }
+  
         
         if(buildManager.GetStructureToBuild() == null)
         {
@@ -74,7 +81,7 @@ public class NodeTouch : MonoBehaviour
             return;
         }
 
-        buildManager.BuildStructureOn(this);
+       // buildManager.BuildStructureOn(this);
         
     }
 

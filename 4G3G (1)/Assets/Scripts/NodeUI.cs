@@ -32,6 +32,7 @@ public class NodeUI : MonoBehaviour
         target = t;
         transform.position = target.GetBuildPosition();
         uiHouses.SetActive(true);
+       
     }
 
 
