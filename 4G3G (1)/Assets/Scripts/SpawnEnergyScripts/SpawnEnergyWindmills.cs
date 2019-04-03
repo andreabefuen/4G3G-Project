@@ -20,8 +20,8 @@ public class SpawnEnergyWindmills : MonoBehaviour
     {
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
-        spawnTimer = inventory.windmillStructure.timeEnergy;
-        energy = inventory.windmillStructure.energyPerTap;
+        spawnTimer = inventory.windmillStructure.timeMoney;
+        energy = inventory.windmillStructure.moneyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }

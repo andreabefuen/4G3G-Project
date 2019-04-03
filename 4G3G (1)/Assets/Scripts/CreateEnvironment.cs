@@ -37,6 +37,9 @@ public class CreateEnvironment : MonoBehaviour
     public int numCoalFactories;
 
 
+    public static List<GameObject> houses;
+
+
     private void Awake()
     {
         nodeDiameter = nodeRadius * 2;
@@ -59,6 +62,8 @@ public class CreateEnvironment : MonoBehaviour
 
         startPos = grid.transform.position;
         actualPos = startPos;
+
+        houses = new List<GameObject>();
     }
 
     // Start is called before the first frame update
@@ -90,7 +95,7 @@ public class CreateEnvironment : MonoBehaviour
         //matrixNodes[0, 0].nodeGameobject.SetActive(false);
 
         CreateStage();
-        SpawnHouses();
+        //SpawnHouses();
         //SpawnHouseAllScenario();
         //SpawnCoalFactories();
     }
@@ -113,6 +118,10 @@ public class CreateEnvironment : MonoBehaviour
         }
         centerNode.GetComponent<Renderer>().material.color = Color.cyan;
 
+        numHouses *= 2; 
+        SpawnHouses();
+        
+
     }
 
     public void NextStageButton()
@@ -124,7 +133,7 @@ public class CreateEnvironment : MonoBehaviour
 
     void SpawnHouses()
     {
-        int cont = 0;
+        int cont = houses.Count;
         while(cont < numHouses)
         {
             int rdnX = Random.Range(indexCenterRow - stageRows, indexCenterRow + stageRows);
@@ -135,7 +144,7 @@ public class CreateEnvironment : MonoBehaviour
                 continue;
             }
 
-            if (matrixNodes[rdnX, rdnY].objectInNode != null)
+            if (matrixNodes[rdnX, rdnY].nodeGameobject.GetComponent<NodeTouch>().buildingThere != null)
             {
                 Debug.Log("Cant spawn here");
                 continue;
@@ -147,6 +156,7 @@ public class CreateEnvironment : MonoBehaviour
             aux.buildingThere = spawnHouse;
             matrixNodes[rdnX, rdnY].objectInNode = spawnHouse;
             aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            houses.Add(spawnHouse);
             cont++;
         }
        
@@ -208,6 +218,11 @@ public class CreateEnvironment : MonoBehaviour
             aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
             cont++;
         }
+    }
+
+    public List<GameObject> GetHouses()
+    {
+        return houses;
     }
 
     // Update is called once per frame

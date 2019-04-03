@@ -13,7 +13,12 @@ public class Player : MonoBehaviour
     [Range(0, 100)]
     public int totalPollution;
 
+    public int totalEnergy;
+    public int energyForEachHouse;
+
+
     public int levelCity;
+
 
     public List<Quest> activeQuest;
 
@@ -22,9 +27,15 @@ public class Player : MonoBehaviour
     [Header("Stats UI")]
     public Slider happinessSlider;
     public Slider pollutionSlider;
+
+    public Slider energySlider;
    
 
     TextMeshProUGUI moneyText;
+
+    List<GameObject> allTheHouses;
+
+    CreateEnvironment createEnvironment;
 
 
     private void Start()
@@ -34,6 +45,18 @@ public class Player : MonoBehaviour
         UpdateMoney();
 
         UpdateHappiness();
+
+        
+
+        allTheHouses = CreateEnvironment.houses;
+
+        createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+
+        energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
+      
+        energySlider.value = 0;
+
+        UpdateEnergy();
     }
 
     public void UpdateMoney()
@@ -45,6 +68,18 @@ public class Player : MonoBehaviour
     {
         happinessSlider.value = totalHappiness;
         ChangeIcon();
+    }
+
+    public void UpdateEnergy()
+    {
+        if(totalEnergy > energySlider.maxValue)
+        {
+            createEnvironment.NextStageButton();
+            energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
+            energySlider.value = totalEnergy;
+            
+        }
+        energySlider.value = totalEnergy;
     }
 
     public int GetTotalMoney()
@@ -79,6 +114,12 @@ public class Player : MonoBehaviour
         totalHappiness += amount;
         UpdateHappiness();
 
+    }
+
+    public void IncreaseEnergy(int amount)
+    {
+        totalEnergy += amount;
+        UpdateEnergy();
     }
 
     public void ChangeIcon()

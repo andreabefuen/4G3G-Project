@@ -15,7 +15,9 @@ public class StructureBlueprint
 
     public NodeTouch nodeAsociate;
 
-    public float timeEnergy;
+    public float timeMoney;
+
+    public int moneyPerTap;
 
     public int energyPerTap;
 

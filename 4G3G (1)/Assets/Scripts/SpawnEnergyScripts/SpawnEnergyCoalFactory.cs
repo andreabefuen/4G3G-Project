@@ -19,8 +19,8 @@ public class SpawnEnergyCoalFactory : MonoBehaviour
     {
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
-        spawnTimer = inventory.coalFactoryStructure.timeEnergy;
-        energy = inventory.coalFactoryStructure.energyPerTap;
+        spawnTimer = inventory.coalFactoryStructure.timeMoney;
+        energy = inventory.coalFactoryStructure.moneyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }

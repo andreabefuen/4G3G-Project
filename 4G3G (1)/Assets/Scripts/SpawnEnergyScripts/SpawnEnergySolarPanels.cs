@@ -13,7 +13,7 @@ public class SpawnEnergySolarPanels : MonoBehaviour
     Player player;
     float timer;
     float spawnTimer;
-    int energy;
+    int money,energy;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,8 @@ public class SpawnEnergySolarPanels : MonoBehaviour
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
 
-        spawnTimer = inventory.solarPanelStructure.timeEnergy;
+        spawnTimer = inventory.solarPanelStructure.timeMoney;
+        money = inventory.solarPanelStructure.moneyPerTap;
         energy = inventory.solarPanelStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
@@ -42,7 +43,8 @@ public class SpawnEnergySolarPanels : MonoBehaviour
     {
         Debug.Log("Collected the energy");
         energyCanvas.SetActive(false);
-        player.IncreaseMoney(energy);
+        player.IncreaseMoney(money);
+        player.IncreaseEnergy(energy);
 
         timer = 0f;
     }
