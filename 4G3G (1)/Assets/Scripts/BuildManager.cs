@@ -109,14 +109,14 @@ public class BuildManager : MonoBehaviour
                     return;
                 }
 
-                if (node.buildingThere.tag == "Factory")
-                {
-                    DeselectNode();
-                    selectedNode = node;
-                    structureToBuild = null;
-                    nodeUI.SetTargetReplaceFactory(node);
-                    return;
-                }
+               //if (node.buildingThere.tag == "Factory")
+               //{
+               //    DeselectNode();
+               //    selectedNode = node;
+               //    structureToBuild = null;
+               //    nodeUI.SetTargetReplaceFactory(node);
+               //    return;
+               //}
                 if (node.buildingThere.tag == "CityHall")
                 {
                     Debug.Log("Menu city hall");
@@ -124,14 +124,14 @@ public class BuildManager : MonoBehaviour
                     uiAllQuests.SetActive(true);
                     return;
                 }
-                else //House
-                {
-                    DeselectNode();
-                    Debug.Log("Is not a factory");
-                    selectedNode = node;
-                    structureToBuild = null;
-                    //nodeUI.SetTargetHouses(node);
-                }
+               //else //House
+               //{
+               //    DeselectNode();
+               //    Debug.Log("Is not a factory");
+               //    selectedNode = node;
+               //    structureToBuild = null;
+               //    //nodeUI.SetTargetHouses(node);
+               //}
             }
             else
             {
