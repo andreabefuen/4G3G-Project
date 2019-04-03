@@ -42,6 +42,7 @@ public class BuildManager : MonoBehaviour
 
         player.DecreaseMoney(structureToBuild.cost);
         player.IncreaseHappiness(structureToBuild.amountOfHappiness);
+        player.IncreasePollution(structureToBuild.amountOfPollution);
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
 

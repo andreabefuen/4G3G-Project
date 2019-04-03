@@ -82,6 +82,17 @@ public class Player : MonoBehaviour
         energySlider.value = totalEnergy;
     }
 
+    public void UpdatePollution()
+    {
+        pollutionSlider.value = totalPollution;
+
+        if(pollutionSlider.value == 0)
+        {
+            //End the game, you kill the city, game over
+            Debug.Log("DIE ");
+        }
+    }
+
     public int GetTotalMoney()
     {
         return totalCurrency;
@@ -114,6 +125,12 @@ public class Player : MonoBehaviour
         totalHappiness += amount;
         UpdateHappiness();
 
+    }
+
+    public void IncreasePollution(int amount)
+    {
+        totalPollution += amount;
+        UpdatePollution();
     }
 
     public void IncreaseEnergy(int amount)

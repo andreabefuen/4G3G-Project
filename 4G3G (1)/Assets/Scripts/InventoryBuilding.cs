@@ -8,6 +8,7 @@ public class InventoryBuilding : MonoBehaviour
     public StructureBlueprint solarPanelStructure;
 
     public StructureBlueprint coalFactoryStructure;
+    public StructureBlueprint gasExtractorStructure;
 
     List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
@@ -49,6 +50,21 @@ public class InventoryBuilding : MonoBehaviour
     {
         solarPanelStructure.informationPanel.SetActive(false);
 
+    }
+
+    public void SelectShowInfoGas()
+    {
+        gasExtractorStructure.informationPanel.SetActive(true);
+    }
+    public void HideInfoGas()
+    {
+        gasExtractorStructure.informationPanel.SetActive(false);
+    }
+
+    public void SelectGasExtractorStructure()
+    {
+        buildManager.SelectStructureToBuild(gasExtractorStructure);
+        Debug.Log("Selected gas extractor");
     }
 
     public void SelectWindmillStructure()

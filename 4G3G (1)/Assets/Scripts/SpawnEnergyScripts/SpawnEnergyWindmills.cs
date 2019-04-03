@@ -13,7 +13,7 @@ public class SpawnEnergyWindmills : MonoBehaviour
     Player player;
     float timer;
     float spawnTimer;
-    int energy;
+    int money, energy;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,8 @@ public class SpawnEnergyWindmills : MonoBehaviour
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
         spawnTimer = inventory.windmillStructure.timeMoney;
-        energy = inventory.windmillStructure.moneyPerTap;
+        money = inventory.windmillStructure.moneyPerTap;
+        energy = inventory.windmillStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }
@@ -42,7 +43,8 @@ public class SpawnEnergyWindmills : MonoBehaviour
         Debug.Log("Collected the energy");
         energyCanvas.SetActive(false);
 
-        player.IncreaseMoney(energy);
+        player.IncreaseMoney(money);
+        player.IncreaseEnergy(energy);
        
         timer = 0f;
     }
