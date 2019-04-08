@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     public Slider pollutionSlider;
 
     public Slider energySlider;
+
+    public GameObject enoughMoney;
    
 
     TextMeshProUGUI moneyText;
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
         energySlider.value = 0;
 
         UpdateEnergy();
+        UpdatePollution();
     }
 
     public void UpdateMoney()
@@ -156,6 +159,11 @@ public class Player : MonoBehaviour
             happinessSlider.GetComponent<OnHappinessChange>().ChangeToNormal();
 
         }
+    }
+
+    public void NotEnoughMoneyPlay()
+    {
+        enoughMoney.GetComponent<Animation>().Play();
     }
 
     public List<Quest> GetActiveQuests()

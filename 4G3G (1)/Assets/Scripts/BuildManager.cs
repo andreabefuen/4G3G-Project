@@ -24,6 +24,7 @@ public class BuildManager : MonoBehaviour
     public bool haveCityHall = false;
 
     private Player player;
+    private InventoryBuilding inventoryBuilding;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class BuildManager : MonoBehaviour
         instance = this;
 
         player = GameObject.Find("Player").GetComponent<Player>();
+        inventoryBuilding = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
     }
 
     public void BuildStructureOn(NodeTouch node)
@@ -42,6 +44,7 @@ public class BuildManager : MonoBehaviour
         if (!HasEnoughMoney())
         {
             Debug.Log("Not enough money!");
+            player.NotEnoughMoneyPlay();
             return;
         }
 
@@ -172,8 +175,74 @@ public class BuildManager : MonoBehaviour
     {
         if(selectedNode != null)
         {
+
+            if(selectedNode.buildingThere.tag == "Factory")
+            {
+                if(player.GetTotalMoney() < inventoryBuilding.coalFactoryStructure.costOfDemolition)
+                {
+                    Debug.Log("You can't demolish this building");
+                    HideInfoPanel();
+                    NotDestroyThisBuilding();
+                    player.NotEnoughMoneyPlay();
+                    return;
+                }
+                Debug.Log("Demolish factory");
+                player.IncreaseEnergy(-inventoryBuilding.coalFactoryStructure.amountOfEnergy);
+                player.DecreaseMoney(inventoryBuilding.coalFactoryStructure.costOfDemolition);
+               // player.IncreasePollution(-inventoryBuilding.coalFactoryStructure.amountOfPollution);
+            }
+            else if(selectedNode.buildingThere.tag == "Windmill")
+            {
+                if (player.GetTotalMoney() < inventoryBuilding.windmillStructure.costOfDemolition)
+                {
+                    Debug.Log("You can't demolish this building");
+                    HideInfoPanel();
+                    NotDestroyThisBuilding();
+                    return;
+
+                }
+                player.IncreaseEnergy(-inventoryBuilding.windmillStructure.amountOfEnergy);
+                player.DecreaseMoney(inventoryBuilding.windmillStructure.costOfDemolition);
+
+                // player.IncreasePollution(-inventoryBuilding.windmillStructure.amountOfPollution);
+
+            }
+            else if(selectedNode.buildingThere.tag == "Solar")
+            {
+                if (player.GetTotalMoney() < inventoryBuilding.solarPanelStructure.costOfDemolition)
+                {
+                    Debug.Log("You can't demolish this building");
+                    HideInfoPanel();
+                    NotDestroyThisBuilding();
+                    return;
+
+                }
+                player.IncreaseEnergy(-inventoryBuilding.solarPanelStructure.amountOfEnergy);
+                player.DecreaseMoney(inventoryBuilding.solarPanelStructure.costOfDemolition);
+
+                //   player.IncreasePollution(-inventoryBuilding.solarPanelStructure.amountOfPollution);
+
+            }
+            else if(selectedNode.buildingThere.tag == "Gas")
+            {
+                if (player.GetTotalMoney() < inventoryBuilding.gasExtractorStructure.costOfDemolition)
+                {
+                    Debug.Log("You can't demolish this building");
+                    HideInfoPanel();
+                    NotDestroyThisBuilding();
+                    return;
+
+                }
+                player.IncreaseEnergy(-inventoryBuilding.gasExtractorStructure.amountOfEnergy);
+                player.DecreaseMoney(inventoryBuilding.gasExtractorStructure.costOfDemolition);
+
+                //  player.IncreasePollution(-inventoryBuilding.gasExtractorStructure.amountOfPollution);
+
+            }
             Destroy(selectedNode.buildingThere);
             selectedNode.gameObject.GetComponent<MeshRenderer>().enabled = true;
+           // player.UpdateEnergy();
+            //player.UpdateMoney();
             HideInfoPanel();
             NotDestroyThisBuilding();
         }

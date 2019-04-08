@@ -8,6 +8,9 @@ TagManager:
   - CityHall
   - CityPlace
   - House
+  - Windmill
+  - Solar
+  - Gas
   layers:
   - Default
   - TransparentFX
