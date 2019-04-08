@@ -22,7 +22,7 @@ public class SpawnEnergyGasExtractor : MonoBehaviour
 
         spawnTimer = inventory.gasExtractorStructure.timeMoney;
         money = inventory.gasExtractorStructure.moneyPerTap;
-        energy = inventory.gasExtractorStructure.energyPerTap;
+      //  energy = inventory.gasExtractorStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }
@@ -43,7 +43,7 @@ public class SpawnEnergyGasExtractor : MonoBehaviour
         Debug.Log("Collected the energy");
         energyCanvas.SetActive(false);
         player.IncreaseMoney(money);
-        player.IncreaseEnergy(energy);
+       // player.IncreaseEnergy(energy);
 
         timer = 0f;
     }

@@ -19,7 +19,7 @@ public class StructureBlueprint
 
     public int moneyPerTap;
 
-    public int energyPerTap;
+    public int amountOfEnergy;
 
     public int amountOfHappiness;
 

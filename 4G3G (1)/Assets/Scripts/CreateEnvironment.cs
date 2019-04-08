@@ -128,7 +128,7 @@ public class CreateEnvironment : MonoBehaviour
     {
         stageRows += 1;
         stageColumns += 1;
-        CreateStage();
+        Invoke("CreateStage",0.5f);
     }
 
     void SpawnHouses()

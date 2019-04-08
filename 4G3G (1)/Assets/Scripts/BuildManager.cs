@@ -11,6 +11,11 @@ public class BuildManager : MonoBehaviour
     public GameObject uiAllQuests;
     public GameObject buildPanel;
 
+    public GameObject infoPanel;
+    public GameObject destroyPanelSelection;
+
+    public bool destroyActivate = false;
+
     private StructureBlueprint structureToBuild;
     private NodeTouch selectedNode;
 
@@ -43,6 +48,7 @@ public class BuildManager : MonoBehaviour
         player.DecreaseMoney(structureToBuild.cost);
         player.IncreaseHappiness(structureToBuild.amountOfHappiness);
         player.IncreasePollution(structureToBuild.amountOfPollution);
+        player.IncreaseEnergy(structureToBuild.amountOfEnergy);
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
 
@@ -70,6 +76,8 @@ public class BuildManager : MonoBehaviour
         Debug.Log("City hall did it");
         node.gameObject.GetComponent<MeshRenderer>().enabled = false;
 
+        player.IncreaseMoney(35000);
+
         structureToBuild = null;
     }
     public void HideUIQuest()
@@ -87,17 +95,21 @@ public class BuildManager : MonoBehaviour
         }
         if (haveCityHall)
         {
-            if (node.isUnlock)
-            {
                 if (selectedNode == node)
                 {
                     //node.gameObject.GetComponent<MeshRenderer>().enabled = false;
                     DeselectNode();
                     return;
                 }
+                if(node.isUnlock == false)
+                {
+                     DeselectNode();
+                     return;
+                }
                 if (structureToBuild == null && node.buildingThere == null)
                 {
                     buildPanel.SetActive(true);
+                    HideInfoPanel();
                     selectedNode = node;
                     return;
                 }
@@ -107,6 +119,14 @@ public class BuildManager : MonoBehaviour
                     //buildPanel.SetActive(false);
                     DeselectNode();
                     structureToBuild = null;
+                    return;
+                }
+
+                if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall")
+                {
+                    selectedNode = node;
+                    infoPanel.SetActive(true);
+                    HideConstructionPanel();
                     return;
                 }
 
@@ -134,14 +154,36 @@ public class BuildManager : MonoBehaviour
                //    //nodeUI.SetTargetHouses(node);
                //}
             }
-            else
-            {
-                DeselectNode();
-            }
             
+           
+       
+       
+    }
+    public void DestroyButton()
+    {
+        destroyActivate = true;
+        destroyPanelSelection.SetActive(true);
+        HideInfoPanel();
+
+
+    }
+
+    public void DestroyThisBuilding()
+    {
+        if(selectedNode != null)
+        {
+            Destroy(selectedNode.buildingThere);
+            selectedNode.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            HideInfoPanel();
+            NotDestroyThisBuilding();
         }
-       
-       
+        
+    }
+
+    public void NotDestroyThisBuilding()
+    {
+        destroyPanelSelection.SetActive(false);
+        destroyActivate = false;
     }
 
     public StructureBlueprint GetStructureToBuild()
@@ -154,14 +196,31 @@ public class BuildManager : MonoBehaviour
         selectedNode = null;
         nodeUI.HideReplaceFactory();
         nodeUI.HideHouses();
+        HideInfoPanel();
+        HideConstructionPanel();
+    }
+
+    public void HideInfoPanel()
+    {
+        infoPanel.SetActive(false);
+
+    }
+
+    public void HideConstructionPanel()
+    {
         buildPanel.SetActive(false);
+    }
+
+    public bool ConstructionPanelActivated()
+    {
+        return buildPanel.activeSelf;
     }
 
 
     public void SelectStructureToBuild (StructureBlueprint structure)
     {
         structureToBuild = structure;
-
+        
         DeselectNode();
 
     }

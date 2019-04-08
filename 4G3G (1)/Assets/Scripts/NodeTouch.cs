@@ -23,6 +23,8 @@ public class NodeTouch : MonoBehaviour
 
     BuildManager buildManager;
 
+    Vector3 touchPosWorld;
+
 
 
     // Start is called before the first frame update
@@ -43,56 +45,95 @@ public class NodeTouch : MonoBehaviour
         return transform.position + offset;
     }
 
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
 
     private void OnMouseDown()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-        if(buildManager.haveCityHall == false)
-        {
-            buildManager.SelectNode(this);
-            return;
-        }
-        if (buildingThere == null)
-        {
-            Debug.Log("Selected a free node");
-            buildManager.SelectNode(this);
-            return;
-        }
 
-        if (buildingThere != null)
+        if(isUnlock == false)
         {
-            Debug.Log("Can't build there!");
-            buildManager.SelectNode(this);
             //buildManager.DeselectNode();
             return;
         }
-  
-        
-        if(buildManager.GetStructureToBuild() == null)
+       //if (isUnlock == false)
+       //{
+       //    if (!EventSystem.current.IsPointerOverGameObject())
+       //    {
+       //        buildManager.HideConstructionPanel();
+       //        return;
+       //    }
+       //        
+       //    return;       
+       //}
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            Debug.Log("Nothing to construct, buy something");
-            buildManager.DeselectNode();
-            return;
-        }
-        if (this.isUnlock == false)
-        {
-            return;
+            if (!IsPointerOverUIObject())
+            {
+
+                if (buildManager.haveCityHall == false)
+                {
+                    buildManager.SelectNode(this);
+                    return;
+                }
+                if (buildingThere == null)
+                {
+                    Debug.Log("Selected a free node");
+                    buildManager.SelectNode(this);
+                    return;
+                }
+
+                if (buildingThere != null && buildManager.destroyActivate == false)
+                {
+                    Debug.Log("Can't build there!");
+                    buildManager.SelectNode(this);
+                    //buildManager.DeselectNode();
+                    return;
+                }
+
+
+                if (buildManager.GetStructureToBuild() == null)
+                {
+                    Debug.Log("Nothing to construct, buy something");
+                    buildManager.DeselectNode();
+                    return;
+                }
+                if (this.isUnlock == false)
+                {
+                    return;
+                }
+
+                // buildManager.BuildStructureOn(this);
+            }
         }
 
-       // buildManager.BuildStructureOn(this);
+       
         
     }
 
     private void OnMouseEnter()
     {
-       //if (EventSystem.current.IsPointerOverGameObject())
-       //{
-       //    return;
-       //}
-        rend.material.color = hoverColor;
+        //if (EventSystem.current.IsPointerOverGameObject())
+        //{
+        //    return;
+        //}
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                rend.material.color = hoverColor;
+               
+            }
+        }
+                
     }
 
 
@@ -100,9 +141,55 @@ public class NodeTouch : MonoBehaviour
     {
         rend.material.color = startColor ;
     }
-    // Update is called once per frame
+    // Update is called once per frameç
+
+
     void Update()
     {
-        
+        /*
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {   
+                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                {
+                    Debug.Log("TOUCH Gameobject");
+                    if (buildManager.haveCityHall == false)
+                    {
+                        buildManager.SelectNode(this);
+                        return;
+                    }
+                    if (buildingThere == null)
+                    {
+                        Debug.Log("Selected a free node");
+                        buildManager.SelectNode(this);
+                        return;
+                    }
+
+                    if (buildingThere != null)
+                    {
+                        Debug.Log("Can't build there!");
+                        buildManager.SelectNode(this);
+                        //buildManager.DeselectNode();
+                        return;
+                    }
+
+
+                    if (buildManager.GetStructureToBuild() == null)
+                    {
+                        Debug.Log("Nothing to construct, buy something");
+                        buildManager.DeselectNode();
+                        return;
+                    }
+                    if (this.isUnlock == false)
+                    {
+                        return;
+                    }
+
+                    // buildManager.BuildStructureOn(this);
+
+                }
+            }
+
+       }*/
     }
+    
 }

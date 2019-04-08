@@ -23,7 +23,7 @@ public class SpawnEnergySolarPanels : MonoBehaviour
 
         spawnTimer = inventory.solarPanelStructure.timeMoney;
         money = inventory.solarPanelStructure.moneyPerTap;
-        energy = inventory.solarPanelStructure.energyPerTap;
+       // energy = inventory.solarPanelStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }
@@ -44,7 +44,7 @@ public class SpawnEnergySolarPanels : MonoBehaviour
         Debug.Log("Collected the energy");
         energyCanvas.SetActive(false);
         player.IncreaseMoney(money);
-        player.IncreaseEnergy(energy);
+       // player.IncreaseEnergy(energy);
 
         timer = 0f;
     }

@@ -26,6 +26,7 @@ public class InventoryBuilding : MonoBehaviour
 
     public void SelectShowInfoWindmill()
     {
+        buildManager.HideConstructionPanel();
         windmillStructure.informationPanel.SetActive(true);
     }
     public void HideInfoWindmill()
@@ -35,6 +36,7 @@ public class InventoryBuilding : MonoBehaviour
     }
     public void SelectShowInfoCoalFactory()
     {
+        buildManager.HideConstructionPanel();
         coalFactoryStructure.informationPanel.SetActive(true);
     }
     public void HideInfoCoalFactory()
@@ -44,6 +46,8 @@ public class InventoryBuilding : MonoBehaviour
 
     public void SelectShowInfoSolarpanel()
     {
+        buildManager.HideConstructionPanel();
+
         solarPanelStructure.informationPanel.SetActive(true);
     }
     public void HideInfoSolarpanel()
@@ -54,6 +58,8 @@ public class InventoryBuilding : MonoBehaviour
 
     public void SelectShowInfoGas()
     {
+        buildManager.HideConstructionPanel();
+
         gasExtractorStructure.informationPanel.SetActive(true);
     }
     public void HideInfoGas()

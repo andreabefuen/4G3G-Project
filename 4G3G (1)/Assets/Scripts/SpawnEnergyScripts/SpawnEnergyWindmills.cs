@@ -22,7 +22,7 @@ public class SpawnEnergyWindmills : MonoBehaviour
         timer = 0f;
         spawnTimer = inventory.windmillStructure.timeMoney;
         money = inventory.windmillStructure.moneyPerTap;
-        energy = inventory.windmillStructure.energyPerTap;
+       // energy = inventory.windmillStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }
@@ -44,7 +44,7 @@ public class SpawnEnergyWindmills : MonoBehaviour
         energyCanvas.SetActive(false);
 
         player.IncreaseMoney(money);
-        player.IncreaseEnergy(energy);
+      //  player.IncreaseEnergy(energy);
        
         timer = 0f;
     }

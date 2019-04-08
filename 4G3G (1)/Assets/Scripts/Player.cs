@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
         if(totalEnergy > energySlider.maxValue)
         {
             createEnvironment.NextStageButton();
+            levelCity++;
             energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
             energySlider.value = totalEnergy;
             

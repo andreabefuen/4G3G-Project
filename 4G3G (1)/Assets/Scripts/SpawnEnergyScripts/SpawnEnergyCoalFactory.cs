@@ -21,7 +21,7 @@ public class SpawnEnergyCoalFactory : MonoBehaviour
         timer = 0f;
         spawnTimer = inventory.coalFactoryStructure.timeMoney;
         money = inventory.coalFactoryStructure.moneyPerTap;
-        energy = inventory.coalFactoryStructure.energyPerTap;
+       // energy = inventory.coalFactoryStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }
@@ -43,7 +43,7 @@ public class SpawnEnergyCoalFactory : MonoBehaviour
         energyCanvas.SetActive(false);
 
         player.IncreaseMoney(money);
-        player.IncreaseEnergy(energy);
+       // player.IncreaseEnergy(energy);
 
         timer = 0f;
     }
