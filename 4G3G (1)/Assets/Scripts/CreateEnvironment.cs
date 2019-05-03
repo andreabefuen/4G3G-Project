@@ -13,6 +13,10 @@ public class CreateEnvironment : MonoBehaviour
 
     public Node[,] matrixNodes;
 
+    public GameObject planeLimit;
+    GameObject auxPlaneLimit;
+
+
     Vector3 startPos;
     Vector3 actualPos;
     
@@ -103,6 +107,7 @@ public class CreateEnvironment : MonoBehaviour
 
     void CreateStage()
     {
+        Destroy(auxPlaneLimit);
         for (int i = indexCenterRow - stageRows; i < indexCenterRow + stageRows; i++)
         {
             for (int j = indexCenterColumn - stageColumns; j < indexCenterColumn + stageColumns; j++)
@@ -120,6 +125,13 @@ public class CreateEnvironment : MonoBehaviour
 
         numHouses *= 2; 
         SpawnHouses();
+
+        Vector3 auxvect = matrixNodes[indexCenterRow - stageRows, indexCenterColumn - stageColumns].nodeGameobject.transform.position - matrixNodes[indexCenterRow + stageRows, indexCenterColumn + stageColumns].nodeGameobject.transform.position;
+        float auxSize = Vector3.Magnitude(auxvect);
+        auxPlaneLimit = Instantiate(planeLimit);
+        auxPlaneLimit.transform.position =  new Vector3(0.5f, 0.1f, -0.8f);
+        auxPlaneLimit.transform.localScale = new Vector3(auxSize/12, 1, auxSize/12);
+        
         
 
     }

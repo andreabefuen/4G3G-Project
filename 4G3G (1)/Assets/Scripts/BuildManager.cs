@@ -6,6 +6,10 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
+
+    public GameObject Grid;
+
+
     [Header("Panels and UI")]
     public GameObject cityHall;
     public GameObject uiAllQuests;
@@ -68,7 +72,7 @@ public class BuildManager : MonoBehaviour
 
     bool HasEnoughMoney()
     {
-        return structureToBuild.cost < player.GetTotalMoney();
+        return structureToBuild.cost <= player.GetTotalMoney();
     }
     void BuildCityHall(NodeTouch node)
     {
@@ -98,17 +102,19 @@ public class BuildManager : MonoBehaviour
         }
         if (haveCityHall)
         {
-                if (selectedNode == node)
+                if (selectedNode == node )
                 {
                     //node.gameObject.GetComponent<MeshRenderer>().enabled = false;
                     DeselectNode();
                     return;
                 }
-                if(node.isUnlock == false)
-                {
-                     DeselectNode();
-                     return;
-                }
+               // if(node.isUnlock == false)
+               // {
+               //      DeselectNode();
+               //      return;
+               // }
+
+            /*
                 if (structureToBuild == null && node.buildingThere == null)
                 {
                     buildPanel.SetActive(true);
@@ -116,6 +122,8 @@ public class BuildManager : MonoBehaviour
                     selectedNode = node;
                     return;
                 }
+
+            */
                 if (structureToBuild != null && node.buildingThere == null)
                 {
                     BuildStructureOn(node);
@@ -162,6 +170,13 @@ public class BuildManager : MonoBehaviour
        
        
     }
+    public void BuildEnergyButton()
+    {
+        buildPanel.SetActive(true);
+        HideInfoPanel();
+        Grid.SetActive(true);
+    }
+
     public void DestroyButton()
     {
         destroyActivate = true;
@@ -267,6 +282,7 @@ public class BuildManager : MonoBehaviour
         nodeUI.HideHouses();
         HideInfoPanel();
         HideConstructionPanel();
+        Grid.SetActive(false);
     }
 
     public void HideInfoPanel()
@@ -291,6 +307,7 @@ public class BuildManager : MonoBehaviour
         structureToBuild = structure;
         
         DeselectNode();
+        Grid.SetActive(true);
 
     }
 

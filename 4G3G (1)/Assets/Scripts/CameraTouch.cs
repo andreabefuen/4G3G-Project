@@ -16,6 +16,7 @@ public class CameraTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Poner lo de detectar la camara si es con dedos o con el ratón
         if (Input.touchCount == 0 && isZooming)
         {
             isZooming = false;

@@ -38,6 +38,8 @@ public class NodeTouch : MonoBehaviour
         buildManager = BuildManager.instance;
 
         offset = new Vector3(0f, 0, 0f);
+
+        buildingThere = null;
     }
 
     public Vector3 GetBuildPosition()
@@ -57,11 +59,11 @@ public class NodeTouch : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if(isUnlock == false)
-        {
-            //buildManager.DeselectNode();
-            return;
-        }
+      // if(isUnlock == false)
+      // {
+      //     //buildManager.DeselectNode();
+      //     return;
+      // }
        //if (isUnlock == false)
        //{
        //    if (!EventSystem.current.IsPointerOverGameObject())
@@ -73,7 +75,8 @@ public class NodeTouch : MonoBehaviour
        //    return;       
        //}
 
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetKeyDown(KeyCode.Mouse0))
+
         {
             if (!IsPointerOverUIObject())
             {
@@ -83,7 +86,8 @@ public class NodeTouch : MonoBehaviour
                     buildManager.SelectNode(this);
                     return;
                 }
-                if (buildingThere == null)
+
+                if (buildingThere == null && this.isUnlock == true)
                 {
                     Debug.Log("Selected a free node");
                     buildManager.SelectNode(this);
@@ -105,10 +109,7 @@ public class NodeTouch : MonoBehaviour
                     buildManager.DeselectNode();
                     return;
                 }
-                if (this.isUnlock == false)
-                {
-                    return;
-                }
+
 
                 // buildManager.BuildStructureOn(this);
             }
