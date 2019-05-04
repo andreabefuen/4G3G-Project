@@ -59,13 +59,21 @@ public class BuildManager : MonoBehaviour
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
 
-        node.buildingThere = structure;
-        structureToBuild.nodeAsociate = node;
+        
+       
 
         Debug.Log("CONSTRUIDO");
         //Hide the node
-        node.gameObject.GetComponent<MeshRenderer>().enabled = false;
-
+        if (!structureToBuild.isWater)
+        {
+            node.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            node.buildingThere = structure;
+        }
+        else
+        {
+            node.haveWater = true;
+        }
+        structureToBuild.nodeAsociate = node;
         structureToBuild = null;
 
     }

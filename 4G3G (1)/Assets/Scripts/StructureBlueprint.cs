@@ -27,5 +27,9 @@ public class StructureBlueprint
 
     public int costOfDemolition;
 
+    public bool needWater;
+
+    public bool isWater;
+
 
 }

@@ -43,17 +43,37 @@ public class CameraTouch : MonoBehaviour
 
                 DragNewPosition = GetWorldPositionOfFinger(1);
                 Vector2 PositionDifference = DragNewPosition - DragStartPosition;
+                
 
                 if (Vector2.Distance(DragNewPosition, Finger0Position) < DistanceBetweenFingers)
-                    camera_GameObject.GetComponent<Camera>().orthographicSize += (PositionDifference.magnitude *2);
+                {
+                    camera_GameObject.GetComponent<Camera>().orthographicSize += Mathf.Abs(PositionDifference.magnitude * 2);
+
+                    if (camera_GameObject.GetComponent<Camera>().orthographicSize < 0)
+                    {
+                        camera_GameObject.GetComponent<Camera>().orthographicSize *= -1;
+                    }
+                }
+
 
                 if (Vector2.Distance(DragNewPosition, Finger0Position) >= DistanceBetweenFingers)
-                    camera_GameObject.GetComponent<Camera>().orthographicSize -= (PositionDifference.magnitude * 2);
+                {
+                    camera_GameObject.GetComponent<Camera>().orthographicSize -= Mathf.Abs(PositionDifference.magnitude * 2);
+                    if(camera_GameObject.GetComponent<Camera>().orthographicSize < 0)
+                    {
+                        camera_GameObject.GetComponent<Camera>().orthographicSize *= -1;
+                    }
+                }
+
 
                 DistanceBetweenFingers = Vector2.Distance(DragNewPosition, Finger0Position);
             }
             DragStartPosition = GetWorldPositionOfFinger(1);
             Finger0Position = GetWorldPositionOfFinger(0);
+        }
+        else
+        {
+            return;
         }
     }
 

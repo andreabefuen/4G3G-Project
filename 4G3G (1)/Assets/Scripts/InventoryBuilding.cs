@@ -10,6 +10,9 @@ public class InventoryBuilding : MonoBehaviour
     public StructureBlueprint coalFactoryStructure;
     public StructureBlueprint gasExtractorStructure;
 
+
+    public StructureBlueprint riverPart;
+
     List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
 
@@ -89,6 +92,23 @@ public class InventoryBuilding : MonoBehaviour
     {
         buildManager.SelectStructureToBuild(coalFactoryStructure);
         Debug.Log("Selected coal factory");
+    }
+
+    public void SelectRiverStructure()
+    {
+        buildManager.SelectStructureToBuild(riverPart);
+        Debug.Log("Selected river");
+    }
+
+    public void HideInfoRiver()
+    {
+        riverPart.informationPanel.SetActive(false);
+    }
+
+    public void ShowInfoRiver()
+    {
+        buildManager.HideConstructionPanel();
+        riverPart.informationPanel.SetActive(true);
     }
 
     // Update is called once per frame

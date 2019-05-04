@@ -8,6 +8,8 @@ public class NodeTouch : MonoBehaviour
     
     public bool isUnlock = false;
 
+    public bool haveWater = false;
+
     public Color hoverColor;
     public Color normalColor;
 
