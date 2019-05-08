@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class InventoryBuilding : MonoBehaviour
 {
+
+    public enum idBuildings
+    {
+        windmill = 1,
+        solarpanel = 2,
+        coalfactory = 3,
+        gasextractor = 4,
+        houses = 5,
+        river = 6
+    };
+
+
     public StructureBlueprint windmillStructure;
     public StructureBlueprint solarPanelStructure;
 
@@ -23,6 +35,15 @@ public class InventoryBuilding : MonoBehaviour
     void Start()
     {
         buildManager = BuildManager.instance;
+
+        windmillStructure.id = (int) idBuildings.windmill;
+        solarPanelStructure.id = (int)idBuildings.solarpanel; 
+
+        coalFactoryStructure.id = (int)idBuildings.coalfactory; 
+        gasExtractorStructure.id = (int)idBuildings.gasextractor; 
+
+
+        riverPart.id = (int)idBuildings.river; ;
 
         listOfBlueprints.Add(windmillStructure);
     }

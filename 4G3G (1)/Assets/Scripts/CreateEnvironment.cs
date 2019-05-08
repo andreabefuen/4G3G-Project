@@ -46,6 +46,12 @@ public class CreateEnvironment : MonoBehaviour
 
     private void Awake()
     {
+        
+       // if(matrixNodes.Length != 0)
+       // {
+       //
+       // }
+        
         nodeDiameter = nodeRadius * 2;
 
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
@@ -68,7 +74,10 @@ public class CreateEnvironment : MonoBehaviour
         actualPos = startPos;
 
         houses = new List<GameObject>();
+
+       
     }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +89,7 @@ public class CreateEnvironment : MonoBehaviour
             for (int c = 1; c < columns; c++)
             {
                 GameObject aux = Instantiate(prefabNode);
+                
                 aux.transform.parent = grid.transform;
                 aux.transform.position = actualPos;
                 actualPos = new Vector3((offset + nodeDiameter + actualPos.x) , 0 , actualPos.z);
@@ -87,6 +97,7 @@ public class CreateEnvironment : MonoBehaviour
                 matrixNodes[f, c] = new Node(aux.transform.position, f, c);
                 matrixNodes[f, c].nodeGameobject = aux;
                 matrixNodes[f, c].nodeGameobject.GetComponent<MeshRenderer>().enabled = false;
+                aux.GetComponent<NodeTouch>().nodeInfo = matrixNodes[f, c];
 
 
             }
@@ -102,8 +113,41 @@ public class CreateEnvironment : MonoBehaviour
         //SpawnHouses();
         //SpawnHouseAllScenario();
         //SpawnCoalFactories();
+
+        if (GameControl.control.loaded)
+        {
+            ReloadSceneWithInfo();
+            GameControl.control.loaded = false;
+        }
     }
 
+    public void ReloadSceneWithInfo()
+    {
+        GameControl.NodeInformation[,] aux = GameControl.control.information;
+        for (int f = 1; f < rows; f++)
+        {
+            for (int c = 1; c < columns; c++)
+            {
+                matrixNodes[f, c].idBuilding = aux[f, c].idBuilding;
+                Debug.Log("ides: " + aux[f, c].idBuilding);
+                ResetBuilding(aux[f,c].idBuilding);
+                BuildManager.instance.BuildStructureOn(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
+                
+            }
+        }
+    }
+    void ResetBuilding(int id)
+    {
+        if(id == 0 )
+        {
+            return;
+        }
+        else
+        {
+            BuildManager.instance.SelectThisBuilding(id);
+            
+        }
+    }
 
     void CreateStage()
     {
@@ -167,6 +211,7 @@ public class CreateEnvironment : MonoBehaviour
 
             aux.buildingThere = spawnHouse;
             matrixNodes[rdnX, rdnY].objectInNode = spawnHouse;
+            matrixNodes[rdnX, rdnY].idBuilding = (int) InventoryBuilding.idBuildings.houses; 
             aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
             houses.Add(spawnHouse);
             cont++;
@@ -193,10 +238,13 @@ public class CreateEnvironment : MonoBehaviour
                 continue;
             }
             NodeTouch aux = matrixNodes[rdnX, rdnY].nodeGameobject.GetComponent<NodeTouch>();
+            
 
             GameObject spawnHouse = Instantiate(housePrefab, aux.GetBuildPosition(), housePrefab.transform.rotation);
 
             aux.buildingThere = spawnHouse;
+       
+            matrixNodes[rdnX, rdnY].idBuilding = (int)InventoryBuilding.idBuildings.houses;
             matrixNodes[rdnX, rdnY].objectInNode = spawnHouse;
             aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
             cont++;
@@ -236,6 +284,30 @@ public class CreateEnvironment : MonoBehaviour
     {
         return houses;
     }
+
+    public Node[,] GetMatrixNode()
+    {
+        return matrixNodes;
+    }
+
+    public int GetStageX()
+    {
+        return stageRows;
+    }
+    public int GetStageY()
+    {
+        return stageColumns;
+    }
+
+    public int GetRows()
+    {
+        return gridSizeX;
+    }
+    public int GetColumns()
+    {
+        return gridSizeY;
+    }
+    
 
     // Update is called once per frame
     void Update()

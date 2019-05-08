@@ -45,10 +45,19 @@ public class BuildManager : MonoBehaviour
 
     public void BuildStructureOn(NodeTouch node)
     {
-        if (!HasEnoughMoney())
+        if(structureToBuild == null)
+        {
+            return;
+        }
+        if (!HasEnoughMoney() && GameControl.control.loaded == false)
         {
             Debug.Log("Not enough money!");
             player.NotEnoughMoneyPlay();
+            return;
+        }
+        if(node.haveWater && !structureToBuild.needWater)
+        {
+            Debug.Log("The structure can't build in water");
             return;
         }
 
@@ -58,6 +67,8 @@ public class BuildManager : MonoBehaviour
         player.IncreaseEnergy(structureToBuild.amountOfEnergy);
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
+        
+        node.nodeInfo.idBuilding = structureToBuild.id;
 
         
        
@@ -87,6 +98,8 @@ public class BuildManager : MonoBehaviour
         GameObject structure = Instantiate(cityHall, node.GetBuildPosition(), cityHall.transform.rotation);
 
         node.buildingThere = structure;
+
+        
 
         Debug.Log("City hall did it");
         node.gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -178,6 +191,39 @@ public class BuildManager : MonoBehaviour
        
        
     }
+    public void SelectThisBuilding( int id)
+    {
+        if(id == (int)InventoryBuilding.idBuildings.coalfactory)
+        {
+            structureToBuild = inventoryBuilding.coalFactoryStructure;
+
+        }
+        else if (id == (int)InventoryBuilding.idBuildings.windmill)
+        {
+            structureToBuild = inventoryBuilding.windmillStructure;
+    
+        }
+        else if (id == (int)InventoryBuilding.idBuildings.gasextractor)
+        {
+            structureToBuild = inventoryBuilding.gasExtractorStructure;
+  
+        }
+        else if (id == (int)InventoryBuilding.idBuildings.solarpanel)
+        {
+            structureToBuild = inventoryBuilding.solarPanelStructure;
+
+        }
+        else if (id == (int)InventoryBuilding.idBuildings.river)
+        {
+            structureToBuild = inventoryBuilding.riverPart;
+
+        }
+        else if( id == (int) InventoryBuilding.idBuildings.houses)
+        {
+            Debug.Log("Pues ya lo miraremos");
+        }
+    }
+    
     public void BuildEnergyButton()
     {
         buildPanel.SetActive(true);

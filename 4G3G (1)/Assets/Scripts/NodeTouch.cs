@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class NodeTouch : MonoBehaviour
 {
-    
+    public Node nodeInfo;
+
     public bool isUnlock = false;
 
     public bool haveWater = false;

@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class StructureBlueprint 
 {
+
+    public int id;
+
     public GameObject prefab;
 
     public GameObject informationPanel;

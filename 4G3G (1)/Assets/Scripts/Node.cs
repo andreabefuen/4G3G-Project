@@ -15,6 +15,8 @@ public class Node
 
     public int gridX, gridY;
 
+    public int idBuilding;
+
 
 
     public Node(Vector3 _worldPos, int _gridX, int _gridY)
@@ -25,6 +27,8 @@ public class Node
         _gridY = gridY;
 
         objectInNode = null;
+
+        idBuilding = 0;
     }
 
 
