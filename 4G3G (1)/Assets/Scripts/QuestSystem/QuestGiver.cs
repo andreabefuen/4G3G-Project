@@ -23,7 +23,11 @@ public class QuestGiver : MonoBehaviour
     private void Start()
     {
         buildManager = BuildManager.instance;
-        OpenQuestWindow();
+        if (!GameControl.control.loaded)
+        {
+            OpenQuestWindow();
+
+        }
 
     }
 

@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
 
     TextMeshProUGUI moneyText;
 
-    List<GameObject> allTheHouses;
 
     CreateEnvironment createEnvironment;
 
@@ -49,8 +48,6 @@ public class Player : MonoBehaviour
         UpdateHappiness();
 
         
-
-        allTheHouses = CreateEnvironment.houses;
 
         createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
 

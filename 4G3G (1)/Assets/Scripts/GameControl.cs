@@ -125,6 +125,17 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    public void DeleteSave()
+    {
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            
+            File.Delete(Application.persistentDataPath + "/playerInfo.dat");
+            Debug.Log("Deleted save file");
+            
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

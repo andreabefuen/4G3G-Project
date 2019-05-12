@@ -12,7 +12,8 @@ public class InventoryBuilding : MonoBehaviour
         coalfactory = 3,
         gasextractor = 4,
         houses = 5,
-        river = 6
+        river = 6,
+        cityhall = 7
     };
 
 

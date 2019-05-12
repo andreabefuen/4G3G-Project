@@ -22,4 +22,14 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Game Quited!");
         Application.Quit();
     }
+
+    public void DeleteSaveFile()
+    {
+        GameObject gameControl = GameObject.Find("GameController");
+        if (gameControl != null)
+        {
+            GameControl.control.DeleteSave();
+
+        }
+    }
 }

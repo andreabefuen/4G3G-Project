@@ -40,7 +40,6 @@ public class CreateEnvironment : MonoBehaviour
     public GameObject coalFactory;
     public int numCoalFactories;
 
-
     public static List<GameObject> houses;
 
 
@@ -130,8 +129,22 @@ public class CreateEnvironment : MonoBehaviour
             {
                 matrixNodes[f, c].idBuilding = aux[f, c].idBuilding;
                 Debug.Log("ides: " + aux[f, c].idBuilding);
-                ResetBuilding(aux[f,c].idBuilding);
-                BuildManager.instance.BuildStructureOn(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
+                if (aux[f, c].idBuilding == (int)InventoryBuilding.idBuildings.houses)
+                {
+                    ResetHouses(matrixNodes[f, c]);
+                    
+                }
+                else if(aux[f, c].idBuilding == (int)InventoryBuilding.idBuildings.cityhall)
+                {
+                    BuildManager.instance.BuildCityHall(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
+                    
+                }
+                else
+                {
+                    ResetBuilding(aux[f, c].idBuilding);
+                    BuildManager.instance.BuildStructureOn(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
+                }
+                
                 
             }
         }
@@ -147,6 +160,11 @@ public class CreateEnvironment : MonoBehaviour
             BuildManager.instance.SelectThisBuilding(id);
             
         }
+    }
+
+    void ResetHouses(Node n)
+    {
+        HouseIntantiate(n);
     }
 
     void CreateStage()
@@ -167,16 +185,26 @@ public class CreateEnvironment : MonoBehaviour
         }
         centerNode.GetComponent<Renderer>().material.color = Color.cyan;
 
-        numHouses *= 2; 
-        SpawnHouses();
+
 
         Vector3 auxvect = matrixNodes[indexCenterRow - stageRows, indexCenterColumn - stageColumns].nodeGameobject.transform.position - matrixNodes[indexCenterRow + stageRows, indexCenterColumn + stageColumns].nodeGameobject.transform.position;
         float auxSize = Vector3.Magnitude(auxvect);
         auxPlaneLimit = Instantiate(planeLimit);
         auxPlaneLimit.transform.position =  new Vector3(0.5f, 0.1f, -0.8f);
         auxPlaneLimit.transform.localScale = new Vector3(auxSize/12, 1, auxSize/12);
+
         
         
+        if (!GameControl.control.loaded)
+        {
+            numHouses *= 2;
+            SpawnHouses();
+            return;
+        }
+       
+        
+       
+       
 
     }
 
@@ -205,21 +233,26 @@ public class CreateEnvironment : MonoBehaviour
                 Debug.Log("Cant spawn here");
                 continue;
             }
-            NodeTouch aux = matrixNodes[rdnX, rdnY].nodeGameobject.GetComponent<NodeTouch>();
-
-            GameObject spawnHouse = Instantiate(housePrefab, aux.GetBuildPosition(), housePrefab.transform.rotation);
-
-            aux.buildingThere = spawnHouse;
-            matrixNodes[rdnX, rdnY].objectInNode = spawnHouse;
-            matrixNodes[rdnX, rdnY].idBuilding = (int) InventoryBuilding.idBuildings.houses; 
-            aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            houses.Add(spawnHouse);
+            HouseIntantiate(matrixNodes[rdnX, rdnY]);
             cont++;
         }
        
     }
 
-    void SpawnHouseAllScenario()
+    void HouseIntantiate(Node node)
+    {
+        NodeTouch aux = node.nodeGameobject.GetComponent<NodeTouch>();
+        GameObject spawnHouse = Instantiate(housePrefab, aux.GetBuildPosition(), housePrefab.transform.rotation);
+
+        aux.buildingThere = spawnHouse;
+        node.objectInNode = spawnHouse;
+        node.idBuilding = (int)InventoryBuilding.idBuildings.houses;
+        aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        houses.Add(spawnHouse);
+        
+    }
+
+    /*void SpawnHouseAllScenario()
     {
         int cont = 0;
         while (cont < numHouses)
@@ -249,7 +282,7 @@ public class CreateEnvironment : MonoBehaviour
             aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
             cont++;
         }
-    }
+    }*/
 
     void SpawnCoalFactories()
     {

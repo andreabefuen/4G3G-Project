@@ -25,7 +25,7 @@ public class BuildManager : MonoBehaviour
 
     public NodeUI nodeUI;
 
-    public bool haveCityHall = false;
+    public bool haveCityHall;
 
     private Player player;
     private InventoryBuilding inventoryBuilding;
@@ -93,7 +93,7 @@ public class BuildManager : MonoBehaviour
     {
         return structureToBuild.cost <= player.GetTotalMoney();
     }
-    void BuildCityHall(NodeTouch node)
+    public void BuildCityHall(NodeTouch node)
     {
         GameObject structure = Instantiate(cityHall, node.GetBuildPosition(), cityHall.transform.rotation);
 
@@ -105,8 +105,11 @@ public class BuildManager : MonoBehaviour
         node.gameObject.GetComponent<MeshRenderer>().enabled = false;
 
         player.IncreaseMoney(35000);
+        node.nodeInfo.idBuilding = (int) InventoryBuilding.idBuildings.cityhall;
 
         structureToBuild = null;
+        haveCityHall = true;
+        DeselectNode();
     }
     public void HideUIQuest()
     {
@@ -117,8 +120,8 @@ public class BuildManager : MonoBehaviour
         if (node.tag == "CityPlace" && haveCityHall == false)
         {
             BuildCityHall(node);
-            DeselectNode();
-            haveCityHall = true;
+            
+            
             return;
         }
         if (haveCityHall)
@@ -218,10 +221,7 @@ public class BuildManager : MonoBehaviour
             structureToBuild = inventoryBuilding.riverPart;
 
         }
-        else if( id == (int) InventoryBuilding.idBuildings.houses)
-        {
-            Debug.Log("Pues ya lo miraremos");
-        }
+
     }
     
     public void BuildEnergyButton()
