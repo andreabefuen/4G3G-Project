@@ -167,4 +167,10 @@ public class GameControl : MonoBehaviour
         public bool isUnlock;
         public bool haveWater;
     }
+
+    public struct StageInfo
+    {
+        public float sizeXPlane;
+        public float sizeYPlane;
+    }
 }

@@ -350,6 +350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroudStreet
       objectReference: {fileID: 0}
+    - target: {fileID: 3274110693148537123, guid: 7f0e3823e3c42b748a9c034bdf60d10a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7587746976634877542, guid: 7f0e3823e3c42b748a9c034bdf60d10a,
         type: 3}
       propertyPath: m_LocalPosition.x

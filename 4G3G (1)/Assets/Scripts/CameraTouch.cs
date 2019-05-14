@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraTouch : MonoBehaviour
 {
     public GameObject camera_GameObject;
+    public float zoomModifierSpeed = 0.1f;
+    public float movementSpeed;
 
     Vector2 StartPosition;
     Vector2 DragStartPosition;
@@ -12,6 +14,9 @@ public class CameraTouch : MonoBehaviour
     Vector2 Finger0Position;
     float DistanceBetweenFingers;
     bool isZooming;
+
+    float touchesPrevPosDifference, touchCurPosDifference, zoomModifier;
+    Vector2 firstTouchPrevPos, secondTouchPrevPos;
 
     // Update is called once per frame
     void Update()
@@ -24,19 +29,48 @@ public class CameraTouch : MonoBehaviour
 
         if (Input.touchCount == 1)
         {
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                Vector2 NewPosition = GetWorldPosition();
+                Vector2 PositionDifference = NewPosition - StartPosition;
+                camera_GameObject.transform.Translate(-PositionDifference.x, -PositionDifference.y, movementSpeed * Time.deltaTime);
+               
+
+            }
+            StartPosition = GetWorldPosition();
+            /*
             if (!isZooming)
             {
-                if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                {
-                    Vector2 NewPosition = GetWorldPosition();
-                    Vector2 PositionDifference = NewPosition - StartPosition;
-                    camera_GameObject.transform.Translate(-PositionDifference);
-                }
-                StartPosition = GetWorldPosition();
-            }
+                
+            }*/
         }
         else if (Input.touchCount == 2)
         {
+            Touch firstTouch = Input.GetTouch(0);
+            Touch secondTouch = Input.GetTouch(1);
+
+            firstTouchPrevPos = firstTouch.position - firstTouch.deltaPosition;
+            secondTouchPrevPos = secondTouch.position - secondTouch.deltaPosition;
+
+            touchesPrevPosDifference = (firstTouchPrevPos - secondTouchPrevPos).magnitude;
+            touchCurPosDifference = (firstTouch.position - secondTouch.position).magnitude;
+
+            zoomModifier = (firstTouch.deltaPosition - secondTouch.deltaPosition).magnitude * zoomModifierSpeed;
+            if (touchesPrevPosDifference > touchCurPosDifference)
+            {
+                camera_GameObject.GetComponent<Camera>().orthographicSize += zoomModifier;
+                //isZooming = true;
+            }
+            if (touchesPrevPosDifference < touchCurPosDifference)
+            {
+                camera_GameObject.GetComponent<Camera>().orthographicSize -= zoomModifier;
+                //isZooming = true;
+
+            }
+
+
+            /*
+
             if (Input.GetTouch(1).phase == TouchPhase.Moved)
             {
                 isZooming = true;
@@ -70,11 +104,15 @@ public class CameraTouch : MonoBehaviour
             }
             DragStartPosition = GetWorldPositionOfFinger(1);
             Finger0Position = GetWorldPositionOfFinger(0);
+        }*/
+
+            camera_GameObject.GetComponent<Camera>().orthographicSize = Mathf.Clamp(camera_GameObject.GetComponent<Camera>().orthographicSize, 2f, 23f);
+
         }
-        else
-        {
-            return;
-        }
+        float auxX = Mathf.Clamp(camera_GameObject.transform.position.x, -10f, 30f);
+        float auxY = Mathf.Clamp(camera_GameObject.transform.position.y, -20f, 20);
+
+        camera_GameObject.transform.position = new Vector3(auxX, auxY, camera_GameObject.transform.position.z);
     }
 
     Vector2 GetWorldPosition()
