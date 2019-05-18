@@ -1,4 +1,4 @@
-﻿Shader "Roystan/Toon/Lit"
+﻿Shader "Andrea/Toon/Lit"
 {
     Properties
     {

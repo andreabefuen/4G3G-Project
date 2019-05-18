@@ -133,6 +133,16 @@ public class InventoryBuilding : MonoBehaviour
         riverPart.informationPanel.SetActive(true);
     }
 
+    public void HideEverything()
+    {
+        HideInfoWindmill();
+        HideInfoSolarpanel();
+        HideInfoCoalFactory();
+        HideInfoGas();
+
+        HideInfoRiver();
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -223,6 +223,15 @@ public class BuildManager : MonoBehaviour
         }
 
     }
+
+    public void HideEverything()
+    {
+        infoPanel.SetActive(false);
+        destroyPanelSelection.SetActive(false);
+        buildPanel.SetActive(false);
+        uiAllQuests.SetActive(false);
+        
+    }
     
     public void BuildEnergyButton()
     {
