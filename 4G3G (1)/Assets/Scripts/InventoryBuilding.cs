@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryBuilding : MonoBehaviour
 {
@@ -29,8 +31,17 @@ public class InventoryBuilding : MonoBehaviour
     List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
 
+    public GameObject infoPanel;
+    public Image icon;
+    public TextMeshProUGUI titleText;
+    public Text descriptionText;
+    public TextMeshProUGUI moneyText, happinessText, energyText, pollutionText;
+    public Text costText;
+
 
     BuildManager buildManager;
+
+    StructureBlueprint structureBuy;
 
     // Start is called before the first frame update
     void Start()
@@ -52,44 +63,87 @@ public class InventoryBuilding : MonoBehaviour
     public void SelectShowInfoWindmill()
     {
         buildManager.HideConstructionPanel();
-        windmillStructure.informationPanel.SetActive(true);
+
+        icon.sprite = windmillStructure.icon;
+        titleText.text = windmillStructure.title;
+        descriptionText.text = windmillStructure.description;
+        moneyText.text = windmillStructure.moneyPerTap / 1000 + "K";
+        happinessText.text = "+" + windmillStructure.amountOfHappiness;
+        energyText.text = "+" + windmillStructure.amountOfEnergy;
+        pollutionText.text = "+" + windmillStructure.amountOfPollution;
+        costText.text = windmillStructure.cost.ToString();
+
+        //windmillStructure.informationPanel.SetActive(true);
+        infoPanel.SetActive(true);
+
+        structureBuy = windmillStructure;
     }
-    public void HideInfoWindmill()
+    /*public void HideInfoWindmill()
     {
         windmillStructure.informationPanel.SetActive(false);
 
-    }
+    }*/
     public void SelectShowInfoCoalFactory()
     {
         buildManager.HideConstructionPanel();
-        coalFactoryStructure.informationPanel.SetActive(true);
-    }
-    public void HideInfoCoalFactory()
-    {
-        coalFactoryStructure.informationPanel.SetActive(false);
+
+        icon.sprite = coalFactoryStructure.icon;
+        titleText.text = coalFactoryStructure.title;
+        descriptionText.text = coalFactoryStructure.description;
+        moneyText.text = coalFactoryStructure.moneyPerTap / 1000 + "K";
+        happinessText.text = "+" + coalFactoryStructure.amountOfHappiness;
+        energyText.text = "+" + coalFactoryStructure.amountOfEnergy;
+        pollutionText.text = "+" + coalFactoryStructure.amountOfPollution;
+        costText.text = coalFactoryStructure.cost.ToString();
+
+       // coalFactoryStructure.informationPanel.SetActive(true);
+
+        infoPanel.SetActive(true);
+
+        structureBuy = coalFactoryStructure;
+
     }
 
     public void SelectShowInfoSolarpanel()
     {
         buildManager.HideConstructionPanel();
 
-        solarPanelStructure.informationPanel.SetActive(true);
-    }
-    public void HideInfoSolarpanel()
-    {
-        solarPanelStructure.informationPanel.SetActive(false);
 
-    }
+        icon.sprite = solarPanelStructure.icon;
+        titleText.text = solarPanelStructure.title;
+        descriptionText.text = solarPanelStructure.description;
+        moneyText.text = solarPanelStructure.moneyPerTap / 1000 + "K";
+        happinessText.text = "+" + solarPanelStructure.amountOfHappiness;
+        energyText.text = "+" + solarPanelStructure.amountOfEnergy;
+        pollutionText.text = "+" + solarPanelStructure.amountOfPollution;
+        costText.text = solarPanelStructure.cost.ToString();
 
+        infoPanel.SetActive(true);
+
+        structureBuy = solarPanelStructure;
+
+        //solarPanelStructure.informationPanel.SetActive(true);
+    }
     public void SelectShowInfoGas()
     {
         buildManager.HideConstructionPanel();
 
-        gasExtractorStructure.informationPanel.SetActive(true);
-    }
-    public void HideInfoGas()
-    {
-        gasExtractorStructure.informationPanel.SetActive(false);
+
+
+        icon.sprite = gasExtractorStructure.icon;
+        titleText.text = gasExtractorStructure.title;
+        descriptionText.text = gasExtractorStructure.description;
+        moneyText.text = gasExtractorStructure.moneyPerTap / 1000 + "K";
+        happinessText.text = "+" + gasExtractorStructure.amountOfHappiness;
+        energyText.text = "+" + gasExtractorStructure.amountOfEnergy;
+        pollutionText.text = "+" + gasExtractorStructure.amountOfPollution;
+        costText.text = gasExtractorStructure.cost.ToString();
+
+        infoPanel.SetActive(true);
+
+        structureBuy = gasExtractorStructure;
+
+       // gasExtractorStructure.informationPanel.SetActive(true);
     }
 
     public void SelectGasExtractorStructure()
@@ -122,25 +176,23 @@ public class InventoryBuilding : MonoBehaviour
         Debug.Log("Selected river");
     }
 
-    public void HideInfoRiver()
-    {
-        riverPart.informationPanel.SetActive(false);
-    }
 
     public void ShowInfoRiver()
     {
         buildManager.HideConstructionPanel();
-        riverPart.informationPanel.SetActive(true);
+      //  riverPart.informationPanel.SetActive(true);
     }
 
-    public void HideEverything()
+    public void HideInfoPanel()
     {
-        HideInfoWindmill();
-        HideInfoSolarpanel();
-        HideInfoCoalFactory();
-        HideInfoGas();
+        infoPanel.SetActive(false);
+        structureBuy = null;
+    }
 
-        HideInfoRiver();
+    public void BuyButton()
+    {
+        buildManager.SelectStructureToBuild(structureBuy);
+        HideInfoPanel();
     }
 
     // Update is called once per frame

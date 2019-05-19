@@ -42,7 +42,7 @@ public class NodeTouch : MonoBehaviour
 
         offset = new Vector3(0f, 0, 0f);
 
-        buildingThere = null;
+        //buildingThere = null;
     }
 
     public Vector3 GetBuildPosition()
@@ -100,11 +100,16 @@ public class NodeTouch : MonoBehaviour
                 if (buildingThere != null && buildManager.destroyActivate == false)
                 {
                     Debug.Log("Can't build there!");
-                    buildManager.SelectNode(this);
+                    //buildManager.SelectNode(this);
                     //buildManager.DeselectNode();
                     return;
                 }
 
+                if (buildingThere != null && buildManager.destroyActivate)
+                {
+                    Debug.Log("Demolish!!!");
+                    buildManager.SelectNode(this);
+                }
 
                 if (buildManager.GetStructureToBuild() == null)
                 {
@@ -112,6 +117,8 @@ public class NodeTouch : MonoBehaviour
                     buildManager.DeselectNode();
                     return;
                 }
+
+         
 
 
                 // buildManager.BuildStructureOn(this);

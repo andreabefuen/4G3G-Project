@@ -35,10 +35,10 @@ public class CreateEnvironment : MonoBehaviour
 
 
     [Header("Spawn things")]
+    public bool spawnThings;
     public GameObject housePrefab;
     public int numHouses;
-    public GameObject coalFactory;
-    public int numCoalFactories;
+
 
     public static List<GameObject> houses;
 
@@ -148,6 +148,8 @@ public class CreateEnvironment : MonoBehaviour
                 
             }
         }
+      
+
     }
     void ResetBuilding(int id)
     {
@@ -169,6 +171,7 @@ public class CreateEnvironment : MonoBehaviour
 
     void CreateStage()
     {
+
         Destroy(auxPlaneLimit);
         for (int i = indexCenterRow - stageRows; i < indexCenterRow + stageRows; i++)
         {
@@ -190,12 +193,26 @@ public class CreateEnvironment : MonoBehaviour
         Vector3 auxvect = matrixNodes[indexCenterRow - stageRows, indexCenterColumn - stageColumns].nodeGameobject.transform.position - matrixNodes[indexCenterRow + stageRows, indexCenterColumn + stageColumns].nodeGameobject.transform.position;
         float auxSize = Vector3.Magnitude(auxvect);
         auxPlaneLimit = Instantiate(planeLimit);
-        auxPlaneLimit.transform.position =  new Vector3(0.5f, 0.1f, -0.8f);
-        auxPlaneLimit.transform.localScale = new Vector3(auxSize/12, 1, auxSize/12);
+
+        if (GameControl.control.loaded)
+        {
+            //Destroy(auxPlaneLimit);
+            //auxPlaneLimit = Instantiate(planeLimit);
+            auxPlaneLimit.transform.position = new Vector3(0.5f, 0.1f, -0.8f);
+            
+            auxPlaneLimit.transform.localScale += new Vector3(GameControl.control.sizeXPlane, 1, GameControl.control.sizeYPlane);
+            return;
+        }
+        else
+        {
+            auxPlaneLimit.transform.position = new Vector3(0.5f, 0.1f, -0.8f);
+            auxPlaneLimit.transform.localScale = new Vector3(auxSize / 12, 1, auxSize / 12);
+        }
+        
 
         
         
-        if (!GameControl.control.loaded)
+        if (!GameControl.control.loaded && spawnThings)
         {
             numHouses *= 2;
             SpawnHouses();
@@ -284,34 +301,6 @@ public class CreateEnvironment : MonoBehaviour
         }
     }*/
 
-    void SpawnCoalFactories()
-    {
-        int cont = 0;
-        while (cont < numCoalFactories)
-        {
-            int rdnX = Random.Range(indexCenterRow - stageRows, indexCenterRow + stageRows);
-            int rdnY = Random.Range(indexCenterColumn - stageColumns, indexCenterColumn + stageColumns);
-
-            if (rdnX == indexCenterRow && rdnY == indexCenterColumn)
-            {
-                continue;
-            }
-
-            if (matrixNodes[rdnX, rdnY].objectInNode != null)
-            {
-                Debug.Log("Cant spawn here");
-                continue;
-            }
-            NodeTouch aux = matrixNodes[rdnX, rdnY].nodeGameobject.GetComponent<NodeTouch>();
-
-            GameObject spawnFactory = Instantiate(coalFactory, aux.GetBuildPosition(), coalFactory.transform.rotation);
-
-            aux.buildingThere = spawnFactory;
-            matrixNodes[rdnX, rdnY].objectInNode = spawnFactory;
-            aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            cont++;
-        }
-    }
 
     public List<GameObject> GetHouses()
     {

@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 [System.Serializable]
 
 public class StructureBlueprint 
 {
+    public string title, description;
+    public Sprite icon;
 
     public int id;
 
     public GameObject prefab;
 
-    public GameObject informationPanel;
 
     public int cost;
 

@@ -16,6 +16,9 @@ public class GameControl : MonoBehaviour
     public int gridSizeX, gridSizeY;
     public NodeInformation[,] information;
 
+    public float sizeXPlane;
+    public float sizeYPlane;
+
 
     public bool loaded = false;
 
@@ -54,6 +57,10 @@ public class GameControl : MonoBehaviour
         gridSizeY = ce.GetColumns();
         data.gridSizeX = gridSizeX;
         data.gridSizeY = gridSizeY;
+
+        data.sizeXPlane = ce.planeLimit.transform.localScale.x;
+        data.sizeYPlane = ce.planeLimit.transform.localScale.z;
+
 
         Node[,] aux = ce.GetMatrixNode();
 
@@ -111,6 +118,9 @@ public class GameControl : MonoBehaviour
 
             information = data.information;
 
+            sizeXPlane = data.sizeXPlane;
+            sizeYPlane = data.sizeYPlane;
+
             Debug.Log(money);
 
             //Llamar a la función que cree todo el environment con los datos guardados
@@ -158,6 +168,8 @@ public class GameControl : MonoBehaviour
         public int stageSizeY;
         public int money;
         public NodeInformation[,] information;
+        public float sizeXPlane;
+        public float sizeYPlane;
     }
 
     [Serializable]
@@ -168,9 +180,5 @@ public class GameControl : MonoBehaviour
         public bool haveWater;
     }
 
-    public struct StageInfo
-    {
-        public float sizeXPlane;
-        public float sizeYPlane;
-    }
+
 }

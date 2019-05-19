@@ -126,17 +126,17 @@ public class BuildManager : MonoBehaviour
         }
         if (haveCityHall)
         {
-                if (selectedNode == node )
+               if (selectedNode == node )
+               {
+                   //node.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                   DeselectNode();
+                   return;
+               }
+                if(node.isUnlock == false)
                 {
-                    //node.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    DeselectNode();
-                    return;
+                     DeselectNode();
+                     return;
                 }
-               // if(node.isUnlock == false)
-               // {
-               //      DeselectNode();
-               //      return;
-               // }
 
             /*
                 if (structureToBuild == null && node.buildingThere == null)
@@ -156,12 +156,17 @@ public class BuildManager : MonoBehaviour
                     structureToBuild = null;
                     return;
                 }
-
+                //If in the node are something
                 if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall")
                 {
                     selectedNode = node;
                     infoPanel.SetActive(true);
-                    HideConstructionPanel();
+                    if (destroyActivate){
+                    //destroyPanelSelection.SetActive(true);
+                         DestroyThisBuilding();
+                    }
+                    //HideConstructionPanel();
+                    HideEverything();
                     return;
                 }
 
@@ -230,21 +235,37 @@ public class BuildManager : MonoBehaviour
         destroyPanelSelection.SetActive(false);
         buildPanel.SetActive(false);
         uiAllQuests.SetActive(false);
+        inventoryBuilding.HideInfoPanel(); 
         
     }
     
     public void BuildEnergyButton()
     {
+     
+        //HideInfoPanel();
+        HideEverything();
         buildPanel.SetActive(true);
-        HideInfoPanel();
         Grid.SetActive(true);
     }
 
     public void DestroyButton()
     {
-        destroyActivate = true;
-        destroyPanelSelection.SetActive(true);
-        HideInfoPanel();
+        HideEverything();
+        if (destroyActivate)
+        {
+            destroyActivate = false;
+            destroyPanelSelection.SetActive(false);
+            Grid.SetActive(false);
+        }
+        else
+        {
+            destroyActivate = true;
+            destroyPanelSelection.SetActive(true);
+            Grid.SetActive(true);
+            HideInfoPanel();
+        }
+        
+        
 
 
     }
@@ -259,7 +280,8 @@ public class BuildManager : MonoBehaviour
                 if(player.GetTotalMoney() < inventoryBuilding.coalFactoryStructure.costOfDemolition)
                 {
                     Debug.Log("You can't demolish this building");
-                    HideInfoPanel();
+                    //HideInfoPanel();
+                    HideEverything();
                     NotDestroyThisBuilding();
                     player.NotEnoughMoneyPlay();
                     return;
@@ -274,7 +296,8 @@ public class BuildManager : MonoBehaviour
                 if (player.GetTotalMoney() < inventoryBuilding.windmillStructure.costOfDemolition)
                 {
                     Debug.Log("You can't demolish this building");
-                    HideInfoPanel();
+                    //HideInfoPanel();
+                    HideEverything();
                     NotDestroyThisBuilding();
                     return;
 
@@ -290,7 +313,8 @@ public class BuildManager : MonoBehaviour
                 if (player.GetTotalMoney() < inventoryBuilding.solarPanelStructure.costOfDemolition)
                 {
                     Debug.Log("You can't demolish this building");
-                    HideInfoPanel();
+                    //HideInfoPanel();
+                    HideEverything();
                     NotDestroyThisBuilding();
                     return;
 
@@ -306,7 +330,8 @@ public class BuildManager : MonoBehaviour
                 if (player.GetTotalMoney() < inventoryBuilding.gasExtractorStructure.costOfDemolition)
                 {
                     Debug.Log("You can't demolish this building");
-                    HideInfoPanel();
+                    //HideInfoPanel();
+                    HideEverything();
                     NotDestroyThisBuilding();
                     return;
 
@@ -319,9 +344,10 @@ public class BuildManager : MonoBehaviour
             }
             Destroy(selectedNode.buildingThere);
             selectedNode.gameObject.GetComponent<MeshRenderer>().enabled = true;
-           // player.UpdateEnergy();
+            // player.UpdateEnergy();
             //player.UpdateMoney();
-            HideInfoPanel();
+            //HideInfoPanel();
+            HideEverything();
             NotDestroyThisBuilding();
         }
         
