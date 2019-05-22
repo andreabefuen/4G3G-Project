@@ -59,8 +59,10 @@ public class CreateEnvironment : MonoBehaviour
         rows = gridSizeX;
         columns = gridSizeY;
 
-        stageColumns = rows / numStage;
-        stageRows = rows / numStage;
+            stageColumns = columns / numStage;
+            stageRows = rows / numStage;
+
+        
 
         indexCenterColumn = columns / 2;
         indexCenterRow = rows / 2;
@@ -108,16 +110,20 @@ public class CreateEnvironment : MonoBehaviour
         
         //matrixNodes[0, 0].nodeGameobject.SetActive(false);
 
-        CreateStage();
+       
         //SpawnHouses();
         //SpawnHouseAllScenario();
         //SpawnCoalFactories();
 
         if (GameControl.control.loaded)
         {
+            stageRows = GameControl.control.stageSizeX;
+            stageColumns = GameControl.control.stageSizeY;
+            CreateStage();
             ReloadSceneWithInfo();
-            GameControl.control.loaded = false;
+           
         }
+        CreateStage();
     }
 
     public void ReloadSceneWithInfo()
@@ -128,7 +134,7 @@ public class CreateEnvironment : MonoBehaviour
             for (int c = 1; c < columns; c++)
             {
                 matrixNodes[f, c].idBuilding = aux[f, c].idBuilding;
-                Debug.Log("ides: " + aux[f, c].idBuilding);
+                //Debug.Log("ides: " + aux[f, c].idBuilding);
                 if (aux[f, c].idBuilding == (int)InventoryBuilding.idBuildings.houses)
                 {
                     ResetHouses(matrixNodes[f, c]);
@@ -148,7 +154,10 @@ public class CreateEnvironment : MonoBehaviour
                 
             }
         }
-      
+
+
+        GameControl.control.loaded = false;
+
 
     }
     void ResetBuilding(int id)
@@ -172,6 +181,8 @@ public class CreateEnvironment : MonoBehaviour
     void CreateStage()
     {
 
+
+        
         Destroy(auxPlaneLimit);
         for (int i = indexCenterRow - stageRows; i < indexCenterRow + stageRows; i++)
         {
@@ -186,7 +197,11 @@ public class CreateEnvironment : MonoBehaviour
                // matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
             }
         }
-        centerNode.GetComponent<Renderer>().material.color = Color.cyan;
+        if (spawnThings)
+        {
+            centerNode.GetComponent<Renderer>().material.color = Color.cyan;
+
+        }
 
 
 
@@ -212,7 +227,7 @@ public class CreateEnvironment : MonoBehaviour
 
         
         
-        if (!GameControl.control.loaded && spawnThings)
+        if (spawnThings)
         {
             numHouses *= 2;
             SpawnHouses();
@@ -225,11 +240,45 @@ public class CreateEnvironment : MonoBehaviour
 
     }
 
-    public void NextStageButton()
+    public void ExpandLevel()
+    {
+        Destroy(auxPlaneLimit);
+        for (int i = indexCenterRow - stageRows; i < indexCenterRow + stageRows; i++)
+        {
+            for (int j = indexCenterColumn - stageColumns; j < indexCenterColumn + stageColumns; j++)
+            {
+                if (matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().isUnlock == true)
+                {
+                    continue;
+                }
+                matrixNodes[i, j].nodeGameobject.GetComponent<MeshRenderer>().enabled = true;
+                matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().isUnlock = true;
+                // matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
+            }
+        }
+
+
+
+        Vector3 auxvect = matrixNodes[indexCenterRow - stageRows, indexCenterColumn - stageColumns].nodeGameobject.transform.position - matrixNodes[indexCenterRow + stageRows, indexCenterColumn + stageColumns].nodeGameobject.transform.position;
+        float auxSize = Vector3.Magnitude(auxvect);
+        auxPlaneLimit = Instantiate(planeLimit);
+        auxPlaneLimit.transform.position = new Vector3(0.5f, 0.1f, -0.8f);
+        auxPlaneLimit.transform.localScale = new Vector3(auxSize / 12, 1, auxSize / 12);
+        if (spawnThings)
+        {
+            numHouses *= 2;
+            SpawnHouses();
+            return;
+        }
+
+    }
+
+    public void NextStage()
     {
         stageRows += 1;
         stageColumns += 1;
-        Invoke("CreateStage",0.5f);
+        ExpandLevel();
+        //Invoke("ExpandLevel", 0.2f);
     }
 
     void SpawnHouses()

@@ -8,22 +8,25 @@ public class QuestGoal
     public GoalType goalType;
 
     //Requeriments to complete the quest
-    public int requiredWindmills;
-    public int currentWindmills;
+    public int requiredElements;
+    public int currentElements;
 
 
     public bool IsReached()
     {
-        return (currentWindmills >= requiredWindmills);
+        return (currentElements >= requiredElements);
     }
-   //
-   // public void BuildWindmillGoal()
-   //{
-   //    if(goalType == GoalType.Expand)
-   //    {
-   //        currentWindmills++;
-   //    }
-   //}
+    
+    public void BuildWindmillGoal()
+    {
+        if (goalType == GoalType.BuildWindmill)
+        {
+            currentElements++;
+        }
+    }
+    
+      
+    
 
 }
 
@@ -31,5 +34,7 @@ public enum GoalType
 {
     Happiness,
     Expand,
-    Money
+    Money,
+    BuildWindmill,
+    BuildSolarpanel
 }

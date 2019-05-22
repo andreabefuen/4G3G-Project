@@ -1320,6 +1320,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+  pollution: 0
+  maxPollution: 0
+  happiness: 0
+  energy: 0
+  maxEnergy: 0
   stageSizeX: 0
   stageSizeY: 0
   gridSizeX: 0
@@ -1463,6 +1468,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumen: 1
   hitButton: {fileID: 8300000, guid: a9f5a9ec70eff9b44a444f99ee381a0a, type: 3}
+  demolishSound: {fileID: 8300000, guid: b24db59b4ec95da4a946390f63d95f52, type: 3}
+  constructionSound: {fileID: 8300000, guid: c5ee8987c1ce7ca499ee9bf4674b10a6, type: 3}
 --- !u!1 &1182547446
 GameObject:
   m_ObjectHideFlags: 0

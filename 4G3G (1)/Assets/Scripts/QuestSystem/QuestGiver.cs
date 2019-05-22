@@ -15,27 +15,43 @@ public class QuestGiver : MonoBehaviour
     public GameObject questWindow;
     public Text titleText;
     public Text descriptionText;
+    public Text happinessRewardText;
+    public Text moneyRewardText;
+
+
+    public GameObject activeQuestPanel;
 
     BuildManager buildManager;
+    ActiveQuest activeQuest;
 
     int cont = 0;
 
     private void Start()
     {
-        buildManager = BuildManager.instance;
+        /*buildManager = BuildManager.instance;
         if (!GameControl.control.loaded)
         {
             OpenQuestWindow();
 
-        }
+        }*/
+
+        activeQuest = activeQuestPanel.GetComponent<ActiveQuest>();
 
     }
 
     public void OpenQuestWindow()
     {
-        questWindow.SetActive(true);
-        titleText.text = quest[cont].title;
-        descriptionText.text = quest[cont].description;
+        if(cont< quest.Count)
+        {
+            if (quest[cont].levelCity <= player.levelCity)
+            {
+                questWindow.SetActive(true);
+                titleText.text = quest[cont].title;
+                descriptionText.text = quest[cont].description;
+            }
+
+        }
+
     }
 
     public void AcceptQuest()
@@ -45,13 +61,14 @@ public class QuestGiver : MonoBehaviour
         //give to the player the quest assign the quest
         //player.quest = quest; (create a list of quest)
         player.activeQuest.Add(quest[cont]);
-        if(cont+1 < quest.Count)
+        
+        activeQuest.AddQuest(quest[cont]);
+        if (cont < quest.Count)
         {
             cont++;
             //To open all the quest
             //OpenQuestWindow();
         }
-
        
         
         

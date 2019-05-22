@@ -9,40 +9,54 @@ public class ActiveQuest : MonoBehaviour
     public GameObject panelOfQuests;
     
 
-    Player player;
-    List<Quest> questToShow;
+    public Player player;
+    public List<Quest> questToShow;
+    List<GameObject> allTheQuest;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
-        questToShow = player.GetActiveQuests();
-    }
-
-    public void PutAllTheActiveQuests()
-    {
-        if(questToShow !=null)
-        {
-            foreach (Quest q in questToShow)
-            {
-                if (!q.isOnTheList)
-                {
-                    GameObject aux = Instantiate(panelOfQuests, quests.transform);
-                    aux.SetActive(true);
-                    aux.GetComponentsInChildren<Text>()[0].text = q.title;
-                    aux.GetComponentsInChildren<Text>()[1].text = q.description;
-                    q.isOnTheList = true;
-                }
-               
-                
-            }
-        }
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        // questToShow = player.GetActiveQuests();
+        questToShow = new List<Quest>();
         
+    }
+
+    public void AddQuest(Quest newQuest)
+    {
+        if (questToShow.Contains(newQuest))
+        {
+            return;
+        }
+        questToShow.Add(newQuest);
+        //Debug.Log("hay " + questToShow.Count);
+        GameObject aux = Instantiate(panelOfQuests, quests.transform);
+        aux.SetActive(true);
+        aux.GetComponentsInChildren<Text>()[0].text = newQuest.title;
+        aux.GetComponentsInChildren<Text>()[1].text = newQuest.description;
+
+        allTheQuest.Add(aux);
+        //allTheQuest.Add(aux);
+
+        //questToShow.Clear();
+    }
+
+    public void DeleteThisQuest(Quest q)
+    {
+        questToShow.Remove(q);
+        //Recorremos otra vez toda la lista para poner las que si estan
+        //Eliminamos todos los gameobjects
+        foreach(GameObject g in allTheQuest)
+        {
+            Destroy(g);
+        }
+        foreach(Quest qq in questToShow)
+        {
+            GameObject aux = Instantiate(panelOfQuests, quests.transform);
+            aux.SetActive(true);
+            aux.GetComponentsInChildren<Text>()[0].text = qq.title;
+            aux.GetComponentsInChildren<Text>()[1].text = qq.description;
+
+            allTheQuest.Add(aux);
+        }
     }
 }

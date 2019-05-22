@@ -7,16 +7,10 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
-    public AudioClip audio;
-
-
-    AudioSource audioSource;
 
     // Update is called once per frame
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = audio;
         
     }
     void Update()
@@ -72,16 +66,24 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
-        audioSource.Play();
         GameControl.control.Save();
         SceneManager.LoadScene("MainMenuScene");
     }
 
     public void QuitGame()
     {
-        audioSource.Play();
+        SoundManager.soundManager.PlayHitButton();
         Debug.Log("Quitting game...");
         Application.Quit();
+    }
+
+    public void TravelToCoalFactory()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        GameControl.control.Save();
+        GameControl.control.LoadCoalIsland();
+        SceneManager.LoadScene("CoalIsland");
     }
 }
 

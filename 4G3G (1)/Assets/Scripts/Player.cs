@@ -42,18 +42,34 @@ public class Player : MonoBehaviour
     private void Start()
     {
         moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+        createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
 
+        if (GameControl.control.loaded)
+        {
+            totalCurrency = GameControl.control.money;
+            totalEnergy = GameControl.control.energy;
+            totalHappiness = GameControl.control.happiness;
+            totalPollution = GameControl.control.pollution;
+
+            energySlider.maxValue = GameControl.control.maxEnergy;
+            pollutionSlider.maxValue = GameControl.control.maxPollution;
+
+        }
+        else
+        {
+            
+
+            energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
+
+            energySlider.value = 0;
+        }
         UpdateMoney();
 
         UpdateHappiness();
 
         
 
-        createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
-
-        energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
-      
-        energySlider.value = 0;
+       
 
         UpdateEnergy();
         UpdatePollution();
@@ -72,12 +88,15 @@ public class Player : MonoBehaviour
 
     public void UpdateEnergy()
     {
-        if(totalEnergy > energySlider.maxValue)
+        if(totalEnergy >= energySlider.maxValue)
         {
-            createEnvironment.NextStageButton();
+            Debug.Log("aaaProblema???");
+            createEnvironment.NextStage();
+            Debug.Log("Problema???");
             levelCity++;
             energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
             energySlider.value = totalEnergy;
+            return;
             
         }
         energySlider.value = totalEnergy;

@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public float volumen;
 
     public AudioClip hitButton;
+    public AudioClip demolishSound;
+    public AudioClip constructionSound;
 
 
     AudioSource audioSource;
@@ -30,6 +32,14 @@ public class SoundManager : MonoBehaviour
     public void PlayHitButton()
     {
         audioSource.PlayOneShot(hitButton);
+    }
+    public void PlayDemolish()
+    {
+        audioSource.PlayOneShot(demolishSound);
+    }
+    public void PlayConstruction()
+    {
+        audioSource.PlayOneShot(constructionSound);
     }
 
     public void ChangeVolumen(float currentVolumen)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnergyCoalFactory : MonoBehaviour
+public class SpawnEnergy : MonoBehaviour
 {
     public GameObject energyCanvas;
 
@@ -19,9 +19,28 @@ public class SpawnEnergyCoalFactory : MonoBehaviour
     {
         inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
         timer = 0f;
-        spawnTimer = inventory.coalFactoryStructure.timeMoney;
-        money = inventory.coalFactoryStructure.moneyPerTap;
-       // energy = inventory.coalFactoryStructure.energyPerTap;
+        if(this.gameObject.tag == "Factory")
+        {
+            spawnTimer = inventory.coalFactoryStructure.timeMoney;
+            money = inventory.coalFactoryStructure.moneyPerTap;
+        }
+        else if(this.gameObject.tag == "Gas")
+        {
+            spawnTimer = inventory.gasExtractorStructure.timeMoney;
+            money = inventory.gasExtractorStructure.moneyPerTap;
+        }
+        else if (this.gameObject.tag == "Windmill")
+        {
+            spawnTimer = inventory.windmillStructure.timeMoney;
+            money = inventory.windmillStructure.moneyPerTap;
+        }
+        else if (this.gameObject.tag == "Solar")
+        {
+            spawnTimer = inventory.solarPanelStructure.timeMoney;
+            money = inventory.solarPanelStructure.moneyPerTap;
+        }
+
+        // energy = inventory.coalFactoryStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
     }

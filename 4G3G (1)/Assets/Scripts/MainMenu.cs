@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
         GameObject gameControl = GameObject.Find("GameController");
         if(gameControl != null)
         {
-            GameControl.control.Load();
+            GameControl.control.LoadMainIsland();
             
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -60,11 +60,14 @@ public class BuildManager : MonoBehaviour
             Debug.Log("The structure can't build in water");
             return;
         }
-
-        player.DecreaseMoney(structureToBuild.cost);
-        player.IncreaseHappiness(structureToBuild.amountOfHappiness);
-        player.IncreasePollution(structureToBuild.amountOfPollution);
-        player.IncreaseEnergy(structureToBuild.amountOfEnergy);
+        if(GameControl.control.loaded == false)
+        {
+            player.DecreaseMoney(structureToBuild.cost);
+            player.IncreaseHappiness(structureToBuild.amountOfHappiness);
+            player.IncreasePollution(structureToBuild.amountOfPollution);
+            player.IncreaseEnergy(structureToBuild.amountOfEnergy);
+        }
+        
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
         
@@ -74,6 +77,7 @@ public class BuildManager : MonoBehaviour
        
 
         Debug.Log("CONSTRUIDO");
+        SoundManager.soundManager.PlayConstruction();
         //Hide the node
         if (!structureToBuild.isWater)
         {
@@ -104,7 +108,8 @@ public class BuildManager : MonoBehaviour
         Debug.Log("City hall did it");
         node.gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-        player.IncreaseMoney(35000);
+        if (GameControl.control.loaded == false)
+            player.IncreaseMoney(35000);
         node.nodeInfo.idBuilding = (int) InventoryBuilding.idBuildings.cityhall;
 
         structureToBuild = null;
@@ -342,12 +347,14 @@ public class BuildManager : MonoBehaviour
                 //  player.IncreasePollution(-inventoryBuilding.gasExtractorStructure.amountOfPollution);
 
             }
+            selectedNode.nodeInfo.idBuilding = 0;
             Destroy(selectedNode.buildingThere);
             selectedNode.gameObject.GetComponent<MeshRenderer>().enabled = true;
             // player.UpdateEnergy();
             //player.UpdateMoney();
             //HideInfoPanel();
             HideEverything();
+            SoundManager.soundManager.PlayDemolish();
             NotDestroyThisBuilding();
         }
         

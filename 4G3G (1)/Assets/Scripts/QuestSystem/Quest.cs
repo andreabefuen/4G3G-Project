@@ -5,14 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class Quest 
 {
+    public int levelCity;
     public bool isActive;
-
-    public bool isOnTheList = false;
+    public bool isOnTheList;
 
     public string title;
     public string description;
 
+    [Header ("Rewards")]
     public int energyReward;
+    public int happinessRewward;
 
     public QuestGoal goal;
 
