@@ -20,6 +20,10 @@ public class BuildManager : MonoBehaviour
 
     public bool destroyActivate = false;
 
+
+  
+
+
     private StructureBlueprint structureToBuild;
     private NodeTouch selectedNode;
 
@@ -29,6 +33,10 @@ public class BuildManager : MonoBehaviour
 
     private Player player;
     private InventoryBuilding inventoryBuilding;
+
+    [Header("Particles")]
+    private ParticleSystem destroyParticle;
+    public GameObject destroyParticlePrefab;
 
     private void Awake()
     {
@@ -41,6 +49,9 @@ public class BuildManager : MonoBehaviour
 
         player = GameObject.Find("Player").GetComponent<Player>();
         inventoryBuilding = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
+
+
+        //destroyParticle = destroyParticlePrefab.GetComponentInChildren<ParticleSystem>();
     }
 
     public void BuildStructureOn(NodeTouch node)
@@ -354,8 +365,14 @@ public class BuildManager : MonoBehaviour
             //player.UpdateMoney();
             //HideInfoPanel();
             HideEverything();
+            Debug.Log("DEMOLISH PARTICLE ASDASFDASAF");
             SoundManager.soundManager.PlayDemolish();
+            GameObject aux= Instantiate(destroyParticlePrefab, selectedNode.transform.position, Quaternion.identity);
+            destroyParticle = aux.GetComponentInChildren<ParticleSystem>();
+            destroyParticle.Play();
             NotDestroyThisBuilding();
+            Destroy(aux, 2f);
+            
         }
         
     }
