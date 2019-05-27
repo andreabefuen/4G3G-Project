@@ -79,7 +79,7 @@ public class GameControl : MonoBehaviour
         data.sizeYPlane = ce.planeLimit.transform.localScale.z;
 
         data.energy = player.totalEnergy;
-        data.maxEnergy = (int) player.energySlider.maxValue;
+        data.maxEnergy = (int) player.levelObject.maxValue;
         
         data.pollution = player.totalPollution;
         data.maxPollution = (int)player.pollutionSlider.maxValue;

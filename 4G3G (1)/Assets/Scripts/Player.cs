@@ -28,12 +28,19 @@ public class Player : MonoBehaviour
     public Slider happinessSlider;
     public Slider pollutionSlider;
 
-    public Slider energySlider;
+    public Slider levelObject;
+
+    //public Slider energySlider;
 
     public GameObject enoughMoney;
-   
+ 
+    public TextMeshProUGUI levelText;
+
+
 
     TextMeshProUGUI moneyText;
+    
+
 
 
     CreateEnvironment createEnvironment;
@@ -43,6 +50,8 @@ public class Player : MonoBehaviour
     {
         moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        levelText.text = levelCity.ToString();
+
 
         if (GameControl.control.loaded)
         {
@@ -51,7 +60,7 @@ public class Player : MonoBehaviour
             totalHappiness = GameControl.control.happiness;
             totalPollution = GameControl.control.pollution;
 
-            energySlider.maxValue = GameControl.control.maxEnergy;
+            levelObject.maxValue = GameControl.control.maxEnergy;
             pollutionSlider.maxValue = GameControl.control.maxPollution;
 
         }
@@ -59,9 +68,9 @@ public class Player : MonoBehaviour
         {
             
 
-            energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
+            levelObject.maxValue = createEnvironment.numHouses * energyForEachHouse;
 
-            energySlider.value = 0;
+            levelObject.value = 0;
         }
         UpdateMoney();
 
@@ -82,24 +91,27 @@ public class Player : MonoBehaviour
 
     public void UpdateHappiness()
     {
+
         happinessSlider.value = totalHappiness;
         ChangeIcon();
     }
 
     public void UpdateEnergy()
     {
-        if(totalEnergy >= energySlider.maxValue)
+        if(totalEnergy >= levelObject.maxValue)
         {
-            Debug.Log("aaaProblema???");
+            //Debug.Log("aaaProblema???");
             createEnvironment.NextStage();
-            Debug.Log("Problema???");
+            // Debug.Log("Problema???");
             levelCity++;
-            energySlider.maxValue = createEnvironment.numHouses * energyForEachHouse;
-            energySlider.value = totalEnergy;
+            levelText.text = levelCity.ToString();
+            levelObject.maxValue = createEnvironment.numHouses * energyForEachHouse;
+            levelObject.value = totalEnergy;
+            //Call to the window of the new level reach
             return;
             
         }
-        energySlider.value = totalEnergy;
+        levelObject.value = totalEnergy;
     }
 
     public void UpdatePollution()
