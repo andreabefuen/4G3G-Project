@@ -98,7 +98,12 @@ public class Player : MonoBehaviour
 
     public void UpdateEnergy()
     {
-        if(totalEnergy >= levelObject.maxValue)
+        if (levelCity >= createEnvironment.numStage)
+        {
+            Debug.Log("finish level");
+            return;
+        }
+        if (totalEnergy >= levelObject.maxValue)
         {
             //Debug.Log("aaaProblema???");
             createEnvironment.NextStage();
@@ -112,6 +117,8 @@ public class Player : MonoBehaviour
             
         }
         levelObject.value = totalEnergy;
+
+    
     }
 
     public void UpdatePollution()

@@ -229,7 +229,7 @@ public class CreateEnvironment : MonoBehaviour
         
         if (spawnThings)
         {
-            numHouses *= 2;
+            numHouses += 10;
             SpawnHouses();
             return;
         }
@@ -266,7 +266,7 @@ public class CreateEnvironment : MonoBehaviour
         auxPlaneLimit.transform.localScale = new Vector3(auxSize / 12, 1, auxSize / 12);
         if (spawnThings)
         {
-            numHouses *= 2;
+            numHouses += 10;
             SpawnHouses();
             return;
         }
