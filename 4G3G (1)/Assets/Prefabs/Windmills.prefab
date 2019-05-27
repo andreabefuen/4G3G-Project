@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1041080872739657614}
   - component: {fileID: 5969609216074291303}
   - component: {fileID: 4585864605309163090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CanvasFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 8022623848473205922}
   - component: {fileID: 7661178212965188867}
   - component: {fileID: 2875116238389631278}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MoneySpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2045035973555702402}
   - component: {fileID: 6413643678398603377}
-  m_Layer: 0
+  - component: {fileID: 5378705985535780829}
+  m_Layer: 9
   m_Name: Windmills
   m_TagString: Windmill
   m_Icon: {fileID: 0}
@@ -309,6 +310,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyCanvas: {fileID: 1790360432266518203}
+--- !u!65 &5378705985535780829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045035973555702413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8055315, y: 1, z: 2.82795}
+  m_Center: {x: -0.069940746, y: 0, z: 0.1273179}
+--- !u!114 &9128833143533999296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681434935533077063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fa698560b688845bf08bafe6dc1b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AdditionalVertexStreamMesh: {fileID: 0}
+--- !u!114 &6852057989183912991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843519138930837102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fa698560b688845bf08bafe6dc1b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AdditionalVertexStreamMesh: {fileID: 0}
 --- !u!1 &4562776584665216432
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4062843713928000189}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnEnergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,6 +399,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5126103774449107085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076154979534029936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fa698560b688845bf08bafe6dc1b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AdditionalVertexStreamMesh: {fileID: 0}
 --- !u!1001 &1079921987207486918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,6 +423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WindTurbine_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933362842613530399, guid: c7921091591afcd449624b1d926399f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3211056208685157644, guid: c7921091591afcd449624b1d926399f0,
         type: 3}
@@ -431,6 +489,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3155608879696928641, guid: c7921091591afcd449624b1d926399f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993366273848351656, guid: c7921091591afcd449624b1d926399f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144809153322162614, guid: c7921091591afcd449624b1d926399f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883756492292628683, guid: c7921091591afcd449624b1d926399f0,
+        type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147121215102655552, guid: c7921091591afcd449624b1d926399f0,
+        type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7921091591afcd449624b1d926399f0, type: 3}
 --- !u!4 &2482417741208686794 stripped
@@ -439,9 +522,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1079921987207486918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2681434935533077063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3155608879696928641, guid: c7921091591afcd449624b1d926399f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1079921987207486918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8076154979534029936 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9144809153322162614, guid: c7921091591afcd449624b1d926399f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1079921987207486918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2843519138930837102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2993366273848351656, guid: c7921091591afcd449624b1d926399f0,
     type: 3}
   m_PrefabInstance: {fileID: 1079921987207486918}
   m_PrefabAsset: {fileID: 0}

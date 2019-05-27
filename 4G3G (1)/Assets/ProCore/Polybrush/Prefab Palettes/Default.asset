@@ -13,35 +13,23 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   prefabs:
-  - gameObject: {fileID: 174604, guid: 1e3ecfd7fba5c064e81241f1f5d118bf, type: 3}
+  - gameObject: {fileID: 5938903630028181650, guid: 4c29aad5bd164ce4495642d85fb69e58,
+      type: 3}
     settings:
       rotationRange: {x: 0, y: 0}
       scaleRange: {x: 0, y: 0}
-  - gameObject: {fileID: 168014, guid: 427f2da9b3ed8684caabb43168703160, type: 3}
+  - gameObject: {fileID: 337315289207021648, guid: d44f1d0f2b0dd074899a9e803cc708a4,
+      type: 3}
     settings:
       rotationRange: {x: 0, y: 0}
       scaleRange: {x: 0, y: 0}
-  - gameObject: {fileID: 192174, guid: 1dc1e39e76eb6e8428d2185bfcf9491f, type: 3}
+  - gameObject: {fileID: 2508414891969924944, guid: 19f9d75cde9ca864e94a11b385257b36,
+      type: 3}
     settings:
       rotationRange: {x: 0, y: 0}
       scaleRange: {x: 0, y: 0}
-  - gameObject: {fileID: 122030, guid: 8c8ea713432a0a8469388cf641ee227c, type: 3}
-    settings:
-      rotationRange: {x: 0, y: 0}
-      scaleRange: {x: 0, y: 0}
-  - gameObject: {fileID: 139726, guid: deea9a0ddc9bc424d8c5229e625e4d2d, type: 3}
-    settings:
-      rotationRange: {x: 0, y: 0}
-      scaleRange: {x: 0, y: 0}
-  - gameObject: {fileID: 101696, guid: 708a09f0caf6e7f44914556a8749d5f5, type: 3}
-    settings:
-      rotationRange: {x: 0, y: 0}
-      scaleRange: {x: 0, y: 0}
-  - gameObject: {fileID: 145646, guid: cddab4d7ea6ce464d8575a51ee70033b, type: 3}
-    settings:
-      rotationRange: {x: 0, y: 0}
-      scaleRange: {x: 0, y: 0}
-  - gameObject: {fileID: 138596, guid: e0b5aa8a5a71df74cb4090b73d8ffe60, type: 3}
+  - gameObject: {fileID: 557902642928654680, guid: ca3034d1d64596342bb42e18c7a32907,
+      type: 3}
     settings:
       rotationRange: {x: 0, y: 0}
       scaleRange: {x: 0, y: 0}

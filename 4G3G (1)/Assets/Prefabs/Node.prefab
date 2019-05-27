@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4505998600554190160}
   - component: {fileID: 4505998600554190163}
   - component: {fileID: 2907192910920781331}
+  - component: {fileID: 6087097105826179677}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -67,11 +68,12 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -105,6 +107,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlock: 0
+  haveWater: 0
   hoverColor: {r: 0.9811321, g: 0.8593783, b: 0, a: 0}
   normalColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0}
   buildingThere: {fileID: 0}
+--- !u!114 &6087097105826179677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505998600554190162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fa698560b688845bf08bafe6dc1b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AdditionalVertexStreamMesh: {fileID: 0}

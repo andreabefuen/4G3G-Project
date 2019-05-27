@@ -24,12 +24,13 @@ MonoBehaviour:
   - z_GIWorkflowMode
   - pushpull_brush_dir
   - smooth_brush_dir
+  - prefab_previewThumbSize
   m_float_keys: []
   m_string_keys: []
   m_Color_keys:
   - z_pref_brushColor
   m_bool_values: 01010101000101
-  m_int_values: 000000000000000000000000
+  m_int_values: 00000000000000000000000046000000
   m_float_values: []
   m_string_values: []
   m_Color_values:

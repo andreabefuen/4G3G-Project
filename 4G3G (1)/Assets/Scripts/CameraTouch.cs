@@ -8,6 +8,9 @@ public class CameraTouch : MonoBehaviour
     public float zoomModifierSpeed = 0.1f;
     public float movementSpeed;
 
+    public float maxZoom = 50f;
+    public float minZoom = 2f;
+
     Vector2 StartPosition;
     Vector2 DragStartPosition;
     Vector2 DragNewPosition;
@@ -108,7 +111,7 @@ public class CameraTouch : MonoBehaviour
                 Finger0Position = GetWorldPositionOfFinger(0);
             }*/
 
-                camera_GameObject.GetComponent<Camera>().orthographicSize = Mathf.Clamp(camera_GameObject.GetComponent<Camera>().orthographicSize, 2f, 23f);
+                camera_GameObject.GetComponent<Camera>().orthographicSize = Mathf.Clamp(camera_GameObject.GetComponent<Camera>().orthographicSize, 2f, maxZoom);
 
             }
             float auxX = Mathf.Clamp(camera_GameObject.transform.position.x, -10f, 30f);

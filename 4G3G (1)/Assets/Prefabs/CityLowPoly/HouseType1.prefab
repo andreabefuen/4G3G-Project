@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6094199716998545819}
   - component: {fileID: 4750663735400913513}
   - component: {fileID: 587140780143724843}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House_3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,6 +65,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -88,7 +89,7 @@ GameObject:
   - component: {fileID: 2812189850906018098}
   - component: {fileID: 2223198788256887564}
   - component: {fileID: 5118797146687301856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firtree_4_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,6 +143,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -165,7 +167,7 @@ GameObject:
   - component: {fileID: 5802630163257309078}
   - component: {fileID: 6264849315056910358}
   - component: {fileID: 222132214892133473}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube_7_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +221,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -242,7 +245,7 @@ GameObject:
   - component: {fileID: 1547594553443232227}
   - component: {fileID: 3084087072998264376}
   - component: {fileID: 1016058761556126494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_4_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,6 +299,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -319,7 +323,7 @@ GameObject:
   - component: {fileID: 7456916354463465251}
   - component: {fileID: 2303497942719875044}
   - component: {fileID: 3251449408482868197}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,6 +377,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -396,7 +401,7 @@ GameObject:
   - component: {fileID: 8412835845580460265}
   - component: {fileID: 4137517535993074485}
   - component: {fileID: 9172595397605602738}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firtree_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,6 +455,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -473,7 +479,7 @@ GameObject:
   - component: {fileID: 9191601005091521555}
   - component: {fileID: 7952892934221122616}
   - component: {fileID: 5691469369510168300}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firtree_47_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,6 +533,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -548,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 267777388174646493}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lights_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +591,7 @@ GameObject:
   - component: {fileID: 9207508660389977830}
   - component: {fileID: 4305973824349585686}
   - component: {fileID: 6258660783095318849}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firtree_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,6 +645,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -659,7 +667,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2615729125542613721}
-  m_Layer: 0
+  - component: {fileID: 4817525770581942669}
+  m_Layer: 9
   m_Name: HouseType1
   m_TagString: House
   m_Icon: {fileID: 0}
@@ -681,6 +690,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4817525770581942669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171646052220346197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.888402, y: 1, z: 2.9500308}
+  m_Center: {x: 0.23974633, y: 0, z: 0.023214579}
 --- !u!1 &4523468413649060913
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +714,7 @@ GameObject:
   - component: {fileID: 4882511957889313145}
   - component: {fileID: 5147162075629814131}
   - component: {fileID: 6701838349829034368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firtree_2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,6 +768,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -769,7 +792,7 @@ GameObject:
   - component: {fileID: 552172817765654816}
   - component: {fileID: 8913701587244352785}
   - component: {fileID: 3411675002904204796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firtree_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,6 +846,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -846,7 +870,7 @@ GameObject:
   - component: {fileID: 331997015334188624}
   - component: {fileID: 6696408986006220044}
   - component: {fileID: 4470486682119566100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,6 +924,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -923,7 +948,7 @@ GameObject:
   - component: {fileID: 2786798534723661567}
   - component: {fileID: 8282509465893334177}
   - component: {fileID: 4619117615664875413}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House_3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -977,6 +1002,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -998,7 +1024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6090679558321928730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4191089399376040687}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Base_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1067,7 +1093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8470118430166355770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trees_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,6 +1132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light_1_3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 997185761121330678, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1597249524106219851, guid: 733a18e2a20a1dd43a61f304d688b440,
         type: 3}
@@ -1162,6 +1193,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5338411829629631725, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733a18e2a20a1dd43a61f304d688b440, type: 3}
 --- !u!4 &6243368008212967095 stripped
@@ -1181,6 +1217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light_1_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 997185761121330678, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1597249524106219851, guid: 733a18e2a20a1dd43a61f304d688b440,
         type: 3}
@@ -1237,6 +1278,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5338411829629631725, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733a18e2a20a1dd43a61f304d688b440, type: 3}
 --- !u!4 &5847973576824446456 stripped
@@ -1256,6 +1302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trees_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557830764350902083, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5869093431475888205, guid: ba7afac776a83fe4e8254cc0f6000f2c,
         type: 3}
@@ -1312,6 +1363,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5329498391156049863, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168995066272495990, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875734341808839789, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969386513777916700, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224881523433660939, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606029655433455141, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073476299706152492, guid: ba7afac776a83fe4e8254cc0f6000f2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba7afac776a83fe4e8254cc0f6000f2c, type: 3}
 --- !u!4 &1969147253393026937 stripped
@@ -1331,6 +1417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light_1_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 997185761121330678, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1597249524106219851, guid: 733a18e2a20a1dd43a61f304d688b440,
         type: 3}
@@ -1387,6 +1478,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5338411829629631725, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733a18e2a20a1dd43a61f304d688b440, type: 3}
 --- !u!4 &6430117493300743364 stripped
@@ -1406,6 +1502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light_1_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 997185761121330678, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1597249524106219851, guid: 733a18e2a20a1dd43a61f304d688b440,
         type: 3}
@@ -1461,6 +1562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338411829629631725, guid: 733a18e2a20a1dd43a61f304d688b440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733a18e2a20a1dd43a61f304d688b440, type: 3}
