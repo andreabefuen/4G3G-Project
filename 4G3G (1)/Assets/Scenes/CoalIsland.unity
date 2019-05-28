@@ -3962,8 +3962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -89.775, y: -218.69}
-  m_SizeDelta: {x: 160, y: -480.43}
+  m_AnchoredPosition: {x: -80, y: -290.31}
+  m_SizeDelta: {x: 160, y: -646.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619854739
 MonoBehaviour:
@@ -4021,8 +4021,8 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 8
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -14461,7 +14461,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1328966157}
         m_MethodName: DestroyButton
         m_Mode: 1
         m_Arguments:
@@ -14494,7 +14494,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: 4947386aa09c739419144daca3a77999, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9ce558b05e368542b687c688213f76b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

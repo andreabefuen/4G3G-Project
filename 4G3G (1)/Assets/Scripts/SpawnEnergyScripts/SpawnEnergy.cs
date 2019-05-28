@@ -14,6 +14,8 @@ public class SpawnEnergy : MonoBehaviour
     float spawnTimer;
     int money, energy;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,8 @@ public class SpawnEnergy : MonoBehaviour
         // energy = inventory.coalFactoryStructure.energyPerTap;
 
         player = GameObject.Find("Player").GetComponent<Player>();
+
+        Destroy(GetComponent<BoxCollider>(), 0.5f);
     }
 
     // Update is called once per frame
