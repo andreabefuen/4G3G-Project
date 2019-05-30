@@ -145,6 +145,11 @@ public class Player : MonoBehaviour
     public void IncreaseMoney(int amount)
     {
         totalCurrency += amount;
+        if(activeQuest.Count != 0)
+        {
+            activeQuest[0].goal.IncreaseTheGoalMoney(amount);
+
+        }
         UpdateMoney();
     }
 

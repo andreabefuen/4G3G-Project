@@ -15,8 +15,7 @@ public class QuestGiver : MonoBehaviour
     public GameObject questWindow;
     public Text titleText;
     public Text descriptionText;
-    public Text happinessRewardText;
-    public Text moneyRewardText;
+    public Text rewardText;
 
 
     public GameObject activeQuestPanel;
@@ -48,6 +47,7 @@ public class QuestGiver : MonoBehaviour
                 questWindow.SetActive(true);
                 titleText.text = quest[cont].title;
                 descriptionText.text = quest[cont].description;
+                rewardText.text = "Reward: " + quest[cont].moneyReward.ToString() + "$";
             }
 
         }
@@ -72,5 +72,19 @@ public class QuestGiver : MonoBehaviour
        
         
         
+    }
+
+    public void ClaimReward()
+    {
+        if (player.activeQuest[0].goal.IsReached() && player.activeQuest[0].isActive)
+        {
+            Debug.Log("Yes reward");
+            activeQuest.DeleteThisQuest(player.activeQuest[0]);
+            player.IncreaseMoney(player.activeQuest[0].moneyReward);
+            player.activeQuest[0].CompleteQuest();
+            player.activeQuest.Remove(player.activeQuest[0]);
+            
+            
+        }
     }
 }

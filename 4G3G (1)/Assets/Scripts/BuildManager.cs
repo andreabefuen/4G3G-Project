@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour
 
     [Header("Panels and UI")]
     public GameObject cityHall;
+    public int startingMoney;
     public GameObject uiAllQuests;
     public GameObject buildPanel;
 
@@ -113,14 +114,11 @@ public class BuildManager : MonoBehaviour
         GameObject structure = Instantiate(cityHall, node.GetBuildPosition(), cityHall.transform.rotation);
 
         node.buildingThere = structure;
-
-        
-
         Debug.Log("City hall did it");
         node.gameObject.GetComponent<MeshRenderer>().enabled = false;
 
         if (GameControl.control.loaded == false)
-            player.IncreaseMoney(35000);
+            player.IncreaseMoney(startingMoney);
         node.nodeInfo.idBuilding = (int) InventoryBuilding.idBuildings.cityhall;
 
         structureToBuild = null;

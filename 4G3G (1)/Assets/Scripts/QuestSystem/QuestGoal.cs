@@ -24,6 +24,15 @@ public class QuestGoal
             currentElements++;
         }
     }
+
+    public void IncreaseTheGoalMoney(int earnMoney)
+    {
+        if(goalType == GoalType.Money)
+        {
+            currentElements += earnMoney;
+
+        }
+    }
     
       
     

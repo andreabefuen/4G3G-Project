@@ -12,16 +12,17 @@ public class Quest
     public string title;
     public string description;
 
-    [Header ("Rewards")]
-    public int energyReward;
-    public int happinessRewward;
+    [Header("Rewards")]
+    public int moneyReward;
+    //public int energyReward;
+    //public int happinessRewward;
 
     public QuestGoal goal;
 
     public void CompleteQuest()
     {
         isActive = false;
-        Debug.Log(title + "was completed!");
+        Debug.Log(title + " was completed!");
     }
 
 }
