@@ -240,6 +240,44 @@ public class CreateEnvironment : MonoBehaviour
 
     }
 
+    public void HideRenderNodes()
+    {
+        for (int i = indexCenterRow - stageRows; i < indexCenterRow + stageRows; i++)
+        {
+            for (int j = indexCenterColumn - stageColumns; j < indexCenterColumn + stageColumns; j++)
+            {
+                if (matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().isUnlock == true)
+                {
+                    matrixNodes[i, j].nodeGameobject.GetComponent<MeshRenderer>().enabled = false;
+
+                }
+                //matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().isUnlock = true;
+                // matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
+            }
+        }
+    }
+
+    public void ShowRenderNodes()
+    {
+        for (int i = indexCenterRow - stageRows; i < indexCenterRow + stageRows; i++)
+        {
+            for (int j = indexCenterColumn - stageColumns; j < indexCenterColumn + stageColumns; j++)
+            {
+                if (matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().buildingThere != null)
+                {
+                    continue;
+                }
+                if (matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().isUnlock == true)
+                {
+                    matrixNodes[i, j].nodeGameobject.GetComponent<MeshRenderer>().enabled = true;
+                }
+            
+                //matrixNodes[i, j].nodeGameobject.GetComponent<NodeTouch>().isUnlock = true;
+                // matrixNodes[i, j].nodeGameobject.GetComponent<Renderer>().material.color = Color.green;
+            }
+        }
+    }
+
     public void ExpandLevel()
     {
         Destroy(auxPlaneLimit);

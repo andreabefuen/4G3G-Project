@@ -21,7 +21,7 @@ public class BuildManager : MonoBehaviour
 
     public bool destroyActivate = false;
 
-
+    public GameObject infoBuildingPanel;
   
 
 
@@ -34,6 +34,7 @@ public class BuildManager : MonoBehaviour
 
     private Player player;
     private InventoryBuilding inventoryBuilding;
+    private CreateEnvironment createEnvironment;
 
     [Header("Particles")]
     private ParticleSystem destroyParticle;
@@ -49,6 +50,7 @@ public class BuildManager : MonoBehaviour
         instance = this;
 
         player = GameObject.Find("Player").GetComponent<Player>();
+        createEnvironment = this.gameObject.GetComponent<CreateEnvironment>();
         inventoryBuilding = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
 
 
@@ -91,9 +93,10 @@ public class BuildManager : MonoBehaviour
         Debug.Log("CONSTRUIDO");
         SoundManager.soundManager.PlayConstruction();
         //Hide the node
+        node.gameObject.GetComponent<MeshRenderer>().enabled = false;
         if (!structureToBuild.isWater)
         {
-            node.gameObject.GetComponent<MeshRenderer>().enabled = false;
+           
             node.buildingThere = structure;
         }
         else
@@ -162,6 +165,7 @@ public class BuildManager : MonoBehaviour
                 }
 
             */
+                
                 if (structureToBuild != null && node.buildingThere == null)
                 {
                     BuildStructureOn(node);
@@ -170,6 +174,11 @@ public class BuildManager : MonoBehaviour
                     structureToBuild = null;
                     return;
                 }
+                if(node.buildingThere == null)
+                {
+                    DeselectNode();
+                }
+
                 //If in the node are something
                 if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall")
                 {
@@ -249,7 +258,8 @@ public class BuildManager : MonoBehaviour
         destroyPanelSelection.SetActive(false);
         buildPanel.SetActive(false);
         uiAllQuests.SetActive(false);
-        inventoryBuilding.HideInfoPanel(); 
+        inventoryBuilding.HideInfoPanel();
+        HideInfoPanelBuildings();
         
     }
     
@@ -259,7 +269,7 @@ public class BuildManager : MonoBehaviour
         //HideInfoPanel();
         HideEverything();
         buildPanel.SetActive(true);
-        Grid.SetActive(true);
+        //.SetActive(true);
     }
 
     public void DestroyButton()
@@ -269,13 +279,15 @@ public class BuildManager : MonoBehaviour
         {
             destroyActivate = false;
             destroyPanelSelection.SetActive(false);
-            Grid.SetActive(false);
+            createEnvironment.HideRenderNodes();
+            //Grid.SetActive(false);
         }
         else
         {
             destroyActivate = true;
             destroyPanelSelection.SetActive(true);
-            Grid.SetActive(true);
+            createEnvironment.ShowRenderNodes();
+            //Grid.SetActive(true);
             HideInfoPanel();
         }
         
@@ -375,6 +387,11 @@ public class BuildManager : MonoBehaviour
         
     }
 
+    public void HideRendererNodes()
+    {
+        
+    }
+
     public void NotDestroyThisBuilding()
     {
         destroyPanelSelection.SetActive(false);
@@ -393,7 +410,9 @@ public class BuildManager : MonoBehaviour
         nodeUI.HideHouses();
         HideInfoPanel();
         HideConstructionPanel();
-        Grid.SetActive(false);
+        HideInfoPanelBuildings();
+        //Grid.SetActive(false);
+        createEnvironment.HideRenderNodes();
     }
 
     public void HideInfoPanel()
@@ -418,8 +437,18 @@ public class BuildManager : MonoBehaviour
         structureToBuild = structure;
         
         DeselectNode();
-        Grid.SetActive(true);
+        createEnvironment.ShowRenderNodes();
+       // Grid.SetActive(true);
 
+    }
+
+    public void ShowInfoPanelBuildings()
+    {
+        infoBuildingPanel.SetActive(true);
+    }
+    public void HideInfoPanelBuildings()
+    {
+        infoBuildingPanel.SetActive(false);
     }
 
     // Start is called before the first frame update

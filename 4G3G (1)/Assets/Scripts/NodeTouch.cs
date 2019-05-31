@@ -100,6 +100,8 @@ public class NodeTouch : MonoBehaviour
                 if (buildingThere != null && buildManager.destroyActivate == false)
                 {
                     Debug.Log("Can't build there!");
+                    //Show the info panel of the building
+                    buildManager.ShowInfoPanelBuildings();
                     //buildManager.SelectNode(this);
                     //buildManager.DeselectNode();
                     return;
