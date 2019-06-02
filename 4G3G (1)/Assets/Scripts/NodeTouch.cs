@@ -14,9 +14,11 @@ public class NodeTouch : MonoBehaviour
     public Color hoverColor;
     public Color normalColor;
 
+    
+
     [Header("Optional")]
     public GameObject buildingThere;
-
+    public StructureBlueprint structureThere;
 
     Vector3 offset;
 
@@ -101,7 +103,9 @@ public class NodeTouch : MonoBehaviour
                 {
                     Debug.Log("Can't build there!");
                     //Show the info panel of the building
-                    buildManager.ShowInfoPanelBuildings();
+                    buildManager.SelectNode(this);
+                    //buildManager.ShowInfoPanelBuildings();
+                    
                     //buildManager.SelectNode(this);
                     //buildManager.DeselectNode();
                     return;

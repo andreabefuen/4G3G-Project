@@ -22,6 +22,7 @@ public class BuildManager : MonoBehaviour
     public bool destroyActivate = false;
 
     public GameObject infoBuildingPanel;
+
   
 
 
@@ -85,10 +86,10 @@ public class BuildManager : MonoBehaviour
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
         
-        node.nodeInfo.idBuilding = structureToBuild.id;
+        node.nodeInfo.idBuilding = (int) structureToBuild.id;
 
-        
-       
+
+        node.structureThere = structureToBuild;
 
         Debug.Log("CONSTRUIDO");
         SoundManager.soundManager.PlayConstruction();
@@ -122,7 +123,7 @@ public class BuildManager : MonoBehaviour
 
         if (GameControl.control.loaded == false)
             player.IncreaseMoney(startingMoney);
-        node.nodeInfo.idBuilding = (int) InventoryBuilding.idBuildings.cityhall;
+        node.nodeInfo.idBuilding = (int) idBuildings.cityhall;
 
         structureToBuild = null;
         haveCityHall = true;
@@ -183,13 +184,17 @@ public class BuildManager : MonoBehaviour
                 if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall")
                 {
                     selectedNode = node;
-                    infoPanel.SetActive(true);
+                //infoPanel.SetActive(true);
                     if (destroyActivate){
                     //destroyPanelSelection.SetActive(true);
                          DestroyThisBuilding();
+                        HideEverything();
+                        return;
                     }
                     //HideConstructionPanel();
                     HideEverything();
+                    ShowInfoPanelBuildings();
+
                     return;
                 }
 
@@ -224,30 +229,39 @@ public class BuildManager : MonoBehaviour
     }
     public void SelectThisBuilding( int id)
     {
-        if(id == (int)InventoryBuilding.idBuildings.coalfactory)
+
+        if(id == (int)idBuildings.coalfactory)
         {
             structureToBuild = inventoryBuilding.coalFactoryStructure;
 
         }
-        else if (id == (int)InventoryBuilding.idBuildings.windmill)
+        else if (id == (int)idBuildings.windmill)
         {
             structureToBuild = inventoryBuilding.windmillStructure;
     
         }
-        else if (id == (int)InventoryBuilding.idBuildings.gasextractor)
+        else if (id == (int)idBuildings.gasextractor)
         {
             structureToBuild = inventoryBuilding.gasExtractorStructure;
   
         }
-        else if (id == (int)InventoryBuilding.idBuildings.solarpanel)
+        else if (id == (int)idBuildings.solarpanel)
         {
             structureToBuild = inventoryBuilding.solarPanelStructure;
 
         }
-        else if (id == (int)InventoryBuilding.idBuildings.river)
+        else if (id == (int)idBuildings.river)
         {
             structureToBuild = inventoryBuilding.riverPart;
 
+        }
+        else if(id == (int)idBuildings.statueOfLiberty)
+        {
+            structureToBuild = inventoryBuilding.statueOfLiberty;
+        }
+        else if( id == (int)idBuildings.shop)
+        {
+            structureToBuild = inventoryBuilding.shop;
         }
 
     }
@@ -256,7 +270,10 @@ public class BuildManager : MonoBehaviour
     {
         infoPanel.SetActive(false);
         destroyPanelSelection.SetActive(false);
-        buildPanel.SetActive(false);
+        if (buildPanel.activeSelf)
+        {
+            buildPanel.SetActive(false);
+        }
         uiAllQuests.SetActive(false);
         inventoryBuilding.HideInfoPanel();
         HideInfoPanelBuildings();
@@ -265,10 +282,21 @@ public class BuildManager : MonoBehaviour
     
     public void BuildEnergyButton()
     {
-     
+
         //HideInfoPanel();
-        HideEverything();
-        buildPanel.SetActive(true);
+        if (buildPanel.activeSelf)
+        {
+            buildPanel.SetActive(!buildPanel.activeSelf);
+            HideEverything();
+
+
+        }
+        else
+        {
+            HideEverything();
+            buildPanel.SetActive(true);
+        }
+
         //.SetActive(true);
     }
 
@@ -369,6 +397,7 @@ public class BuildManager : MonoBehaviour
 
             }
             selectedNode.nodeInfo.idBuilding = 0;
+            selectedNode.structureThere = null;
             Destroy(selectedNode.buildingThere);
             selectedNode.gameObject.GetComponent<MeshRenderer>().enabled = true;
             // player.UpdateEnergy();
@@ -444,7 +473,9 @@ public class BuildManager : MonoBehaviour
 
     public void ShowInfoPanelBuildings()
     {
+        HideEverything();
         infoBuildingPanel.SetActive(true);
+        inventoryBuilding.UpdateLevel(selectedNode.structureThere);
     }
     public void HideInfoPanelBuildings()
     {

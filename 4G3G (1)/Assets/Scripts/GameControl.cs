@@ -183,6 +183,12 @@ public class GameControl : MonoBehaviour
             gridSizeX = data.gridSizeX;
             gridSizeY = data.gridSizeY;
 
+            pollution = data.pollution;
+            happiness = data.happiness;
+            energy = data.energy;
+            maxPollution = data.maxPollution;
+            maxEnergy = data.maxEnergy;
+
             information = data.information;
 
             sizeXPlane = data.sizeXPlane;

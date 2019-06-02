@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7594620397500487706}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bushes_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7909522112496252550}
   - component: {fileID: 2617545823701914614}
   - component: {fileID: 2461021239246001283}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110262976827118481}
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -1.14, y: 0, z: -1.33}
-  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.30167}
+  m_LocalPosition: {x: -1.14, y: 0.5, z: -1.33}
+  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.51905346}
   m_Children: []
   m_Father: {fileID: 6300340814685238644}
   m_RootOrder: 8
@@ -98,6 +98,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -134,7 +135,7 @@ GameObject:
   - component: {fileID: 8881435174500029967}
   - component: {fileID: 9137075351454467345}
   - component: {fileID: 4848619582109482010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bushes_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,6 +189,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -209,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7938937519546112972}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +247,7 @@ GameObject:
   - component: {fileID: 1107608471630577427}
   - component: {fileID: 5652221867818455677}
   - component: {fileID: 8650201953779445933}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,6 +301,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -323,7 +326,7 @@ GameObject:
   - component: {fileID: 4714325678058275549}
   - component: {fileID: 5786170129917076283}
   - component: {fileID: 529133383850887775}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,8 +341,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314899526178838389}
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -1.14, y: 0, z: 0.48}
-  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.30167}
+  m_LocalPosition: {x: -1.14, y: 0.5, z: 0.48}
+  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.51905346}
   m_Children: []
   m_Father: {fileID: 6300340814685238644}
   m_RootOrder: 9
@@ -377,6 +380,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -414,7 +418,7 @@ GameObject:
   - component: {fileID: 4351237853396839154}
   - component: {fileID: 1770732580160839577}
   - component: {fileID: 5289456643124656942}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,6 +472,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -505,7 +510,7 @@ GameObject:
   - component: {fileID: 8542803602134353180}
   - component: {fileID: 5334972346877856443}
   - component: {fileID: 7003825475506021046}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,8 +525,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2379344445657028415}
   m_LocalRotation: {x: 0.7071068, y: 0.000000026558938, z: -0.000000026558938, w: 0.7071068}
-  m_LocalPosition: {x: 1.06, y: 0, z: -1.84}
-  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.30167}
+  m_LocalPosition: {x: 1.06, y: 0.5, z: -1.84}
+  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.51905346}
   m_Children: []
   m_Father: {fileID: 6300340814685238644}
   m_RootOrder: 6
@@ -559,6 +564,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -596,7 +602,7 @@ GameObject:
   - component: {fileID: 2189813773534656086}
   - component: {fileID: 1596012069619265758}
   - component: {fileID: 8270761194809398708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,8 +617,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2994792212480794057}
   m_LocalRotation: {x: 0.7071068, y: 0.000000026558938, z: -0.000000026558938, w: 0.7071068}
-  m_LocalPosition: {x: 1.06, y: 0, z: -0.02}
-  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.30167}
+  m_LocalPosition: {x: 1.06, y: 0.5, z: -0.02}
+  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.51905346}
   m_Children: []
   m_Father: {fileID: 6300340814685238644}
   m_RootOrder: 5
@@ -650,6 +656,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -686,7 +693,7 @@ GameObject:
   - component: {fileID: 5114499537084683196}
   - component: {fileID: 3712462577839672601}
   - component: {fileID: 2211045189414325624}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bushes_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,6 +747,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -764,7 +772,7 @@ GameObject:
   - component: {fileID: 6940760385012967563}
   - component: {fileID: 4443261886920746206}
   - component: {fileID: 8723931504776988578}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,8 +787,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3978763421370507514}
   m_LocalRotation: {x: 0.7071068, y: 0.000000026558938, z: -0.000000026558938, w: 0.7071068}
-  m_LocalPosition: {x: 1.06, y: 0, z: 1.82}
-  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.30167}
+  m_LocalPosition: {x: 1.06, y: 0.5, z: 1.82}
+  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.51905346}
   m_Children: []
   m_Father: {fileID: 6300340814685238644}
   m_RootOrder: 3
@@ -818,6 +826,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -852,7 +861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6300340814685238644}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,8 +876,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4747243715214694921}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.29, y: 0.44, z: 0}
+  m_LocalScale: {x: 0.35345688, y: 0.35345688, z: 0.35345688}
   m_Children:
   - {fileID: 3094527484928698021}
   - {fileID: 4695463000860606136}
@@ -895,7 +904,7 @@ GameObject:
   - component: {fileID: 8055923518668392933}
   - component: {fileID: 8820784195340952498}
   - component: {fileID: 3995771997900545180}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -949,6 +958,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -983,7 +993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4695463000860606136}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bushes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1027,7 @@ GameObject:
   - component: {fileID: 7244138229827882526}
   - component: {fileID: 6662871950050611477}
   - component: {fileID: 1174010684883015510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,6 +1081,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1094,7 +1105,7 @@ GameObject:
   - component: {fileID: 1074252100007999576}
   - component: {fileID: 4489412338771718469}
   - component: {fileID: 4325911123759084958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bed_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1148,6 +1159,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1169,7 +1181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3094527484928698021}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Base_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1203,7 +1215,7 @@ GameObject:
   - component: {fileID: 1651212900278278649}
   - component: {fileID: 7595685887331967168}
   - component: {fileID: 7474669713771790175}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,6 +1269,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1278,9 +1291,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6577759048539261741}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HouseType2
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1293,7 +1306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7869980752109148951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.43, y: -20.92, z: 7.07}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6300340814685238644}
@@ -1311,7 +1324,7 @@ GameObject:
   - component: {fileID: 148032909340626899}
   - component: {fileID: 1198900809723285400}
   - component: {fileID: 6468751201201421389}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,6 +1378,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1389,7 +1403,7 @@ GameObject:
   - component: {fileID: 6204898798636912468}
   - component: {fileID: 105390104345430147}
   - component: {fileID: 7144547458910392784}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: House (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,8 +1418,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9204106448151991599}
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -1.14, y: 0, z: -3.06}
-  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.30167}
+  m_LocalPosition: {x: -1.14, y: 0.5, z: -3.06}
+  m_LocalScale: {x: 0.30167, y: 0.30167, z: 0.51905346}
   m_Children: []
   m_Father: {fileID: 6300340814685238644}
   m_RootOrder: 7
@@ -1443,6 +1457,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1479,6 +1494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197374529704208999, guid: af706510e40091446a51881ccfd00c63,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3644342086021201970, guid: af706510e40091446a51881ccfd00c63,
         type: 3}

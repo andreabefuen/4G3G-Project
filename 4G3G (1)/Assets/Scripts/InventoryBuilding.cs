@@ -4,20 +4,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum idBuildings
+{
+    windmill = 1,
+    solarpanel = 2,
+    coalfactory = 3,
+    gasextractor = 4,
+    houses = 5,
+    river = 6,
+    cityhall = 7,
+    statueOfLiberty = 8,
+    shop = 9
+};
+
 public class InventoryBuilding : MonoBehaviour
 {
 
-    public enum idBuildings
-    {
-        windmill = 1,
-        solarpanel = 2,
-        coalfactory = 3,
-        gasextractor = 4,
-        houses = 5,
-        river = 6,
-        cityhall = 7
-    };
 
+    public List<StructureBlueprint> structures;
 
     public StructureBlueprint windmillStructure;
     public StructureBlueprint solarPanelStructure;
@@ -25,10 +29,13 @@ public class InventoryBuilding : MonoBehaviour
     public StructureBlueprint coalFactoryStructure;
     public StructureBlueprint gasExtractorStructure;
 
+    public StructureBlueprint statueOfLiberty;
+
 
     public StructureBlueprint riverPart;
+    public StructureBlueprint shop;
 
-    List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
+    //List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
 
     public GameObject infoPanel;
@@ -38,6 +45,8 @@ public class InventoryBuilding : MonoBehaviour
     public TextMeshProUGUI moneyText, happinessText, energyText, pollutionText;
     public Text costText;
 
+    [Header("Level of building")]
+    public TextMeshProUGUI textLevel;
 
     BuildManager buildManager;
 
@@ -48,18 +57,95 @@ public class InventoryBuilding : MonoBehaviour
     {
         buildManager = BuildManager.instance;
 
-        windmillStructure.id = (int) idBuildings.windmill;
-        solarPanelStructure.id = (int)idBuildings.solarpanel; 
+        /*windmillStructure.id = idBuildings.windmill;
+        solarPanelStructure.id = idBuildings.solarpanel; 
 
-        coalFactoryStructure.id = (int)idBuildings.coalfactory; 
-        gasExtractorStructure.id = (int)idBuildings.gasextractor; 
+        coalFactoryStructure.id = idBuildings.coalfactory; 
+        gasExtractorStructure.id = idBuildings.gasextractor;
 
 
-        riverPart.id = (int)idBuildings.river; ;
+        statueOfLiberty.id = idBuildings.statueOfLiberty;
+        shop.id = idBuildings.shop;
 
-        listOfBlueprints.Add(windmillStructure);
+        riverPart.id = idBuildings.river; */
+
+        //listOfBlueprints.Add(windmillStructure);
     }
 
+  /*  public void SelectShowStatueOfLiberty()
+    {
+        buildManager.HideConstructionPanel();
+
+        icon.sprite = statueOfLiberty.icon;
+        titleText.text = statueOfLiberty.title;
+        descriptionText.text = statueOfLiberty.description;
+        moneyText.text = statueOfLiberty.moneyPerTap / 1000 + "K";
+        happinessText.text = "+" + statueOfLiberty.amountOfHappiness;
+        energyText.text = "+" + statueOfLiberty.amountOfEnergy;
+        pollutionText.text = "+" + statueOfLiberty.amountOfPollution;
+        costText.text = statueOfLiberty.cost.ToString();
+
+        //windmillStructure.informationPanel.SetActive(true);
+        infoPanel.SetActive(true);
+
+        structureBuy = statueOfLiberty;
+    }*/
+    public void SelectBuilding(string s)
+    {
+        switch (s)
+        {
+            case "solar":
+                ShowInfo(solarPanelStructure);
+                break;
+            case "wind":
+                ShowInfo(windmillStructure);
+                break;
+
+            case "coal":
+                ShowInfo(coalFactoryStructure);
+                break;
+
+            case "gas":
+                ShowInfo(gasExtractorStructure);
+                break;
+
+            case "liberty":
+                ShowInfo(statueOfLiberty);
+                break;
+            case "shop":
+                ShowInfo(shop);
+                break;
+            default:
+                break;
+
+        }
+       
+    }
+
+    public void ShowInfo(StructureBlueprint structure)
+    {
+        buildManager.HideConstructionPanel();
+
+        icon.sprite = structure.icon;
+        titleText.text = structure.title;
+        descriptionText.text = structure.description;
+        moneyText.text = structure.moneyPerTap / 1000 + "K";
+        happinessText.text = "+" + structure.amountOfHappiness;
+        energyText.text = "+" + structure.amountOfEnergy;
+        pollutionText.text = "+" + structure.amountOfPollution;
+        costText.text = structure.cost.ToString();
+
+        //windmillStructure.informationPanel.SetActive(true);
+        infoPanel.SetActive(true);
+
+        structureBuy = structure;
+    }
+
+    public void UpdateLevel(StructureBlueprint structure)
+    {
+        textLevel.text = "Level: " + structure.levelBuilding;
+    }
+    /*
     public void SelectShowInfoWindmill()
     {
         buildManager.HideConstructionPanel();
@@ -82,7 +168,7 @@ public class InventoryBuilding : MonoBehaviour
     {
         windmillStructure.informationPanel.SetActive(false);
 
-    }*/
+    }
     public void SelectShowInfoCoalFactory()
     {
         buildManager.HideConstructionPanel();
@@ -145,6 +231,11 @@ public class InventoryBuilding : MonoBehaviour
 
        // gasExtractorStructure.informationPanel.SetActive(true);
     }
+    public void SelectStatueOfLiberty()
+    {
+        buildManager.SelectStructureToBuild(gasExtractorStructure);
+        Debug.Log("Selected monument statue of liberty");
+    }
 
     public void SelectGasExtractorStructure()
     {
@@ -175,7 +266,7 @@ public class InventoryBuilding : MonoBehaviour
         buildManager.SelectStructureToBuild(riverPart);
         Debug.Log("Selected river");
     }
-
+    */
 
     public void ShowInfoRiver()
     {

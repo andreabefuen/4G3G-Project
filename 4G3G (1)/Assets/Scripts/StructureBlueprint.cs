@@ -10,9 +10,11 @@ public class StructureBlueprint
     public string title, description;
     public Sprite icon;
 
-    public int id;
+    public idBuildings id;
 
     public GameObject prefab;
+
+    public int levelBuilding = 1;
 
 
     public int cost;

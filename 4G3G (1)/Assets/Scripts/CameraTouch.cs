@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraTouch : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class CameraTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.GameIsPaused)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
             //Poner lo de detectar la camara si es con dedos o con el ratón
             if (Input.touchCount == 0 && isZooming)

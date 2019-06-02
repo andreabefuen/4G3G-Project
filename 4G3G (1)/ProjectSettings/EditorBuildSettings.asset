@@ -16,8 +16,5 @@ EditorBuildSettings:
     guid: 8946f763800073044b301d833f4f2be0
   - enabled: 1
     path: Assets/Scenes/CoalIsland.unity
-    guid: dd0006929a373ad44a287ca509a7d34b
-  - enabled: 0
-    path: Assets/Scenes/CoalIsland2.unity
-    guid: 4e5f35c7ce7dd6b4a97aeae1b55fb6ab
+    guid: 2324e1cbbd50ff34d89669c430a27f37
   m_configObjects: {}

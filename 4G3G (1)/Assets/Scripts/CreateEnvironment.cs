@@ -36,6 +36,7 @@ public class CreateEnvironment : MonoBehaviour
 
     [Header("Spawn things")]
     public bool spawnThings;
+    public List<GameObject> differentHouses;
     public GameObject housePrefab;
     public int numHouses;
 
@@ -135,12 +136,12 @@ public class CreateEnvironment : MonoBehaviour
             {
                 matrixNodes[f, c].idBuilding = aux[f, c].idBuilding;
                 //Debug.Log("ides: " + aux[f, c].idBuilding);
-                if (aux[f, c].idBuilding == (int)InventoryBuilding.idBuildings.houses)
+                if (aux[f, c].idBuilding == (int)idBuildings.houses)
                 {
                     ResetHouses(matrixNodes[f, c]);
                     
                 }
-                else if(aux[f, c].idBuilding == (int)InventoryBuilding.idBuildings.cityhall)
+                else if(aux[f, c].idBuilding == (int)idBuildings.cityhall)
                 {
                     BuildManager.instance.BuildCityHall(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
                     
@@ -346,11 +347,13 @@ public class CreateEnvironment : MonoBehaviour
     void HouseIntantiate(Node node)
     {
         NodeTouch aux = node.nodeGameobject.GetComponent<NodeTouch>();
+        int rdn = Random.Range(0, differentHouses.Count);
+        housePrefab = differentHouses[rdn];
         GameObject spawnHouse = Instantiate(housePrefab, aux.GetBuildPosition(), housePrefab.transform.rotation);
 
         aux.buildingThere = spawnHouse;
         node.objectInNode = spawnHouse;
-        node.idBuilding = (int)InventoryBuilding.idBuildings.houses;
+        node.idBuilding = (int)idBuildings.houses;
         aux.gameObject.GetComponent<MeshRenderer>().enabled = false;
         houses.Add(spawnHouse);
         
