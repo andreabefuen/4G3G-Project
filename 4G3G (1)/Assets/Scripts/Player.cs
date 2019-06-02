@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         {
             
 
-            levelObject.maxValue = createEnvironment.numHouses * energyForEachHouse;
+            levelObject.maxValue = 14 * energyForEachHouse;
 
             levelObject.value = 0;
         }
@@ -110,13 +110,22 @@ public class Player : MonoBehaviour
             // Debug.Log("Problema???");
             levelCity++;
             levelText.text = levelCity.ToString();
-            levelObject.maxValue = createEnvironment.numHouses * energyForEachHouse;
+            levelObject.maxValue = CreateEnvironment.houses.Count * energyForEachHouse;
             levelObject.value = totalEnergy;
             //Call to the window of the new level reach
             return;
             
         }
         levelObject.value = totalEnergy;
+
+        int aux = totalEnergy / energyForEachHouse;
+        Debug.Log("We have " + CreateEnvironment.houses.Count);
+        Debug.Log("We need " + levelObject.maxValue);
+        Debug.Log("Energy for: " + aux);
+        for (int i = 0; i < aux; i++)
+        {
+            CreateEnvironment.houses[i].GetComponent<EnergyBuilding>().EnoughtEnergy();
+        }
 
     
     }

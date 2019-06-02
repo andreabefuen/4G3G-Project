@@ -176,7 +176,7 @@ public class CreateEnvironment : MonoBehaviour
 
     void ResetHouses(Node n)
     {
-        HouseIntantiate(n);
+        HouseInstantiate(n);
     }
 
     void CreateStage()
@@ -338,13 +338,13 @@ public class CreateEnvironment : MonoBehaviour
                 Debug.Log("Cant spawn here");
                 continue;
             }
-            HouseIntantiate(matrixNodes[rdnX, rdnY]);
+            HouseInstantiate(matrixNodes[rdnX, rdnY]);
             cont++;
         }
        
     }
 
-    void HouseIntantiate(Node node)
+    void HouseInstantiate(Node node)
     {
         NodeTouch aux = node.nodeGameobject.GetComponent<NodeTouch>();
         int rdn = Random.Range(0, differentHouses.Count);

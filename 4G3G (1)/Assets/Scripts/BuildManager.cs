@@ -39,7 +39,9 @@ public class BuildManager : MonoBehaviour
 
     [Header("Particles")]
     private ParticleSystem destroyParticle;
+    private ParticleSystem buildParticle;
     public GameObject destroyParticlePrefab;
+    public GameObject buildParticlePrefab;
 
     private void Awake()
     {
@@ -107,7 +109,13 @@ public class BuildManager : MonoBehaviour
         structureToBuild.nodeAsociate = node;
         structureToBuild = null;
 
+       
+        GameObject aux = Instantiate(buildParticlePrefab, node.transform.position, Quaternion.identity);
+        buildParticle = aux.GetComponentInChildren<ParticleSystem>();
+        buildParticle.Play();
+
     }
+    
 
     bool HasEnoughMoney()
     {
