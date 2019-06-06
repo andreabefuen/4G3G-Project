@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     {
         moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
-        levelText.text = levelCity.ToString();
+        
 
 
         if (GameControl.control.loaded)
@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
             levelObject.maxValue = GameControl.control.maxEnergy;
             pollutionSlider.maxValue = GameControl.control.maxPollution;
 
+            levelCity = GameControl.control.levelCity;
+
         }
         else
         {
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour
 
             levelObject.value = 0;
         }
+        levelText.text = levelCity.ToString();
         UpdateMoney();
 
         UpdateHappiness();

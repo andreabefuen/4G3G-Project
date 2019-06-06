@@ -11,6 +11,7 @@ public class GameControl : MonoBehaviour
 
     public static GameControl control;
 
+    public int levelCity;
     public int money;
     public int pollution;
     public int maxPollution;
@@ -20,6 +21,8 @@ public class GameControl : MonoBehaviour
     public int stageSizeX;
     public int stageSizeY;
     public int gridSizeX, gridSizeY;
+    public int days, month, hour, minute;
+    public bool night;
     public NodeInformation[,] information;
 
     public float sizeXPlane;
@@ -64,6 +67,7 @@ public class GameControl : MonoBehaviour
 
 
         CreateEnvironment ce = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        WeatherController weather = GameObject.Find("GameManager").GetComponent<WeatherController>();
         Player player = GameObject.Find("Player").GetComponent<Player>();
 
         stageSizeX = ce.GetStageX();
@@ -74,6 +78,8 @@ public class GameControl : MonoBehaviour
         gridSizeY = ce.GetColumns();
         data.gridSizeX = gridSizeX;
         data.gridSizeY = gridSizeY;
+
+        data.levelCity = player.levelCity;
 
         data.sizeXPlane = ce.planeLimit.transform.localScale.x;
         data.sizeYPlane = ce.planeLimit.transform.localScale.z;
@@ -86,6 +92,12 @@ public class GameControl : MonoBehaviour
         data.happiness = player.totalHappiness;
         data.money = player.totalCurrency;
 
+
+        data.days = weather.fakeDays;
+        data.hour = weather.fakeHour;
+        data.minute = weather.fakeMinutes;
+        data.month = weather.actualMonthNumber;
+        data.night = weather.isNight;
 
         Node[,] aux = ce.GetMatrixNode();
 
@@ -135,7 +147,8 @@ public class GameControl : MonoBehaviour
             LevelData data = (LevelData)bf.Deserialize(file);
             file.Close();
 
-            
+            levelCity = data.levelCity;
+
             money = data.money;
             stageSizeX = data.stageSizeX;
             stageSizeY = data.stageSizeY;
@@ -152,6 +165,12 @@ public class GameControl : MonoBehaviour
 
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
+
+            days = data.days;
+            minute = data.minute;
+            hour = data.hour;
+            month = data.month;
+            night = data.night;
 
             Debug.Log(money);
 
@@ -176,7 +195,7 @@ public class GameControl : MonoBehaviour
             LevelData data = (LevelData)bf.Deserialize(file);
             file.Close();
 
-
+            levelCity = data.levelCity;
             money = data.money;
             stageSizeX = data.stageSizeX;
             stageSizeY = data.stageSizeY;
@@ -236,7 +255,8 @@ public class GameControl : MonoBehaviour
     [Serializable]
     public class LevelData
     {
-       // public int[,] matrixOfNodes;
+        // public int[,] matrixOfNodes;
+        public int levelCity;
         public int gridSizeX;
         public int gridSizeY;
         public int stageSizeX;
@@ -252,6 +272,8 @@ public class GameControl : MonoBehaviour
         public float sizeXPlane;
         public float sizeYPlane;
 
+        public int days, month, hour, minute;
+        public bool night;
 
     }
 
