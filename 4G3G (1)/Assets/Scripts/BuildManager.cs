@@ -60,13 +60,49 @@ public class BuildManager : MonoBehaviour
         //destroyParticle = destroyParticlePrefab.GetComponentInChildren<ParticleSystem>();
     }
 
+    public void RebuildStructures(NodeTouch node)
+    {
+        if(structureToBuild == null)
+        {
+            return;
+        }
+
+        GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
+
+        node.nodeInfo.idBuilding = (int)structureToBuild.id;
+
+
+        node.structureThere = structureToBuild;
+
+        Debug.Log("CONSTRUIDO");
+        //SoundManager.soundManager.PlayConstruction();
+        //Hide the node
+        node.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        if (!structureToBuild.isWater)
+        {
+
+            node.buildingThere = structure;
+        }
+        else
+        {
+            node.haveWater = true;
+        }
+        structureToBuild.nodeAsociate = node;
+        structureToBuild = null;
+
+
+       //GameObject aux = Instantiate(buildParticlePrefab, node.transform.position, Quaternion.identity);
+       //buildParticle = aux.GetComponentInChildren<ParticleSystem>();
+       //buildParticle.Play();
+    }
+
     public void BuildStructureOn(NodeTouch node)
     {
         if(structureToBuild == null)
         {
             return;
         }
-        if (!HasEnoughMoney() && GameControl.control.loaded == false)
+        if (!HasEnoughMoney() )
         {
             Debug.Log("Not enough money!");
             player.NotEnoughMoneyPlay();
@@ -77,13 +113,13 @@ public class BuildManager : MonoBehaviour
             Debug.Log("The structure can't build in water");
             return;
         }
-        if(GameControl.control.loaded == false)
-        {
-            player.DecreaseMoney(structureToBuild.cost);
-            player.IncreaseHappiness(structureToBuild.amountOfHappiness);
-            player.IncreasePollution(structureToBuild.amountOfPollution);
-            player.IncreaseEnergy(structureToBuild.amountOfEnergy);
-        }
+       
+       
+        player.DecreaseMoney(structureToBuild.cost);
+        player.IncreaseHappiness(structureToBuild.amountOfHappiness);
+        player.IncreasePollution(structureToBuild.amountOfPollution);
+        player.IncreaseEnergy(structureToBuild.amountOfEnergy);
+       
         
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
@@ -186,6 +222,7 @@ public class BuildManager : MonoBehaviour
                 if(node.buildingThere == null)
                 {
                     DeselectNode();
+                    return;
                 }
 
                 //If in the node are something

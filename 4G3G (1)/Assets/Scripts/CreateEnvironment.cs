@@ -116,7 +116,7 @@ public class CreateEnvironment : MonoBehaviour
         //SpawnHouseAllScenario();
         //SpawnCoalFactories();
 
-        if (GameControl.control.loaded)
+        if (GameControl.control.loaded && !GameControl.control.firstTimeCoal)
         {
             stageRows = GameControl.control.stageSizeX;
             stageColumns = GameControl.control.stageSizeY;
@@ -149,18 +149,24 @@ public class CreateEnvironment : MonoBehaviour
                 else
                 {
                     ResetBuilding(aux[f, c].idBuilding);
-                    BuildManager.instance.BuildStructureOn(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
+                    BuildManager.instance.RebuildStructures(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
                 }
                 
                 
             }
         }
 
-
+        //Invoke("EverythingLoaded", 3f);
         GameControl.control.loaded = false;
 
 
     }
+
+    void EverythingLoaded()
+    {
+        GameControl.control.loaded = false;
+    }
+
     void ResetBuilding(int id)
     {
         if(id == 0 )
@@ -210,7 +216,7 @@ public class CreateEnvironment : MonoBehaviour
         float auxSize = Vector3.Magnitude(auxvect);
         auxPlaneLimit = Instantiate(planeLimit);
 
-        if (GameControl.control.loaded)
+        if (GameControl.control.loaded && !GameControl.control.firstTimeCoal)
         {
             //Destroy(auxPlaneLimit);
             //auxPlaneLimit = Instantiate(planeLimit);

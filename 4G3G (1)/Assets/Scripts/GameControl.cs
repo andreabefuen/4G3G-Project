@@ -30,6 +30,7 @@ public class GameControl : MonoBehaviour
 
 
     public bool loaded = false;
+    public bool firstTimeCoal = true;
 
     
 
@@ -48,19 +49,241 @@ public class GameControl : MonoBehaviour
         
     }
 
+    public void SaveGeneralInfo()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file;
+
+        file = File.Create(Application.persistentDataPath + "/generalInfo.dat");
+
+        GeneralInfo info = new GeneralInfo();
+
+
+        CreateEnvironment ce = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        WeatherController weather = GameObject.Find("GameManager").GetComponent<WeatherController>();
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+
+        info.money = player.totalCurrency;
+
+
+
+        info.days = weather.fakeDays;
+        info.hour = weather.fakeHour;
+        info.minute = weather.fakeMinutes;
+        info.month = weather.actualMonthNumber;
+        info.night = weather.isNight;
+
+        bf.Serialize(file, info);
+        file.Close();
+
+
+
+    }
+
+    public void LoadGeneralInfo()
+    {
+
+        if (File.Exists(Application.persistentDataPath + "/generalInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/generalInfo.dat", FileMode.Open);
+            GeneralInfo info = (GeneralInfo)bf.Deserialize(file);
+            file.Close();
+
+            money = info.money;
+
+            days = info.days;
+            minute = info.minute;
+            hour = info.hour;
+            month = info.month;
+            night = info.night;
+
+            //loaded = true;
+            Debug.Log("General info loaded ");
+        }
+    }
+
+    public void SaveMainIsland()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file;
+        file = File.Create(Application.persistentDataPath + "/mainIslandInfo.dat");
+
+        LevelData data = new LevelData();
+
+
+        CreateEnvironment ce = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        WeatherController weather = GameObject.Find("GameManager").GetComponent<WeatherController>();
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+
+        stageSizeX = ce.GetStageX();
+        stageSizeY = ce.GetStageY();
+        data.stageSizeX = stageSizeX;
+        data.stageSizeY = stageSizeY;
+        gridSizeX = ce.GetRows();
+        gridSizeY = ce.GetColumns();
+        data.gridSizeX = gridSizeX;
+        data.gridSizeY = gridSizeY;
+
+        data.levelCity = player.levelCity;
+
+        data.sizeXPlane = ce.planeLimit.transform.localScale.x;
+        data.sizeYPlane = ce.planeLimit.transform.localScale.z;
+
+        data.energy = player.totalEnergy;
+        data.maxEnergy = (int)player.levelObject.maxValue;
+
+        data.pollution = player.totalPollution;
+        data.maxPollution = (int)player.pollutionSlider.maxValue;
+        data.happiness = player.totalHappiness;
+        // data.money = player.totalCurrency;
+
+
+        //  data.days = weather.fakeDays;
+        //  data.hour = weather.fakeHour;
+        //  data.minute = weather.fakeMinutes;
+        //  data.month = weather.actualMonthNumber;
+        //  data.night = weather.isNight;
+
+        Node[,] aux = ce.GetMatrixNode();
+
+        information = new NodeInformation[gridSizeX, gridSizeY];
+
+        for (int f = 1; f < gridSizeX; f++)
+        {
+            for (int c = 1; c < gridSizeY; c++)
+            {
+                if (aux[f, c].idBuilding == 0)
+                {
+                    information[f, c].isUnlock = false;
+                    information[f, c].haveWater = false;
+                    information[f, c].idBuilding = 0;
+                    //continue;
+                }
+                else
+                {
+                    information[f, c].idBuilding = aux[f, c].idBuilding;
+                    information[f, c].isUnlock = true;
+                    information[f, c].haveWater = false;
+                }
+            }
+        }
+
+        data.information = information;
+        // data.money = GameObject.Find("Player").GetComponent<Player>().totalCurrency;
+
+        if (information.Length != 0)
+        {
+            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        }
+
+        bf.Serialize(file, data);
+        file.Close();
+
+        Debug.Log("Se ha creado archivo de guardado");
+    }
+
+    public void SaveCoalIsland()
+    {
+
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file;
+        file = File.Create(Application.persistentDataPath + "/coalIslandInfo.dat");
+
+        LevelData data = new LevelData();
+
+
+        CreateEnvironment ce = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        WeatherController weather = GameObject.Find("GameManager").GetComponent<WeatherController>();
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+
+        stageSizeX = ce.GetStageX();
+        stageSizeY = ce.GetStageY();
+        data.stageSizeX = stageSizeX;
+        data.stageSizeY = stageSizeY;
+        gridSizeX = ce.GetRows();
+        gridSizeY = ce.GetColumns();
+        data.gridSizeX = gridSizeX;
+        data.gridSizeY = gridSizeY;
+
+        data.levelCity = player.levelCity;
+
+        data.sizeXPlane = ce.planeLimit.transform.localScale.x;
+        data.sizeYPlane = ce.planeLimit.transform.localScale.z;
+
+        data.energy = player.totalEnergy;
+        data.maxEnergy = (int)player.levelObject.maxValue;
+
+        data.pollution = player.totalPollution;
+        data.maxPollution = (int)player.pollutionSlider.maxValue;
+        data.happiness = player.totalHappiness;
+        // data.money = player.totalCurrency;
+
+
+        //  data.days = weather.fakeDays;
+        //  data.hour = weather.fakeHour;
+        //  data.minute = weather.fakeMinutes;
+        //  data.month = weather.actualMonthNumber;
+        //  data.night = weather.isNight;
+
+        Node[,] aux = ce.GetMatrixNode();
+
+        information = new NodeInformation[gridSizeX, gridSizeY];
+
+        for (int f = 1; f < gridSizeX; f++)
+        {
+            for (int c = 1; c < gridSizeY; c++)
+            {
+                if (aux[f, c].idBuilding == 0)
+                {
+                    information[f, c].isUnlock = false;
+                    information[f, c].haveWater = false;
+                    information[f, c].idBuilding = 0;
+                    //continue;
+                }
+                else
+                {
+                    information[f, c].idBuilding = aux[f, c].idBuilding;
+                    information[f, c].isUnlock = true;
+                    information[f, c].haveWater = false;
+                }
+            }
+        }
+
+        data.information = information;
+        // data.money = GameObject.Find("Player").GetComponent<Player>().totalCurrency;
+
+        if (information.Length != 0)
+        {
+            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        }
+
+        bf.Serialize(file, data);
+        file.Close();
+
+        Debug.Log("Se ha creado archivo de guardado");
+
+    }
     public void Save()
     {
+        SaveGeneralInfo();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file;
         if(SceneManager.GetActiveScene().name == "CoalIsland")
         {
            file = File.Create(Application.persistentDataPath + "/coalIslandInfo.dat");
-            Debug.Log("ahsfadsfajsgfgsss ");
+            firstTimeCoal = false;
+    
         }
-        else
+        else if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             file = File.Create(Application.persistentDataPath + "/mainIslandInfo.dat");
 
+        }
+        else
+        {
+            Debug.Log("Ni uno ni otro");
+            return;
         }
 
         LevelData data = new LevelData();
@@ -90,14 +313,14 @@ public class GameControl : MonoBehaviour
         data.pollution = player.totalPollution;
         data.maxPollution = (int)player.pollutionSlider.maxValue;
         data.happiness = player.totalHappiness;
-        data.money = player.totalCurrency;
+       // data.money = player.totalCurrency;
 
 
-        data.days = weather.fakeDays;
-        data.hour = weather.fakeHour;
-        data.minute = weather.fakeMinutes;
-        data.month = weather.actualMonthNumber;
-        data.night = weather.isNight;
+      //  data.days = weather.fakeDays;
+      //  data.hour = weather.fakeHour;
+      //  data.minute = weather.fakeMinutes;
+      //  data.month = weather.actualMonthNumber;
+      //  data.night = weather.isNight;
 
         Node[,] aux = ce.GetMatrixNode();
 
@@ -139,7 +362,7 @@ public class GameControl : MonoBehaviour
 
     public void LoadMainIsland()
     {
-       
+        LoadGeneralInfo();
         if (File.Exists(Application.persistentDataPath + "/mainIslandInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -149,7 +372,7 @@ public class GameControl : MonoBehaviour
 
             levelCity = data.levelCity;
 
-            money = data.money;
+           // money = data.money;
             stageSizeX = data.stageSizeX;
             stageSizeY = data.stageSizeY;
             gridSizeX = data.gridSizeX;
@@ -166,13 +389,13 @@ public class GameControl : MonoBehaviour
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
 
-            days = data.days;
-            minute = data.minute;
-            hour = data.hour;
-            month = data.month;
-            night = data.night;
+           // days = data.days;
+           // minute = data.minute;
+           // hour = data.hour;
+           // month = data.month;
+           // night = data.night;
 
-            Debug.Log(money);
+          //  Debug.Log(money);
 
             //Llamar a la función que cree todo el environment con los datos guardados
             loaded = true;
@@ -188,6 +411,12 @@ public class GameControl : MonoBehaviour
 
     public void LoadCoalIsland()
     {
+        LoadGeneralInfo();
+        if (firstTimeCoal)
+        {
+            loaded = true;
+            return;
+        }
         if (File.Exists(Application.persistentDataPath + "/coalIslandInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -196,7 +425,8 @@ public class GameControl : MonoBehaviour
             file.Close();
 
             levelCity = data.levelCity;
-            money = data.money;
+
+            // money = data.money;
             stageSizeX = data.stageSizeX;
             stageSizeY = data.stageSizeY;
             gridSizeX = data.gridSizeX;
@@ -213,11 +443,25 @@ public class GameControl : MonoBehaviour
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
 
-            Debug.Log(money);
+            // days = data.days;
+            // minute = data.minute;
+            // hour = data.hour;
+            // month = data.month;
+            // night = data.night;
 
-            Debug.Log("Coal island information loaded");
+            //  Debug.Log(money);
 
             //Llamar a la función que cree todo el environment con los datos guardados
+            loaded = true;
+
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA COAL LOAD");
+
+
+        
+        }
+        else
+        {
+            Debug.Log("No se ha creado archivo de guardado");
             loaded = true;
         }
     }
@@ -238,6 +482,13 @@ public class GameControl : MonoBehaviour
             Debug.Log("Deleted save file");
 
         }
+        if (File.Exists(Application.persistentDataPath + "/generalInfo.dat"))
+        {
+
+            File.Delete(Application.persistentDataPath + "/generalInfo.dat");
+            Debug.Log("Deleted save file");
+
+        }
     }
 
     // Start is called before the first frame update
@@ -251,6 +502,14 @@ public class GameControl : MonoBehaviour
     {
         
     }
+    [Serializable]
+    public class GeneralInfo
+    {
+        public int money;
+        public int days, month, hour, minute;
+        public bool night;
+    }
+
 
     [Serializable]
     public class LevelData
@@ -261,7 +520,7 @@ public class GameControl : MonoBehaviour
         public int gridSizeY;
         public int stageSizeX;
         public int stageSizeY;
-        public int money;
+       // public int money;
         public int pollution;
         public int maxPollution;
         public int happiness;
@@ -272,8 +531,8 @@ public class GameControl : MonoBehaviour
         public float sizeXPlane;
         public float sizeYPlane;
 
-        public int days, month, hour, minute;
-        public bool night;
+       // public int days, month, hour, minute;
+       // public bool night;
 
     }
 

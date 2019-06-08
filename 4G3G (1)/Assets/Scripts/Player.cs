@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -45,16 +46,24 @@ public class Player : MonoBehaviour
 
     CreateEnvironment createEnvironment;
 
-
-    private void Start()
+    private void Awake()
     {
         moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
-        
+
+    }
 
 
-        if (GameControl.control.loaded)
+    private void Start()
+    {
+
+        if (GameControl.control.firstTimeCoal)
         {
+            totalCurrency = GameControl.control.money;
+        }
+       else if (GameControl.control.loaded && !GameControl.control.firstTimeCoal)
+        {
+
             totalCurrency = GameControl.control.money;
             totalEnergy = GameControl.control.energy;
             totalHappiness = GameControl.control.happiness;
@@ -64,24 +73,26 @@ public class Player : MonoBehaviour
             pollutionSlider.maxValue = GameControl.control.maxPollution;
 
             levelCity = GameControl.control.levelCity;
-
         }
         else
         {
-            
+
 
             levelObject.maxValue = 14 * energyForEachHouse;
 
             levelObject.value = 0;
         }
+
         levelText.text = levelCity.ToString();
+
+
+        //levelText.text = levelCity.ToString();
         UpdateMoney();
 
         UpdateHappiness();
 
         
 
-       
 
         UpdateEnergy();
         UpdatePollution();
@@ -106,29 +117,48 @@ public class Player : MonoBehaviour
             Debug.Log("finish level");
             return;
         }
-        if (totalEnergy >= levelObject.maxValue)
-        {
-            //Debug.Log("aaaProblema???");
-            createEnvironment.NextStage();
-            // Debug.Log("Problema???");
-            levelCity++;
-            levelText.text = levelCity.ToString();
-            levelObject.maxValue = CreateEnvironment.houses.Count * energyForEachHouse;
-            levelObject.value = totalEnergy;
-            //Call to the window of the new level reach
-            return;
-            
-        }
-        levelObject.value = totalEnergy;
 
-        int aux = totalEnergy / energyForEachHouse;
-        Debug.Log("We have " + CreateEnvironment.houses.Count);
-        Debug.Log("We need " + levelObject.maxValue);
-        Debug.Log("Energy for: " + aux);
-        for (int i = 0; i < aux; i++)
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            CreateEnvironment.houses[i].GetComponent<EnergyBuilding>().EnoughtEnergy();
+            if (totalEnergy >= levelObject.maxValue)
+            {
+                createEnvironment.NextStage();
+                levelText.text = levelCity.ToString();
+                levelObject.maxValue = 100;
+                levelObject.value = totalEnergy;
+            }
+            levelObject.value = totalEnergy;
+            return;
         }
+        else
+        {
+            if (totalEnergy >= levelObject.maxValue)
+            {
+                //Debug.Log("aaaProblema???");
+                createEnvironment.NextStage();
+                // Debug.Log("Problema???");
+                levelCity++;
+                levelText.text = levelCity.ToString();
+                levelObject.maxValue = CreateEnvironment.houses.Count * energyForEachHouse;
+                levelObject.value = totalEnergy;
+                //Call to the window of the new level reach
+                return;
+
+            }
+            levelObject.value = totalEnergy;
+
+            int aux = totalEnergy / energyForEachHouse;
+            Debug.Log("We have " + CreateEnvironment.houses.Count);
+            Debug.Log("We need " + levelObject.maxValue);
+            Debug.Log("Energy for: " + aux);
+
+
+            for (int i = 1; i < aux; i++)
+            {
+                CreateEnvironment.houses[i].GetComponent<EnergyBuilding>().EnoughtEnergy();
+            }
+        }
+      
 
     
     }

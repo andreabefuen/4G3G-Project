@@ -66,6 +66,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
+        GameControl.control.SaveGeneralInfo();
         GameControl.control.Save();
         SceneManager.LoadScene("MainMenuScene");
     }
@@ -77,13 +78,67 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void TravelToCoalFactory()
+    public void GoToTravelScene()
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
+        GameControl.control.SaveGeneralInfo();
         GameControl.control.Save();
+        GameControl.control.LoadGeneralInfo();
+
+        Invoke("TravelScene", 2f);
+       // SceneManager.LoadScene("TravelScene");
+
+
+    }
+
+    public void GoToCoalFactory()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+        
+        Invoke("TravelCoal", 2f);
+        //SceneManager.LoadScene("CoalIsland");
+
+       // SceneManager.LoadScene("CoalIsland");
+
+
+    }
+
+    public void GoToMainIsland()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        GameControl.control.LoadMainIsland();
+        Invoke("TravelMain", 2f);
+        //SceneManager.LoadScene(1);
+
+    }
+    void TravelScene()
+    {
+        SceneManager.LoadScene("TravelScene");
+
+    }
+    void TravelMain()
+    {
+        SceneManager.LoadScene(1);
+    }
+    void TravelCoal()
+    {
+        SceneManager.LoadScene("CoalIsland");
+        GameControl.control.LoadCoalIsland();
+    }
+
+    /*public void TravelToCoalFactory()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        GameControl.control.SaveGeneralInfo();
+        GameControl.control.Save();
+        GameControl.control.LoadGeneralInfo();
         GameControl.control.LoadCoalIsland();
         SceneManager.LoadScene("CoalIsland");
-    }
+    }*/
 }
 
