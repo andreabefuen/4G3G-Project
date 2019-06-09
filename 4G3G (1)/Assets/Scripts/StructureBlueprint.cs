@@ -15,7 +15,9 @@ public class StructureBlueprint
     public GameObject prefab;
 
     public int levelBuilding = 1;
-
+    public int levelResearch = 1;
+    public int[] costResearches = new int[4];
+    public int[] costUpgrades = new int[4];
 
     public int cost;
 

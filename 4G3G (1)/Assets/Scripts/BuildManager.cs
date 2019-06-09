@@ -165,13 +165,23 @@ public class BuildManager : MonoBehaviour
         Debug.Log("City hall did it");
         node.gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-        if (GameControl.control.loaded == false)
+        if (GameControl.control.tutorial == true)
             player.IncreaseMoney(startingMoney);
         node.nodeInfo.idBuilding = (int) idBuildings.cityhall;
 
         structureToBuild = null;
         haveCityHall = true;
         DeselectNode();
+        if (GameControl.control.tutorial)
+        {
+            GameObject.Find("TutorialArrows").GetComponent<Tutorial>().FirtsIndicator();
+        }
+        /*GameObject tut = GameObject.Find("TutorialArrows");
+        if(tut != null)
+        {
+            tut.GetComponent<Tutorial>().FirtsIndicator();
+        }*/
+
     }
     public void HideUIQuest()
     {

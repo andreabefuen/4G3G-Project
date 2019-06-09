@@ -97,7 +97,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
 
-        
+        GameControl.control.LoadCoalIsland();
+
         Invoke("TravelCoal", 2f);
         //SceneManager.LoadScene("CoalIsland");
 
@@ -127,7 +128,6 @@ public class PauseMenu : MonoBehaviour
     void TravelCoal()
     {
         SceneManager.LoadScene("CoalIsland");
-        GameControl.control.LoadCoalIsland();
     }
 
     /*public void TravelToCoalFactory()

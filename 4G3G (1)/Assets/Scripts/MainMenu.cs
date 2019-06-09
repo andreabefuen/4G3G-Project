@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
         GameObject gameControl = GameObject.Find("GameController");
         if(gameControl != null)
         {
-            GameControl.control.LoadGeneralInfo();
+           // GameControl.control.LoadGeneralInfo();
             GameControl.control.LoadMainIsland();
             
         }

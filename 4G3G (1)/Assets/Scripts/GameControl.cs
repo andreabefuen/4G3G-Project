@@ -31,6 +31,7 @@ public class GameControl : MonoBehaviour
 
     public bool loaded = false;
     public bool firstTimeCoal = true;
+    public bool tutorial = true;
 
     
 
@@ -399,6 +400,8 @@ public class GameControl : MonoBehaviour
 
             //Llamar a la función que cree todo el environment con los datos guardados
             loaded = true;
+
+            Debug.Log("Loading the main island");
            
             
 

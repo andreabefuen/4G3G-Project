@@ -108,23 +108,26 @@ public class CreateEnvironment : MonoBehaviour
         }
         centerNode = matrixNodes[indexCenterRow, indexCenterColumn].nodeGameobject;
         centerNode.tag = "CityPlace";
-        
+
         //matrixNodes[0, 0].nodeGameobject.SetActive(false);
 
-       
+
         //SpawnHouses();
         //SpawnHouseAllScenario();
         //SpawnCoalFactories();
 
-        if (GameControl.control.loaded && !GameControl.control.firstTimeCoal)
+        CreateStage();
+        if (GameControl.control.loaded && !GameControl.control.firstTimeCoal /*&& !GameControl.control.tutorial && !GameControl.control.firstTimeCoal*/)
         {
             stageRows = GameControl.control.stageSizeX;
             stageColumns = GameControl.control.stageSizeY;
-            CreateStage();
+            //CreateStage();
+            Debug.Log("Reload info");
             ReloadSceneWithInfo();
+            return;
            
         }
-        CreateStage();
+        //CreateStage();
     }
 
     public void ReloadSceneWithInfo()
@@ -138,11 +141,13 @@ public class CreateEnvironment : MonoBehaviour
                 //Debug.Log("ides: " + aux[f, c].idBuilding);
                 if (aux[f, c].idBuilding == (int)idBuildings.houses)
                 {
-                    ResetHouses(matrixNodes[f, c]);
+                    HouseInstantiate(matrixNodes[f, c]);
+                    //ResetHouses(matrixNodes[f, c]);
                     
                 }
                 else if(aux[f, c].idBuilding == (int)idBuildings.cityhall)
                 {
+                    Debug.Log("absfsadfbahdsfhakdsghdkagbhdgs");
                     BuildManager.instance.BuildCityHall(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
                     
                 }
@@ -216,7 +221,7 @@ public class CreateEnvironment : MonoBehaviour
         float auxSize = Vector3.Magnitude(auxvect);
         auxPlaneLimit = Instantiate(planeLimit);
 
-        if (GameControl.control.loaded && !GameControl.control.firstTimeCoal)
+        if (GameControl.control.loaded && !GameControl.control.firstTimeCoal/* && !GameControl.control.tutorial && !GameControl.control.firstTimeCoal*/)
         {
             //Destroy(auxPlaneLimit);
             //auxPlaneLimit = Instantiate(planeLimit);
