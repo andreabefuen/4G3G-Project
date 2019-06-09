@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
             {
                 createEnvironment.NextStage();
                 levelText.text = levelCity.ToString();
-                levelObject.maxValue = 100;
+                levelObject.maxValue += 100;
                 levelObject.value = totalEnergy;
             }
             levelObject.value = totalEnergy;

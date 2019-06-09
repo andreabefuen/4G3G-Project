@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuildManager : MonoBehaviour
 {
@@ -172,7 +173,7 @@ public class BuildManager : MonoBehaviour
         structureToBuild = null;
         haveCityHall = true;
         DeselectNode();
-        if (GameControl.control.tutorial)
+        if (GameControl.control.tutorial && SceneManager.GetActiveScene().buildIndex == 1)
         {
             GameObject.Find("TutorialArrows").GetComponent<Tutorial>().FirtsIndicator();
         }

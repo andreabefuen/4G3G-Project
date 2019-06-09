@@ -12,13 +12,14 @@ public class MainMenu : MonoBehaviour
     {
         SoundManager.soundManager.PlayHitButton();
 
-        GameObject gameControl = GameObject.Find("GameController");
+        GameControl.control.LoadMainIsland();
+      /* GameObject gameControl = GameObject.Find("GameController");
         if(gameControl != null)
         {
            // GameControl.control.LoadGeneralInfo();
             GameControl.control.LoadMainIsland();
             
-        }
+        }*/
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }

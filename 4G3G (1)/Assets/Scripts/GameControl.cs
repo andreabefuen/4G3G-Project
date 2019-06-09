@@ -74,6 +74,9 @@ public class GameControl : MonoBehaviour
         info.month = weather.actualMonthNumber;
         info.night = weather.isNight;
 
+        info.firstTimeCoal = firstTimeCoal;
+        info.tutorial = tutorial;
+
         bf.Serialize(file, info);
         file.Close();
 
@@ -98,6 +101,9 @@ public class GameControl : MonoBehaviour
             hour = info.hour;
             month = info.month;
             night = info.night;
+
+            tutorial = info.tutorial;
+            firstTimeCoal = info.firstTimeCoal;
 
             //loaded = true;
             Debug.Log("General info loaded ");
@@ -408,18 +414,18 @@ public class GameControl : MonoBehaviour
         }
         else
         {
-            Debug.Log("no se ha creado archivo");
+            Debug.Log("Not loading the main island NOT");
         }
     }
 
     public void LoadCoalIsland()
     {
         LoadGeneralInfo();
-        if (firstTimeCoal)
+       /* if (firstTimeCoal)
         {
             loaded = true;
             return;
-        }
+        }*/
         if (File.Exists(Application.persistentDataPath + "/coalIslandInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -459,13 +465,11 @@ public class GameControl : MonoBehaviour
 
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA COAL LOAD");
 
-
-        
         }
         else
         {
             Debug.Log("No se ha creado archivo de guardado");
-            loaded = true;
+            //loaded = true;
         }
     }
 
@@ -508,6 +512,9 @@ public class GameControl : MonoBehaviour
     [Serializable]
     public class GeneralInfo
     {
+        public bool tutorial;
+        public bool firstTimeCoal;
+
         public int money;
         public int days, month, hour, minute;
         public bool night;
@@ -548,6 +555,8 @@ public class GameControl : MonoBehaviour
     [Serializable]
     public struct NodeInformation
     {
+
+
         public int idBuilding;
         public bool isUnlock;
         public bool haveWater;

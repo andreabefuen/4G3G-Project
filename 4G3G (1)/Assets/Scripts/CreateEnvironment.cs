@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CreateEnvironment : MonoBehaviour
 {
@@ -108,6 +109,10 @@ public class CreateEnvironment : MonoBehaviour
         }
         centerNode = matrixNodes[indexCenterRow, indexCenterColumn].nodeGameobject;
         centerNode.tag = "CityPlace";
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            BuildManager.instance.BuildCityHall(matrixNodes[indexCenterRow, indexCenterColumn].nodeGameobject.GetComponent<NodeTouch>());
+        }
 
         //matrixNodes[0, 0].nodeGameobject.SetActive(false);
 
@@ -117,7 +122,7 @@ public class CreateEnvironment : MonoBehaviour
         //SpawnCoalFactories();
 
         CreateStage();
-        if (GameControl.control.loaded && !GameControl.control.firstTimeCoal /*&& !GameControl.control.tutorial && !GameControl.control.firstTimeCoal*/)
+        if (GameControl.control.loaded /*&& !GameControl.control.firstTimeCoal /*&& !GameControl.control.tutorial && !GameControl.control.firstTimeCoal*/)
         {
             stageRows = GameControl.control.stageSizeX;
             stageColumns = GameControl.control.stageSizeY;
@@ -147,7 +152,6 @@ public class CreateEnvironment : MonoBehaviour
                 }
                 else if(aux[f, c].idBuilding == (int)idBuildings.cityhall)
                 {
-                    Debug.Log("absfsadfbahdsfhakdsghdkagbhdgs");
                     BuildManager.instance.BuildCityHall(matrixNodes[f, c].nodeGameobject.GetComponent<NodeTouch>());
                     
                 }
@@ -239,7 +243,7 @@ public class CreateEnvironment : MonoBehaviour
 
         
         
-        if (spawnThings)
+        if (spawnThings && GameControl.control.loaded == false)
         {
             numHouses += 10;
             SpawnHouses();

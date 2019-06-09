@@ -66,7 +66,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
-        GameControl.control.SaveGeneralInfo();
+     //   GameControl.control.SaveGeneralInfo();
         GameControl.control.Save();
         SceneManager.LoadScene("MainMenuScene");
     }
@@ -82,9 +82,9 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
-        GameControl.control.SaveGeneralInfo();
+        //GameControl.control.SaveGeneralInfo();
         GameControl.control.Save();
-        GameControl.control.LoadGeneralInfo();
+       // GameControl.control.LoadGeneralInfo();
 
         Invoke("TravelScene", 2f);
        // SceneManager.LoadScene("TravelScene");
@@ -96,7 +96,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
-
+        Debug.Log("Call the coal factory ");
         GameControl.control.LoadCoalIsland();
 
         Invoke("TravelCoal", 2f);
