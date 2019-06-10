@@ -19,7 +19,7 @@ public class SpawnEnergy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = GameObject.Find("TypesOfBuildings").GetComponent<InventoryBuilding>();
+        inventory = InventoryBuilding.inventory;
         timer = 0f;
         if(this.gameObject.tag == "Factory")
         {

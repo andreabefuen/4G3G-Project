@@ -455,16 +455,6 @@ MonoBehaviour:
     costOfDemolition: 0
     needWater: 0
     isWater: 0
-  infoPanel: {fileID: 721121625}
-  icon: {fileID: 1679930286}
-  titleText: {fileID: 1928497887}
-  descriptionText: {fileID: 1144775195}
-  moneyText: {fileID: 414741891}
-  happinessText: {fileID: 973499427}
-  energyText: {fileID: 429432080}
-  pollutionText: {fileID: 540141673}
-  costText: {fileID: 1480814751}
-  textLevel: {fileID: 716370423}
 --- !u!4 &85208408
 Transform:
   m_ObjectHideFlags: 0
@@ -2404,6 +2394,59 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1133084431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133084433}
+  - component: {fileID: 1133084432}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1133084432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133084431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be26db12a0364949a0cbaa6a59d3ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoPanel: {fileID: 721121625}
+  icon: {fileID: 1679930286}
+  titleText: {fileID: 1928497887}
+  descriptionText: {fileID: 1144775195}
+  moneyText: {fileID: 414741891}
+  happinessText: {fileID: 973499427}
+  energyText: {fileID: 429432080}
+  pollutionText: {fileID: 540141673}
+  costText: {fileID: 1480814751}
+  textLevel: {fileID: 716370423}
+--- !u!4 &1133084433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133084431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 524.6651, y: 52.816544, z: -4.0603766}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1144775195 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7512856090687426075, guid: bc7e86a8bc01d144996776af9bbbf509,
@@ -5189,7 +5232,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 85208407}
+      objectReference: {fileID: 1133084432}
+    - target: {fileID: 7512856090372363896, guid: bc7e86a8bc01d144996776af9bbbf509,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyButton
+      objectReference: {fileID: 0}
     - target: {fileID: 7512856091337648280, guid: bc7e86a8bc01d144996776af9bbbf509,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5279,7 +5327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 85208407}
+      objectReference: {fileID: 1133084432}
     - target: {fileID: 8028115726951216689, guid: bc7e86a8bc01d144996776af9bbbf509,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

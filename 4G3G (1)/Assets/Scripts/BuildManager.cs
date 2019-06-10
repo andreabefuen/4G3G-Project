@@ -331,7 +331,7 @@ public class BuildManager : MonoBehaviour
             buildPanel.SetActive(false);
         }
         uiAllQuests.SetActive(false);
-        inventoryBuilding.HideInfoPanel();
+        UIManager.instance.HideInfoPanel();
         HideInfoPanelBuildings();
         
     }
@@ -531,7 +531,8 @@ public class BuildManager : MonoBehaviour
     {
         HideEverything();
         infoBuildingPanel.SetActive(true);
-        inventoryBuilding.UpdateLevel(selectedNode.structureThere);
+        UIManager.instance.UpdateLevel(selectedNode.structureThere);
+        //inventoryBuilding.UpdateLevel(selectedNode.structureThere);
     }
     public void HideInfoPanelBuildings()
     {

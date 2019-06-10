@@ -20,6 +20,7 @@ public enum idBuildings
 public class InventoryBuilding : MonoBehaviour
 {
 
+    public static InventoryBuilding inventory;
 
     public List<StructureBlueprint> structures;
 
@@ -38,26 +39,27 @@ public class InventoryBuilding : MonoBehaviour
     //List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
 
-    public GameObject infoPanel;
-    public Image icon;
-    public TextMeshProUGUI titleText;
-    public Text descriptionText;
-    public TextMeshProUGUI moneyText, happinessText, energyText, pollutionText;
-    public Text costText;
 
-    [Header("Level of building")]
-    public TextMeshProUGUI textLevel;
+    void Awake()
+    {
 
-    BuildManager buildManager;
 
-    StructureBlueprint structureBuy;
-
+        if (inventory == null)
+        {
+            inventory = this;
+        }
+        else if (inventory != this)
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        buildManager = BuildManager.instance;
+       
 
-        /*windmillStructure.id = idBuildings.windmill;
+        windmillStructure.id = idBuildings.windmill;
         solarPanelStructure.id = idBuildings.solarpanel; 
 
         coalFactoryStructure.id = idBuildings.coalfactory; 
@@ -67,7 +69,7 @@ public class InventoryBuilding : MonoBehaviour
         statueOfLiberty.id = idBuildings.statueOfLiberty;
         shop.id = idBuildings.shop;
 
-        riverPart.id = idBuildings.river; */
+        riverPart.id = idBuildings.river; 
 
         //listOfBlueprints.Add(windmillStructure);
     }
@@ -90,7 +92,7 @@ public class InventoryBuilding : MonoBehaviour
 
         structureBuy = statueOfLiberty;
     }*/
-    public void SelectBuilding(string s)
+    /*public void SelectBuilding(string s)
     {
         switch (s)
         {
@@ -120,9 +122,9 @@ public class InventoryBuilding : MonoBehaviour
 
         }
        
-    }
+    }*/
 
-    public void ShowInfo(StructureBlueprint structure)
+   /* public void ShowInfo(StructureBlueprint structure)
     {
         buildManager.HideConstructionPanel();
 
@@ -140,11 +142,7 @@ public class InventoryBuilding : MonoBehaviour
 
         structureBuy = structure;
     }
-
-    public void UpdateLevel(StructureBlueprint structure)
-    {
-        textLevel.text = "Level: " + structure.levelBuilding;
-    }
+    */
     /*
     public void SelectShowInfoWindmill()
     {
@@ -268,23 +266,12 @@ public class InventoryBuilding : MonoBehaviour
     }
     */
 
-    public void ShowInfoRiver()
+   /* public void ShowInfoRiver()
     {
         buildManager.HideConstructionPanel();
       //  riverPart.informationPanel.SetActive(true);
-    }
+    }*/
 
-    public void HideInfoPanel()
-    {
-        infoPanel.SetActive(false);
-        structureBuy = null;
-    }
-
-    public void BuyButton()
-    {
-        buildManager.SelectStructureToBuild(structureBuy);
-        HideInfoPanel();
-    }
 
     // Update is called once per frame
     void Update()
