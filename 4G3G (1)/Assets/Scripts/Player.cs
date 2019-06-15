@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     public int totalCurrency;
 
     [Range(0, 100)]
@@ -48,6 +50,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
+
         moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
 
@@ -68,6 +73,7 @@ public class Player : MonoBehaviour
             totalEnergy = GameControl.control.energy;
             totalHappiness = GameControl.control.happiness;
             totalPollution = GameControl.control.pollution;
+            
 
             levelObject.maxValue = GameControl.control.maxEnergy;
             pollutionSlider.maxValue = GameControl.control.maxPollution;
@@ -92,6 +98,33 @@ public class Player : MonoBehaviour
         UpdateHappiness();
 
         
+
+
+        UpdateEnergy();
+        UpdatePollution();
+    }
+
+
+
+    public void ReloadPlayerInfo()
+    {
+        Debug.Log("ENTRAAAA ");
+        totalCurrency = GameControl.control.money;
+        totalEnergy = GameControl.control.energy;
+        totalHappiness = GameControl.control.happiness;
+        totalPollution = GameControl.control.pollution;
+
+
+        levelObject.maxValue = GameControl.control.maxEnergy;
+        pollutionSlider.maxValue = GameControl.control.maxPollution;
+
+        levelCity = GameControl.control.levelCity;
+
+        UpdateMoney();
+
+        UpdateHappiness();
+
+
 
 
         UpdateEnergy();
@@ -123,6 +156,7 @@ public class Player : MonoBehaviour
             if (totalEnergy >= levelObject.maxValue)
             {
                 createEnvironment.NextStage();
+                levelCity++;
                 levelText.text = levelCity.ToString();
                 levelObject.maxValue += 100;
                 levelObject.value = totalEnergy;

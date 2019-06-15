@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Level of building")]
     public TextMeshProUGUI textLevel;
+    public TextMeshProUGUI textPriceUpdate;
+    
+    
 
     BuildManager buildManager;
 
@@ -67,6 +70,9 @@ public class UIManager : MonoBehaviour
             case "shop":
                 ShowInfo(InventoryBuilding.inventory.shop);
                 break;
+            case "park":
+                ShowInfo(InventoryBuilding.inventory.park);
+                break;
             default:
                 break;
 
@@ -99,6 +105,11 @@ public class UIManager : MonoBehaviour
     public void UpdateLevel(StructureBlueprint structure)
     {
         textLevel.text = "Level: " + structure.levelBuilding;
+        UpdatePriceUpdateBuilding(structure);
+    }
+    public void UpdatePriceUpdateBuilding(StructureBlueprint structure)
+    {
+        textPriceUpdate.text = structure.costUpgrades[structure.levelBuilding-1].ToString();
     }
 
     public void HideInfoPanel()
@@ -111,4 +122,10 @@ public class UIManager : MonoBehaviour
         buildManager.SelectStructureToBuild(structureBuy);
         HideInfoPanel();
     }
+
+    public void Motherlode()
+    {
+        Player.instance.IncreaseMoney(50000);
+    }
+
 }

@@ -164,6 +164,7 @@ public class CreateEnvironment : MonoBehaviour
                 
             }
         }
+        Player.instance.ReloadPlayerInfo();
 
         //Invoke("EverythingLoaded", 3f);
         GameControl.control.loaded = false;

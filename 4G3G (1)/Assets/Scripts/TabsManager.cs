@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TabsManager : MonoBehaviour
 {
     //public Image lockImagen;
-
+    //COAL>GAS>WIND>SOLAR
     [Header("ResearchTab")]
     public GameObject coalBuyTab, windBuyTab, gasBuyTab, solarBuyTab;
     
@@ -38,8 +38,9 @@ public class TabsManager : MonoBehaviour
     public TextMeshProUGUI costBuildSolar;
 
 
-    [Header("Monuments")]
+    [Header("Monuments and other buildings")]
     public TextMeshProUGUI costMonumentLiberty;
+    public TextMeshProUGUI costPark;
 
 
     [Header("Tabs")]
@@ -88,6 +89,7 @@ public class TabsManager : MonoBehaviour
             UpdateTextCostBuildSolar(inventory.solarPanelStructure.cost);
 
             UpdateTextCostLiberty(inventory.statueOfLiberty.cost);
+            UpdateTextCostPark(inventory.park.cost);
         }
 
 
@@ -187,14 +189,18 @@ public class TabsManager : MonoBehaviour
     {
         costMonumentLiberty.text = "Cost: " + cost;
     }
+    void UpdateTextCostPark (int cost)
+    {
+        costPark.text = "Cost: " + cost;
+    }
 
     public void BuyResearchWindmill()
     {
-        if (inventory.windmillStructure.levelResearch >= 4)
+        if (CheckWindSuccess())
         {
 
             levelWind.text = "COMPLETED!";
-
+            UnlockWind();
             return;
         }
         if (player.totalCurrency >= inventory.windmillStructure.costResearches[inventory.windmillStructure.levelResearch])
@@ -213,6 +219,36 @@ public class TabsManager : MonoBehaviour
             player.NotEnoughMoneyPlay();
         }
     }
+    public void BuyResearchSolar()
+    {
+        if (CheckSolarSuccess())
+        {
+            levelSolar.text = "COMPLETED!";
+            UnlockSolar();
+            return;
+        }
+        if (player.totalCurrency >= inventory.solarPanelStructure.costResearches[inventory.solarPanelStructure.levelResearch])
+        {
+            Debug.Log("LEVEL WINDMILL:  " + inventory.solarPanelStructure.levelResearch);
+            player.DecreaseMoney(inventory.solarPanelStructure.costResearches[inventory.solarPanelStructure.levelResearch]);
+
+            inventory.solarPanelStructure.levelResearch++;
+
+            UpdateLevelResearchSolar(inventory.solarPanelStructure.levelResearch);
+            UpdateCostResearchSolar(inventory.solarPanelStructure.costResearches[inventory.solarPanelStructure.levelResearch - 1]);
+
+        }
+        else
+        {
+            player.NotEnoughMoneyPlay();
+        }
+    }
+
+    private void UpdateCostResearchSolar(int cost)
+    {
+        costSolar.text = "Cost: " + cost; ;
+    }
+
     void UnlockCoalFactory()
     {
         coalBuy.transform.Find("Lock").gameObject.SetActive(false);
@@ -221,6 +257,8 @@ public class TabsManager : MonoBehaviour
 
         //Unlock the next energy
         gasResearch.transform.Find("Lock").gameObject.SetActive(false);
+
+        
         
     }
 
@@ -231,7 +269,8 @@ public class TabsManager : MonoBehaviour
         gasBuyTab.transform.Find("Lock").gameObject.SetActive(false);
 
         //Unlock the next energy
-        solarResearch.transform.Find("Lock").gameObject.SetActive(false);
+        windResearch.transform.Find("Lock").gameObject.SetActive(false);
+        Debug.Log("Wind unlock");
     }
 
     void UnlockSolar()
@@ -241,7 +280,7 @@ public class TabsManager : MonoBehaviour
         solarBuyTab.transform.Find("Lock").gameObject.SetActive(false);
 
         //Unlock the next energy
-        windResearch.transform.Find("Lock").gameObject.SetActive(false);
+       // windResearch.transform.Find("Lock").gameObject.SetActive(false);
     }
 
     void UnlockWind()
@@ -249,6 +288,8 @@ public class TabsManager : MonoBehaviour
         windBuy.transform.Find("Lock").gameObject.SetActive(false);
         windBuy.GetComponent<Button>().interactable = true;
         windBuyTab.transform.Find("Lock").gameObject.SetActive(false);
+
+        solarResearch.transform.Find("Lock").gameObject.SetActive(false);
 
     }
 
@@ -259,6 +300,14 @@ public class TabsManager : MonoBehaviour
     bool CheckGasSuccess()
     {
         return inventory.gasExtractorStructure.levelResearch >= 4;
+    }
+    bool CheckWindSuccess()
+    {
+        return inventory.windmillStructure.levelResearch >= 4;
+    }
+    bool CheckSolarSuccess()
+    {
+        return inventory.solarPanelStructure.levelResearch >= 4;
     }
 
     void LockTabs()
@@ -280,6 +329,17 @@ public class TabsManager : MonoBehaviour
     {
         costCoal.text = "Cost: " + cost;
     }
+    
+    void UpdateLevelResearchSolar(int level)
+    {
+        levelSolar.text = "Research " + level-- + "/4";
+    }
+
+    void UpdateCosstResearchSolar ( int cost)
+    {
+        costSolar.text = "Cost: " + cost;
+    }
+
 
     void UpdateLevelResearchWindmill(int level)
     {

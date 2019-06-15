@@ -71,6 +71,14 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenuScene");
     }
 
+    public void LoadMenuTravelScene()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+
     public void QuitGame()
     {
         SoundManager.soundManager.PlayHitButton();

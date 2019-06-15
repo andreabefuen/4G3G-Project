@@ -319,6 +319,10 @@ public class BuildManager : MonoBehaviour
         {
             structureToBuild = inventoryBuilding.shop;
         }
+        else if(id == (int)idBuildings.park)
+        {
+            structureToBuild = inventoryBuilding.park;
+        }
 
     }
 
@@ -452,6 +456,22 @@ public class BuildManager : MonoBehaviour
                 //  player.IncreasePollution(-inventoryBuilding.gasExtractorStructure.amountOfPollution);
 
             }
+
+            else if(selectedNode.buildingThere.tag == "Park")
+            {
+                if (player.GetTotalMoney() < inventoryBuilding.park.costOfDemolition)
+                {
+                    Debug.Log("You can't demolish this building");
+                    //HideInfoPanel();
+                    HideEverything();
+                    NotDestroyThisBuilding();
+                    return;
+
+                }
+                player.IncreaseEnergy(-inventoryBuilding.park.amountOfEnergy);
+                player.DecreaseMoney(inventoryBuilding.park.costOfDemolition);
+
+            }
             selectedNode.nodeInfo.idBuilding = 0;
             selectedNode.structureThere = null;
             Destroy(selectedNode.buildingThere);
@@ -533,6 +553,26 @@ public class BuildManager : MonoBehaviour
         infoBuildingPanel.SetActive(true);
         UIManager.instance.UpdateLevel(selectedNode.structureThere);
         //inventoryBuilding.UpdateLevel(selectedNode.structureThere);
+    }
+
+    public void BuyUpgradeBuilding()
+    {
+        if(selectedNode.structureThere.levelBuilding >= 4)
+        {
+            //Completed
+            return;
+        }
+        if(player.totalCurrency >= selectedNode.structureThere.costUpgrades[selectedNode.structureThere.levelBuilding-1] )
+        {
+            player.DecreaseMoney(selectedNode.structureThere.costUpgrades[selectedNode.structureThere.levelBuilding-1]);
+            selectedNode.structureThere.levelBuilding++;
+            UIManager.instance.UpdateLevel(selectedNode.structureThere);
+
+        }
+        else
+        {
+            player.NotEnoughMoneyPlay();
+        }
     }
     public void HideInfoPanelBuildings()
     {

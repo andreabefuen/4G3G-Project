@@ -8,22 +8,22 @@ public class Tutorial : MonoBehaviour
 
     int cont = 0;
 
-    public void GoToNextIndicator()
+    public void GoToNextIndicator(int num)
     {
         
-        if (cont < allArrows.Length)
+        if (num < allArrows.Length)
         {
-            allArrows[cont].SetActive(false);
+            allArrows[num].SetActive(false);
 
-        
+            num++;
             cont++;
-            if(cont < allArrows.Length)
+            if(num < allArrows.Length)
             {
-                allArrows[cont].SetActive(true);
+                allArrows[num].SetActive(true);
 
             }
         }
-        if(cont == allArrows.Length)
+        if(num == allArrows.Length)
         {
             GameControl.control.tutorial = false;
             Destroy(this.gameObject);

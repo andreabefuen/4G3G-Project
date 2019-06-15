@@ -12,6 +12,7 @@ TagManager:
   - Solar
   - Gas
   - Environment
+  - Park
   layers:
   - Default
   - TransparentFX

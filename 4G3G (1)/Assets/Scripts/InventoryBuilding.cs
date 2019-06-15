@@ -14,7 +14,8 @@ public enum idBuildings
     river = 6,
     cityhall = 7,
     statueOfLiberty = 8,
-    shop = 9
+    shop = 9,
+    park = 10
 };
 
 public class InventoryBuilding : MonoBehaviour
@@ -35,6 +36,8 @@ public class InventoryBuilding : MonoBehaviour
 
     public StructureBlueprint riverPart;
     public StructureBlueprint shop;
+
+    public StructureBlueprint park;
 
     //List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
@@ -69,7 +72,9 @@ public class InventoryBuilding : MonoBehaviour
         statueOfLiberty.id = idBuildings.statueOfLiberty;
         shop.id = idBuildings.shop;
 
-        riverPart.id = idBuildings.river; 
+        riverPart.id = idBuildings.river;
+
+        park.id = idBuildings.park;
 
         //listOfBlueprints.Add(windmillStructure);
     }
