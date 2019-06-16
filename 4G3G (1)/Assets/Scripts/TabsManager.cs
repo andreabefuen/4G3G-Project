@@ -61,7 +61,6 @@ public class TabsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.SetActive(false);
         player = GameObject.Find("Player").GetComponent<Player>();
         inventory = InventoryBuilding.inventory;
 
@@ -77,6 +76,14 @@ public class TabsManager : MonoBehaviour
         
             UnlockGasFactory();
         }
+        if (CheckSolarSuccess())
+        {
+            UnlockSolar();
+        }
+        if (CheckWindSuccess())
+        {
+            UnlockWind();
+        }
         else
         {
             UpdateLevelResearchCoal(inventory.coalFactoryStructure.levelResearch);
@@ -91,6 +98,9 @@ public class TabsManager : MonoBehaviour
             UpdateTextCostLiberty(inventory.statueOfLiberty.cost);
             UpdateTextCostPark(inventory.park.cost);
         }
+
+        
+        this.gameObject.SetActive(false);
 
 
 
@@ -112,6 +122,8 @@ public class TabsManager : MonoBehaviour
             //Call the method for unlock the other panels
             //UnlockTabs();
             UnlockCoalFactory();
+            Player.instance.unlockCoal = true;
+            
             return;
         }
         if (player.totalCurrency >= inventory.coalFactoryStructure.costResearches[inventory.coalFactoryStructure.levelResearch])
@@ -137,6 +149,7 @@ public class TabsManager : MonoBehaviour
         {
             levelGas.text = "COMPLETED!";
             UnlockGasFactory();
+            Player.instance.unlockGas = true;
             return;
         }
         if (player.totalCurrency >= inventory.gasExtractorStructure.costResearches[inventory.gasExtractorStructure.levelResearch])
@@ -201,6 +214,7 @@ public class TabsManager : MonoBehaviour
 
             levelWind.text = "COMPLETED!";
             UnlockWind();
+            Player.instance.unlockWind = true;
             return;
         }
         if (player.totalCurrency >= inventory.windmillStructure.costResearches[inventory.windmillStructure.levelResearch])
@@ -225,6 +239,7 @@ public class TabsManager : MonoBehaviour
         {
             levelSolar.text = "COMPLETED!";
             UnlockSolar();
+            Player.instance.unlockSolar = true;
             return;
         }
         if (player.totalCurrency >= inventory.solarPanelStructure.costResearches[inventory.solarPanelStructure.levelResearch])

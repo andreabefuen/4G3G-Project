@@ -230,14 +230,14 @@ public class CreateEnvironment : MonoBehaviour
         {
             //Destroy(auxPlaneLimit);
             //auxPlaneLimit = Instantiate(planeLimit);
-            auxPlaneLimit.transform.position = new Vector3(0.5f, 0.1f, -0.8f);
+            auxPlaneLimit.transform.position = new Vector3(6.1f, 0.1f, -6.06f);
             
             auxPlaneLimit.transform.localScale += new Vector3(GameControl.control.sizeXPlane, 1, GameControl.control.sizeYPlane);
             return;
         }
         else
         {
-            auxPlaneLimit.transform.position = new Vector3(0.5f, 0.1f, -0.8f);
+            auxPlaneLimit.transform.position = new Vector3(6.1f, 0.1f, -6.06f);
             auxPlaneLimit.transform.localScale = new Vector3(auxSize / 12, 1, auxSize / 12);
         }
         

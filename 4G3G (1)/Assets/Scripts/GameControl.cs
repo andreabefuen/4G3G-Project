@@ -33,7 +33,10 @@ public class GameControl : MonoBehaviour
     public bool firstTimeCoal = true;
     public bool tutorial = true;
 
-    
+
+    public bool unlockIslandCoal, unlockIslandGas, unlockIslandWind, unlockIslandSolar;
+
+
 
     void Awake()
     {
@@ -77,11 +80,38 @@ public class GameControl : MonoBehaviour
         info.firstTimeCoal = firstTimeCoal;
         info.tutorial = tutorial;
 
+        info.unlockIslandCoal = player.unlockCoal;
+        info.unlockIslandGas = player.unlockGas;
+        info.unlockIslandSolar = player.unlockSolar;
+        info.unlockIslandWind = player.unlockWind;
+
+
+
         bf.Serialize(file, info);
         file.Close();
 
 
 
+    }
+
+    public void LoadUnlockIslandInfo()
+    {
+        if (File.Exists(Application.persistentDataPath + "/generalInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/generalInfo.dat", FileMode.Open);
+            GeneralInfo info = (GeneralInfo)bf.Deserialize(file);
+            file.Close();
+
+
+            unlockIslandCoal = info.unlockIslandCoal;
+            unlockIslandGas = info.unlockIslandGas;
+            unlockIslandSolar = info.unlockIslandSolar;
+            unlockIslandWind = info.unlockIslandWind;
+
+            //loaded = true;
+            Debug.Log("General info loaded ");
+        }
     }
 
     public void LoadGeneralInfo()
@@ -104,6 +134,11 @@ public class GameControl : MonoBehaviour
 
             tutorial = info.tutorial;
             firstTimeCoal = info.firstTimeCoal;
+
+            unlockIslandCoal = info.unlockIslandCoal;
+            unlockIslandGas = info.unlockIslandGas;
+            unlockIslandSolar = info.unlockIslandSolar;
+            unlockIslandWind = info.unlockIslandWind;
 
             //loaded = true;
             Debug.Log("General info loaded ");
@@ -421,11 +456,7 @@ public class GameControl : MonoBehaviour
     public void LoadCoalIsland()
     {
         LoadGeneralInfo();
-       /* if (firstTimeCoal)
-        {
-            loaded = true;
-            return;
-        }*/
+
         if (File.Exists(Application.persistentDataPath + "/coalIslandInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -435,7 +466,6 @@ public class GameControl : MonoBehaviour
 
             levelCity = data.levelCity;
 
-            // money = data.money;
             stageSizeX = data.stageSizeX;
             stageSizeY = data.stageSizeY;
             gridSizeX = data.gridSizeX;
@@ -452,15 +482,6 @@ public class GameControl : MonoBehaviour
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
 
-            // days = data.days;
-            // minute = data.minute;
-            // hour = data.hour;
-            // month = data.month;
-            // night = data.night;
-
-            //  Debug.Log(money);
-
-            //Llamar a la función que cree todo el environment con los datos guardados
             loaded = true;
 
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA COAL LOAD");
@@ -469,7 +490,7 @@ public class GameControl : MonoBehaviour
         else
         {
             Debug.Log("No se ha creado archivo de guardado");
-            //loaded = true;
+
         }
     }
 
@@ -518,19 +539,20 @@ public class GameControl : MonoBehaviour
         public int money;
         public int days, month, hour, minute;
         public bool night;
+
+        public bool unlockIslandCoal, unlockIslandGas, unlockIslandWind, unlockIslandSolar;
     }
 
 
     [Serializable]
     public class LevelData
     {
-        // public int[,] matrixOfNodes;
         public int levelCity;
         public int gridSizeX;
         public int gridSizeY;
         public int stageSizeX;
         public int stageSizeY;
-       // public int money;
+ 
         public int pollution;
         public int maxPollution;
         public int happiness;
@@ -541,8 +563,6 @@ public class GameControl : MonoBehaviour
         public float sizeXPlane;
         public float sizeYPlane;
 
-       // public int days, month, hour, minute;
-       // public bool night;
 
     }
 

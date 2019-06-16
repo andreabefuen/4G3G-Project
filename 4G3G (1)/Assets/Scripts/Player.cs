@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     public int totalCurrency;
 
+    public bool unlockCoal, unlockGas, unlockWind, unlockSolar;
+
     [Range(0, 100)]
     public int totalHappiness;
     [Range(0, 100)]
@@ -54,7 +56,11 @@ public class Player : MonoBehaviour
 
 
         moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
-        createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        if(GameObject.Find("GameManager") != null)
+        {
+            createEnvironment = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+
+        }
 
     }
 
@@ -65,6 +71,10 @@ public class Player : MonoBehaviour
         if (GameControl.control.firstTimeCoal)
         {
             totalCurrency = GameControl.control.money;
+            unlockCoal = GameControl.control.unlockIslandCoal;
+            unlockSolar = GameControl.control.unlockIslandSolar;
+            unlockGas = GameControl.control.unlockIslandGas;
+            unlockWind = GameControl.control.unlockIslandWind;
         }
        else if (GameControl.control.loaded && !GameControl.control.firstTimeCoal)
         {
@@ -110,6 +120,12 @@ public class Player : MonoBehaviour
     {
         Debug.Log("ENTRAAAA ");
         totalCurrency = GameControl.control.money;
+
+        unlockCoal = GameControl.control.unlockIslandCoal;
+        unlockSolar = GameControl.control.unlockIslandSolar;
+        unlockGas = GameControl.control.unlockIslandGas;
+        unlockWind = GameControl.control.unlockIslandWind;
+
         totalEnergy = GameControl.control.energy;
         totalHappiness = GameControl.control.happiness;
         totalPollution = GameControl.control.pollution;

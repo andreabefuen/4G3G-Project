@@ -92,7 +92,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         //GameControl.control.SaveGeneralInfo();
         GameControl.control.Save();
-       // GameControl.control.LoadGeneralInfo();
+        GameControl.control.LoadGeneralInfo();
 
         Invoke("TravelScene", 2f);
        // SceneManager.LoadScene("TravelScene");
