@@ -73,6 +73,15 @@ public class UIManager : MonoBehaviour
             case "park":
                 ShowInfo(InventoryBuilding.inventory.park);
                 break;
+            case "eiffle":
+                ShowInfo(InventoryBuilding.inventory.eiffleTower);
+                break;
+            case "wheel":
+                ShowInfo(InventoryBuilding.inventory.ferrisWheel);
+                break;
+            case "pisa":
+                ShowInfo(InventoryBuilding.inventory.pisaTower);
+                break;
             default:
                 break;
 

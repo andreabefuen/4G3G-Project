@@ -237,7 +237,7 @@ public class BuildManager : MonoBehaviour
                 }
 
                 //If in the node are something
-                if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall")
+                if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall" && node.buildingThere.tag != "Monuments")
                 {
                     selectedNode = node;
                 //infoPanel.SetActive(true);
@@ -322,6 +322,18 @@ public class BuildManager : MonoBehaviour
         else if(id == (int)idBuildings.park)
         {
             structureToBuild = inventoryBuilding.park;
+        }
+        else if(id == (int)idBuildings.eiffle)
+        {
+            structureToBuild = inventoryBuilding.eiffleTower;
+        }
+        else if(id == (int)idBuildings.wheel)
+        {
+            structureToBuild = inventoryBuilding.ferrisWheel;
+        }
+        else if(id == (int)idBuildings.pisaTower)
+        {
+            structureToBuild = inventoryBuilding.pisaTower;
         }
 
     }

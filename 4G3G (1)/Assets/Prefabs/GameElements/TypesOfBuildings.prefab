@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4650801860102492578}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -46,7 +46,8 @@ MonoBehaviour:
   structures: []
   windmillStructure:
     title: Wind Turbine
-    description: Esto es un windmill yes
+    description: By placing wind turbines you are barely adding to the pollution due
+      to the low amounts of C02 they release
     icon: {fileID: 21300000, guid: 4947386aa09c739419144daca3a77999, type: 3}
     id: 1
     prefab: {fileID: 2045035973555702413, guid: 52e714e69afcc2b4490531e39941be5b,
@@ -54,7 +55,7 @@ MonoBehaviour:
     levelBuilding: 1
     levelResearch: 0
     costResearches: 10270000e02e0000983a000068420000
-    costUpgrades: e8030000d0070000b80b0000a00f0000
+    costUpgrades: 8813000010270000e02e0000983a0000
     cost: 30000
     nodeAsociate: {fileID: 0}
     timeMoney: 30
@@ -67,8 +68,8 @@ MonoBehaviour:
     isWater: 0
   solarPanelStructure:
     title: Solar Panel
-    description: By placing wind turbines you are barely adding to the pollution due
-      to the low amounts of C02 they release
+    description: Placing solar panels gives you the most energy, money per tap and
+      happiness due to their efficiency and low maintenance
     icon: {fileID: 21300002, guid: 4947386aa09c739419144daca3a77999, type: 3}
     id: 2
     prefab: {fileID: 4348625375440608773, guid: b149acafc0064cb4790bb2c8d6a0c401,
@@ -76,7 +77,7 @@ MonoBehaviour:
     levelBuilding: 1
     levelResearch: 0
     costResearches: e02e0000983a000068420000204e0000
-    costUpgrades: 00000000000000000000000000000000
+    costUpgrades: 70170000e02e0000983a000068420000
     cost: 35000
     nodeAsociate: {fileID: 0}
     timeMoney: 30
@@ -89,7 +90,8 @@ MonoBehaviour:
     isWater: 0
   coalFactoryStructure:
     title: Coal Factory
-    description: This is a coal factory
+    description: Pollution raises the most when placing coal factories due to the
+      amount of C02 that is released
     icon: {fileID: 21300006, guid: 4947386aa09c739419144daca3a77999, type: 3}
     id: 3
     prefab: {fileID: 5698977550723012357, guid: 2adcf7ba7ddfa894598a2f55748e4b19,
@@ -97,7 +99,7 @@ MonoBehaviour:
     levelBuilding: 1
     levelResearch: 0
     costResearches: 88130000581b000010270000e02e0000
-    costUpgrades: 64000000c80000002c01000090010000
+    costUpgrades: c409000088130000581b000010270000
     cost: 20000
     nodeAsociate: {fileID: 0}
     timeMoney: 30
@@ -110,7 +112,8 @@ MonoBehaviour:
     isWater: 0
   gasExtractorStructure:
     title: Gas Extractor
-    description: This is the gas extractor
+    description: Happiness decreases the most when gas extraction sites are placed
+      due to the problems linked to fracking
     icon: {fileID: 21300008, guid: 4947386aa09c739419144daca3a77999, type: 3}
     id: 4
     prefab: {fileID: 3447666553660056961, guid: 80273d4714528f64787ce2cc746cf478,
@@ -118,7 +121,7 @@ MonoBehaviour:
     levelBuilding: 1
     levelResearch: 0
     costResearches: 581b000010270000e02e0000983a0000
-    costUpgrades: 00000000000000000000000000000000
+    costUpgrades: ac0d0000581b000010270000e02e0000
     cost: 25000
     nodeAsociate: {fileID: 0}
     timeMoney: 30
@@ -131,7 +134,7 @@ MonoBehaviour:
     isWater: 0
   statueOfLiberty:
     title: Statue Of Liberty
-    description: Increase the happiness
+    description: Make your city beautiful!
     icon: {fileID: 21300000, guid: 385b2514797c03e4b93b32a5f2e62be2, type: 3}
     id: 8
     prefab: {fileID: 7288756695216344268, guid: 0339aed1d2e1ea04ba81b5da78d4b3e1,
@@ -173,7 +176,7 @@ MonoBehaviour:
     isWater: 1
   shop:
     title: Shop
-    description: Welcome to the candy shop 50 cent
+    description: Make your people happier by adding a candy shop
     icon: {fileID: 21300000, guid: 20d2271948c4dcd4fbd7b99fd487b9c1, type: 3}
     id: 9
     prefab: {fileID: 7474930871458820945, guid: b34ddfac73cd828418d600a211bdb360,
@@ -182,19 +185,19 @@ MonoBehaviour:
     levelResearch: 0
     costResearches: 00000000000000000000000000000000
     costUpgrades: 00000000000000000000000000000000
-    cost: 3000
+    cost: 20000
     nodeAsociate: {fileID: 0}
     timeMoney: 0
     moneyPerTap: 0
     amountOfEnergy: 0
-    amountOfHappiness: 0
+    amountOfHappiness: 2
     amountOfPollution: 0
     costOfDemolition: 0
     needWater: 0
     isWater: 0
   park:
     title: Park
-    description: Increase the happiness of the city and decrease the pollution
+    description: Decrease the pollution by placing a park!
     icon: {fileID: 21300000, guid: a2d560e14e0acb341be07843bcb73976, type: 3}
     id: 10
     prefab: {fileID: 6650221547954864218, guid: b7c49f5ef1730b54db542fbaad2e9f41,
@@ -208,8 +211,71 @@ MonoBehaviour:
     timeMoney: 0
     moneyPerTap: 0
     amountOfEnergy: 0
-    amountOfHappiness: 10
-    amountOfPollution: -6
+    amountOfHappiness: 2
+    amountOfPollution: -2
     costOfDemolition: 500
+    needWater: 0
+    isWater: 0
+  ferrisWheel:
+    title: Ferris Wheel
+    description: Makes the people happier!
+    icon: {fileID: 21300000, guid: 82fe65ee48256af4ea599f6c438056e8, type: 3}
+    id: 11
+    prefab: {fileID: 7897807020798965335, guid: ef1cc7cf78309c043ad26bc598c40fb6,
+      type: 3}
+    levelBuilding: 1
+    levelResearch: 1
+    costResearches: 00000000000000000000000000000000
+    costUpgrades: 00000000000000000000000000000000
+    cost: 200000
+    nodeAsociate: {fileID: 0}
+    timeMoney: 0
+    moneyPerTap: 0
+    amountOfEnergy: 0
+    amountOfHappiness: 20
+    amountOfPollution: 1
+    costOfDemolition: 500
+    needWater: 0
+    isWater: 0
+  eiffleTower:
+    title: Eiffle Tower
+    description: 
+    icon: {fileID: 21300000, guid: c8e1f7bb8936755418e22f4da00502c0, type: 3}
+    id: 12
+    prefab: {fileID: 4765913945085580987, guid: a4300d0ce4df5d04ba9cc9d7b77fb445,
+      type: 3}
+    levelBuilding: 1
+    levelResearch: 1
+    costResearches: 00000000000000000000000000000000
+    costUpgrades: 00000000000000000000000000000000
+    cost: 0
+    nodeAsociate: {fileID: 0}
+    timeMoney: 0
+    moneyPerTap: 0
+    amountOfEnergy: 0
+    amountOfHappiness: 0
+    amountOfPollution: 0
+    costOfDemolition: 0
+    needWater: 0
+    isWater: 0
+  pisaTower:
+    title: Pisa
+    description: 
+    icon: {fileID: 21300000, guid: ebe2cd8e4e50e8e4099c7fb785f5bc0e, type: 3}
+    id: 13
+    prefab: {fileID: 1149163928904994202, guid: 6401de48bc8046f4184f94371e218178,
+      type: 3}
+    levelBuilding: 1
+    levelResearch: 1
+    costResearches: 00000000000000000000000000000000
+    costUpgrades: 00000000000000000000000000000000
+    cost: 200000
+    nodeAsociate: {fileID: 0}
+    timeMoney: 0
+    moneyPerTap: 0
+    amountOfEnergy: 0
+    amountOfHappiness: 0
+    amountOfPollution: 0
+    costOfDemolition: 0
     needWater: 0
     isWater: 0

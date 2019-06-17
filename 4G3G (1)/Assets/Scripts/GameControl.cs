@@ -145,6 +145,120 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    public void LoadWindIsland()
+    {
+        LoadGeneralInfo();
+
+        if (File.Exists(Application.persistentDataPath + "/windIslandInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/windIslandInfo.dat", FileMode.Open);
+            LevelData data = (LevelData)bf.Deserialize(file);
+            file.Close();
+
+            levelCity = data.levelCity;
+
+            stageSizeX = data.stageSizeX;
+            stageSizeY = data.stageSizeY;
+            gridSizeX = data.gridSizeX;
+            gridSizeY = data.gridSizeY;
+
+            pollution = data.pollution;
+            happiness = data.happiness;
+            energy = data.energy;
+            maxPollution = data.maxPollution;
+            maxEnergy = data.maxEnergy;
+
+            information = data.information;
+
+            sizeXPlane = data.sizeXPlane;
+            sizeYPlane = data.sizeYPlane;
+
+            loaded = true;
+
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA GAS LOAD");
+
+        }
+        else
+        {
+            Debug.Log("No se ha creado archivo de guardado");
+
+        }
+    }
+
+    public void SaveWindIsland()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file;
+        file = File.Create(Application.persistentDataPath + "/windIslandInfo.dat");
+
+        LevelData data = new LevelData();
+
+
+        CreateEnvironment ce = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        WeatherController weather = GameObject.Find("GameManager").GetComponent<WeatherController>();
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+
+        stageSizeX = ce.GetStageX();
+        stageSizeY = ce.GetStageY();
+        data.stageSizeX = stageSizeX;
+        data.stageSizeY = stageSizeY;
+        gridSizeX = ce.GetRows();
+        gridSizeY = ce.GetColumns();
+        data.gridSizeX = gridSizeX;
+        data.gridSizeY = gridSizeY;
+
+        data.levelCity = player.levelCity;
+
+        data.sizeXPlane = ce.planeLimit.transform.localScale.x;
+        data.sizeYPlane = ce.planeLimit.transform.localScale.z;
+
+        data.energy = player.totalEnergy;
+        data.maxEnergy = (int)player.levelObject.maxValue;
+
+        data.pollution = player.totalPollution;
+        data.maxPollution = (int)player.pollutionSlider.maxValue;
+        data.happiness = player.totalHappiness;
+
+
+        Node[,] aux = ce.GetMatrixNode();
+
+        information = new NodeInformation[gridSizeX, gridSizeY];
+
+        for (int f = 1; f < gridSizeX; f++)
+        {
+            for (int c = 1; c < gridSizeY; c++)
+            {
+                if (aux[f, c].idBuilding == 0)
+                {
+                    information[f, c].isUnlock = false;
+                    information[f, c].haveWater = false;
+                    information[f, c].idBuilding = 0;
+                    //continue;
+                }
+                else
+                {
+                    information[f, c].idBuilding = aux[f, c].idBuilding;
+                    information[f, c].isUnlock = true;
+                    information[f, c].haveWater = false;
+                }
+            }
+        }
+
+        data.information = information;
+        // data.money = GameObject.Find("Player").GetComponent<Player>().totalCurrency;
+
+        if (information.Length != 0)
+        {
+            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        }
+
+        bf.Serialize(file, data);
+        file.Close();
+
+        Debug.Log("Se ha creado archivo de guardado");
+    }
+
     public void SaveMainIsland()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -306,6 +420,80 @@ public class GameControl : MonoBehaviour
         Debug.Log("Se ha creado archivo de guardado");
 
     }
+
+    public void SaveGasIsland()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file;
+        file = File.Create(Application.persistentDataPath + "/gasIslandInfo.dat");
+
+        LevelData data = new LevelData();
+
+
+        CreateEnvironment ce = GameObject.Find("GameManager").GetComponent<CreateEnvironment>();
+        WeatherController weather = GameObject.Find("GameManager").GetComponent<WeatherController>();
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+
+        stageSizeX = ce.GetStageX();
+        stageSizeY = ce.GetStageY();
+        data.stageSizeX = stageSizeX;
+        data.stageSizeY = stageSizeY;
+        gridSizeX = ce.GetRows();
+        gridSizeY = ce.GetColumns();
+        data.gridSizeX = gridSizeX;
+        data.gridSizeY = gridSizeY;
+
+        data.levelCity = player.levelCity;
+
+        data.sizeXPlane = ce.planeLimit.transform.localScale.x;
+        data.sizeYPlane = ce.planeLimit.transform.localScale.z;
+
+        data.energy = player.totalEnergy;
+        data.maxEnergy = (int)player.levelObject.maxValue;
+
+        data.pollution = player.totalPollution;
+        data.maxPollution = (int)player.pollutionSlider.maxValue;
+        data.happiness = player.totalHappiness;
+
+
+        Node[,] aux = ce.GetMatrixNode();
+
+        information = new NodeInformation[gridSizeX, gridSizeY];
+
+        for (int f = 1; f < gridSizeX; f++)
+        {
+            for (int c = 1; c < gridSizeY; c++)
+            {
+                if (aux[f, c].idBuilding == 0)
+                {
+                    information[f, c].isUnlock = false;
+                    information[f, c].haveWater = false;
+                    information[f, c].idBuilding = 0;
+                    //continue;
+                }
+                else
+                {
+                    information[f, c].idBuilding = aux[f, c].idBuilding;
+                    information[f, c].isUnlock = true;
+                    information[f, c].haveWater = false;
+                }
+            }
+        }
+
+        data.information = information;
+        // data.money = GameObject.Find("Player").GetComponent<Player>().totalCurrency;
+
+        if (information.Length != 0)
+        {
+            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        }
+
+        bf.Serialize(file, data);
+        file.Close();
+
+        Debug.Log("Se ha creado archivo de guardado");
+    }
+
     public void Save()
     {
         SaveGeneralInfo();
@@ -317,11 +505,24 @@ public class GameControl : MonoBehaviour
             firstTimeCoal = false;
     
         }
+        else if (SceneManager.GetActiveScene().name == "GasIsland")
+        {
+            file = File.Create(Application.persistentDataPath + "/gasIslandInfo.dat");
+        }
+        else if(SceneManager.GetActiveScene().name == "SolarIsland")
+        {
+            file = File.Create(Application.persistentDataPath + "/solarIslandInfo.dat");
+        }
+        else if (SceneManager.GetActiveScene().name == "WindIsland")
+        {
+            file = File.Create(Application.persistentDataPath + "/windIslandInfo.dat");
+        }
         else if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             file = File.Create(Application.persistentDataPath + "/mainIslandInfo.dat");
 
         }
+ 
         else
         {
             Debug.Log("Ni uno ni otro");
@@ -402,6 +603,47 @@ public class GameControl : MonoBehaviour
         Debug.Log("Se ha creado archivo de guardado");
     }
 
+    public void LoadGasIsland()
+    {
+        LoadGeneralInfo();
+
+        if (File.Exists(Application.persistentDataPath + "/gasIslandInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gasIslandInfo.dat", FileMode.Open);
+            LevelData data = (LevelData)bf.Deserialize(file);
+            file.Close();
+
+            levelCity = data.levelCity;
+
+            stageSizeX = data.stageSizeX;
+            stageSizeY = data.stageSizeY;
+            gridSizeX = data.gridSizeX;
+            gridSizeY = data.gridSizeY;
+
+            pollution = data.pollution;
+            happiness = data.happiness;
+            energy = data.energy;
+            maxPollution = data.maxPollution;
+            maxEnergy = data.maxEnergy;
+
+            information = data.information;
+
+            sizeXPlane = data.sizeXPlane;
+            sizeYPlane = data.sizeYPlane;
+
+            loaded = true;
+
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA GAS LOAD");
+
+        }
+        else
+        {
+            Debug.Log("No se ha creado archivo de guardado");
+
+        }
+    }
+
     public void LoadMainIsland()
     {
         LoadGeneralInfo();
@@ -450,6 +692,86 @@ public class GameControl : MonoBehaviour
         else
         {
             Debug.Log("Not loading the main island NOT");
+        }
+    }
+    public void LoadSolarIsland()
+    {
+        LoadGeneralInfo();
+
+        if (File.Exists(Application.persistentDataPath + "/solarIslandInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/solarIslandInfo.dat", FileMode.Open);
+            LevelData data = (LevelData)bf.Deserialize(file);
+            file.Close();
+
+            levelCity = data.levelCity;
+
+            stageSizeX = data.stageSizeX;
+            stageSizeY = data.stageSizeY;
+            gridSizeX = data.gridSizeX;
+            gridSizeY = data.gridSizeY;
+
+            pollution = data.pollution;
+            happiness = data.happiness;
+            energy = data.energy;
+            maxPollution = data.maxPollution;
+            maxEnergy = data.maxEnergy;
+
+            information = data.information;
+
+            sizeXPlane = data.sizeXPlane;
+            sizeYPlane = data.sizeYPlane;
+
+            loaded = true;
+
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA COAL LOAD");
+
+        }
+        else
+        {
+            Debug.Log("No se ha creado archivo de guardado");
+
+        }
+    }
+    public void LaodWindIsland()
+    {
+        LoadGeneralInfo();
+
+        if (File.Exists(Application.persistentDataPath + "/windIslandInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/windIslandInfo.dat", FileMode.Open);
+            LevelData data = (LevelData)bf.Deserialize(file);
+            file.Close();
+
+            levelCity = data.levelCity;
+
+            stageSizeX = data.stageSizeX;
+            stageSizeY = data.stageSizeY;
+            gridSizeX = data.gridSizeX;
+            gridSizeY = data.gridSizeY;
+
+            pollution = data.pollution;
+            happiness = data.happiness;
+            energy = data.energy;
+            maxPollution = data.maxPollution;
+            maxEnergy = data.maxEnergy;
+
+            information = data.information;
+
+            sizeXPlane = data.sizeXPlane;
+            sizeYPlane = data.sizeYPlane;
+
+            loaded = true;
+
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA COAL LOAD");
+
+        }
+        else
+        {
+            Debug.Log("No se ha creado archivo de guardado");
+
         }
     }
 
@@ -517,6 +839,28 @@ public class GameControl : MonoBehaviour
             Debug.Log("Deleted save file");
 
         }
+    
+        if (File.Exists(Application.persistentDataPath + "/windIslandInfo.dat"))
+        {
+
+            File.Delete(Application.persistentDataPath + "/windIslandInfo.dat");
+            Debug.Log("Deleted save file");
+
+        }
+        if (File.Exists(Application.persistentDataPath + "/gasIslandInfo.dat"))
+        {
+
+            File.Delete(Application.persistentDataPath + "/gasIslandInfo.dat");
+            Debug.Log("Deleted save file");
+
+        }
+        if (File.Exists(Application.persistentDataPath + "/solarIslandInfo.dat"))
+        {
+
+            File.Delete(Application.persistentDataPath + "/solarIslandInfo.dat");
+            Debug.Log("Deleted save file");
+        }
+
     }
 
     // Start is called before the first frame update

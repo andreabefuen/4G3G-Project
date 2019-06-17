@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TravelScene.unity
     guid: b8cf32a66b2002140949ffd2745cb154
+  - enabled: 1
+    path: Assets/Scenes/GasIsland.unity
+    guid: 5dc81b0f0ef83bd46ac277495082ecfa
+  - enabled: 1
+    path: Assets/Scenes/SolarIsland.unity
+    guid: 12f082be9da45a94d8289068c9e7f931
+  - enabled: 1
+    path: Assets/Scenes/WindIsland.unity
+    guid: b69e14022818e404cb4fb86c0233a3b7
   m_configObjects: {}

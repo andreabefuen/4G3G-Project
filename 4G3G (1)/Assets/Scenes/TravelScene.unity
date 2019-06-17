@@ -575,7 +575,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 162698913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6423938882877038861}
+        m_MethodName: GoToGasIsland
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &162698913
@@ -1180,6 +1191,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 30.875
       objectReference: {fileID: 0}
+    - target: {fileID: 526310669, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.79999
+      objectReference: {fileID: 0}
+    - target: {fileID: 440366449283555922, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -27.099854
+      objectReference: {fileID: 0}
     - target: {fileID: 516399341894724165, guid: e69351e5eedb6fe4592fadbe2eab2206,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1189,15 +1209,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -39.19995
-      objectReference: {fileID: 0}
-    - target: {fileID: 440366449283555922, guid: e69351e5eedb6fe4592fadbe2eab2206,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -27.099854
-      objectReference: {fileID: 0}
-    - target: {fileID: 526310669, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -22.79999
       objectReference: {fileID: 0}
     - target: {fileID: 516399343158867195, guid: e69351e5eedb6fe4592fadbe2eab2206,
         type: 3}
@@ -1568,7 +1579,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 554007795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6423938882877038861}
+        m_MethodName: GoToWindIsland
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &554007795
@@ -3054,7 +3076,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1078678433}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6423938882877038861}
+        m_MethodName: GoToSolarIsland
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1078678433
@@ -3112,11 +3145,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4861924686910468554, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48efc45c541585143a719cb936216668, type: 2}
     - target: {fileID: -4216859302048453862, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3172,6 +3200,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4861924686910468554, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48efc45c541585143a719cb936216668, type: 2}
     - target: {fileID: 856365191234717131, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3927,11 +3960,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island6_Model (1)
       objectReference: {fileID: 0}
-    - target: {fileID: -4861924686910468554, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d3e6d0395bcd0ed42b0d3073d7aa040b, type: 2}
     - target: {fileID: -4216859302048453862, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3982,6 +4010,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -4861924686910468554, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3e6d0395bcd0ed42b0d3073d7aa040b, type: 2}
     - target: {fileID: 856365191234717131, guid: 1bc54da0ba0d4e848aeccdcf48d9488c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4708,16 +4741,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 856365191234717131, guid: 8204c03ca5e3ab14da453762e14d885f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ea8ccb83444e1ed468b70ed295b5f732, type: 2}
     - target: {fileID: -4861924686910468554, guid: 8204c03ca5e3ab14da453762e14d885f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bbb029d89cc942b48a82d263c7da02af, type: 2}
+    - target: {fileID: 856365191234717131, guid: 8204c03ca5e3ab14da453762e14d885f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea8ccb83444e1ed468b70ed295b5f732, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8204c03ca5e3ab14da453762e14d885f, type: 3}
 --- !u!1 &1943881270
@@ -5270,6 +5303,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58b12ca18b23cc4c9e1d4f2bf8fa7dc, type: 3}
+--- !u!114 &6423938882877038861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6046105452130963414, guid: b58b12ca18b23cc4c9e1d4f2bf8fa7dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 6423938882877038860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0592ebb490a02e4f81ca5359e94a3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6577134829321300792
 PrefabInstance:
   m_ObjectHideFlags: 0

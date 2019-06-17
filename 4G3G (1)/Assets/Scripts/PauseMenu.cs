@@ -100,6 +100,16 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    public void GoToGasIsland()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Debug.Log("Call the gas island");
+        GameControl.control.LoadGasIsland();
+        SceneManager.LoadScene("GasIsland");
+
+    }
+
     public void GoToCoalFactory()
     {
         Time.timeScale = 1f;
@@ -113,6 +123,24 @@ public class PauseMenu : MonoBehaviour
        // SceneManager.LoadScene("CoalIsland");
 
 
+    }
+
+    public void GoToSolarIsland()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Debug.Log("Call the solar island");
+        GameControl.control.LoadSolarIsland();
+        SceneManager.LoadScene("SolarIsland");
+    }
+
+    public void GoToWindIsland()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Debug.Log("Call the wind island");
+        GameControl.control.LoadWindIsland();
+        SceneManager.LoadScene("WindIsland");
     }
 
     public void GoToMainIsland()

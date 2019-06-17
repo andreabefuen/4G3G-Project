@@ -13,6 +13,7 @@ TagManager:
   - Gas
   - Environment
   - Park
+  - Monuments
   layers:
   - Default
   - TransparentFX

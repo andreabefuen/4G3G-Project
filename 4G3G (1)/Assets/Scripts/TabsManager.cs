@@ -41,6 +41,9 @@ public class TabsManager : MonoBehaviour
     [Header("Monuments and other buildings")]
     public TextMeshProUGUI costMonumentLiberty;
     public TextMeshProUGUI costPark;
+    public TextMeshProUGUI costEiffle;
+    public TextMeshProUGUI costWheel;
+    public TextMeshProUGUI costPisa;
 
 
     [Header("Tabs")]
@@ -97,6 +100,10 @@ public class TabsManager : MonoBehaviour
 
             UpdateTextCostLiberty(inventory.statueOfLiberty.cost);
             UpdateTextCostPark(inventory.park.cost);
+
+            UpdateTextCostPisa(inventory.pisaTower.cost);
+            UpdateTextCostWheel(inventory.ferrisWheel.cost);
+            UpdateTextCostEiffle(inventory.eiffleTower.cost);
         }
 
         
@@ -205,6 +212,21 @@ public class TabsManager : MonoBehaviour
     void UpdateTextCostPark (int cost)
     {
         costPark.text = "Cost: " + cost;
+    }
+
+    void UpdateTextCostEiffle(int cost)
+    {
+        costEiffle.text = "Cost: " + cost;
+    }
+
+    void UpdateTextCostWheel(int cost)
+    {
+        costWheel.text = "Cost: " + cost;
+    }
+
+    void UpdateTextCostPisa(int cost)
+    {
+        costPisa.text = "Cost: " + cost;
     }
 
     public void BuyResearchWindmill()
