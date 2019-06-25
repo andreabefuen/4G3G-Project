@@ -259,6 +259,12 @@ public class Player : MonoBehaviour
     public void IncreaseHappiness(int amount)
     {
         totalHappiness += amount;
+
+        if (activeQuest.Count != 0)
+        {
+            activeQuest[0].goal.IncreaseHappiness(amount);
+        }
+
         UpdateHappiness();
 
     }

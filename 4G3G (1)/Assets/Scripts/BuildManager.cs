@@ -120,8 +120,14 @@ public class BuildManager : MonoBehaviour
         player.IncreaseHappiness(structureToBuild.amountOfHappiness);
         player.IncreasePollution(structureToBuild.amountOfPollution);
         player.IncreaseEnergy(structureToBuild.amountOfEnergy);
-       
-        
+
+        if(player.activeQuest.Count != 0)
+        {
+            player.activeQuest[0].goal.BuildGoal(structureToBuild);
+
+        }
+
+
 
         GameObject structure = (GameObject)Instantiate(structureToBuild.prefab, node.GetBuildPosition(), structureToBuild.prefab.transform.rotation);
         

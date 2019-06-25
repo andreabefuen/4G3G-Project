@@ -6651,7 +6651,7 @@ MonoBehaviour:
       goalType: 2
       requiredElements: 50000
       currentElements: 0
-  - levelCity: 1
+  - levelCity: 0
     isActive: 0
     isOnTheList: 0
     done: 0
@@ -6661,6 +6661,61 @@ MonoBehaviour:
     goal:
       goalType: 2
       requiredElements: 100000
+      currentElements: 0
+  - levelCity: 0
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: 'It''s the final quest! '
+    description: Reach more than 1 bolt and give us a good feedback :)
+    moneyReward: 100000
+    goal:
+      goalType: 2
+      requiredElements: 1
+      currentElements: 0
+  - levelCity: 1
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: 'It''s the final quest! '
+    description: Reach more than 1 bolt and give us a good feedback :)
+    moneyReward: 100000
+    goal:
+      goalType: 2
+      requiredElements: 1
+      currentElements: 0
+  - levelCity: 1
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: 'It''s the final quest! '
+    description: Reach more than 1 bolt and give us a good feedback :)
+    moneyReward: 100000
+    goal:
+      goalType: 2
+      requiredElements: 1
+      currentElements: 0
+  - levelCity: 1
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: 'It''s the final quest! '
+    description: Reach more than 1 bolt and give us a good feedback :)
+    moneyReward: 100000
+    goal:
+      goalType: 2
+      requiredElements: 1
+      currentElements: 0
+  - levelCity: 1
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: 'It''s the final quest! '
+    description: Reach more than 1 bolt and give us a good feedback :)
+    moneyReward: 100000
+    goal:
+      goalType: 2
+      requiredElements: 1
       currentElements: 0
   - levelCity: 1
     isActive: 0
@@ -10796,6 +10851,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 516399342244901718, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 516399341711883194, guid: e69351e5eedb6fe4592fadbe2eab2206,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11783,6 +11843,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.341668
       objectReference: {fileID: 0}
+    - target: {fileID: 3944024598090702410, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 391495116, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -11819,6 +11884,21 @@ PrefabInstance:
       propertyPath: m_Animation
       value: 
       objectReference: {fileID: 7400000, guid: fa38871cba2e5f54c83f45a014b8eedf, type: 2}
+    - target: {fileID: 516399341378524143, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 516399342082018595, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 516399342082018595, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
 --- !u!114 &3429916660772851406 stripped

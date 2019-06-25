@@ -17,11 +17,32 @@ public class QuestGoal
         return (currentElements >= requiredElements);
     }
     
-    public void BuildWindmillGoal()
+    public void BuildGoal(StructureBlueprint structure)
     {
-        if (goalType == GoalType.BuildWindmill)
+        if (goalType == GoalType.BuildWindmill && structure.id == idBuildings.windmill)
         {
             currentElements++;
+        }
+        else if (goalType == GoalType.BuildSolarpanel && structure.id == idBuildings.solarpanel)
+        {
+            currentElements++;
+        }
+        else
+        {
+            Debug.Log("No solar or wind energy goal");
+        }
+
+    }
+  
+    public void IncreaseHappiness(int earnHappiness)
+    {
+        if(goalType == GoalType.Happiness)
+        {
+            currentElements += earnHappiness;
+        }
+        else
+        {
+            Debug.Log("The goal is not happiness");
         }
     }
 

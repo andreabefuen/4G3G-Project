@@ -14,7 +14,7 @@ public class ActiveQuest : MonoBehaviour
     public List<GameObject> allTheQuest;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // questToShow = player.GetActiveQuests();
         questToShow = new List<Quest>();
@@ -39,6 +39,8 @@ public class ActiveQuest : MonoBehaviour
         aux.SetActive(true);
         
         allTheQuest.Add(aux);
+        Debug.Log("Size of all the quest before: " + allTheQuest.Count);
+
         //if (allTheQuest[0] != null)
         //{
         //    allTheQuest[0].GetComponent<Image>().color = Color.green;
@@ -53,9 +55,11 @@ public class ActiveQuest : MonoBehaviour
     public void DeleteThisQuest(Quest q)
     {
         Debug.Log("Delete this quest: " + q.title);
-       
+
         //Destroy(allTheQuest[0].gameObject);
-       // Destroy(allTheQuest[0]);
+        // Destroy(allTheQuest[0]);
+      //  questToShow.Remove(q);
+        Debug.Log("Size of all the quest: " + allTheQuest.Count);
         allTheQuest[0].gameObject.SetActive(false);
         allTheQuest.RemoveAt(0);
         questToShow.RemoveAt(0);
