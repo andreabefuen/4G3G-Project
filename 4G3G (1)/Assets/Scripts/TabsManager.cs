@@ -67,6 +67,7 @@ public class TabsManager : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
         inventory = InventoryBuilding.inventory;
 
+        
         //LockTabs();
 
         if (CheckCoalSuccess())
@@ -91,33 +92,118 @@ public class TabsManager : MonoBehaviour
         {
             UpdateLevelResearchCoal(inventory.coalFactoryStructure.levelResearch);
             Debug.Log("Level of the coal research: " + inventory.coalFactoryStructure.levelResearch);
-            UpdateCostResearchCoal(inventory.coalFactoryStructure.costResearches[inventory.coalFactoryStructure.levelResearch]);
+            if (!CheckCoalSuccess())
+            {
+                UpdateCostResearchCoal(inventory.coalFactoryStructure.costResearches[inventory.coalFactoryStructure.levelResearch]);
+            }
+            
 
-            UpdateTextCostBuildCoal(inventory.coalFactoryStructure.cost);
-            UpdateTextCostBuildGas(inventory.gasExtractorStructure.cost);
-            UpdateTextCostBuildWind(inventory.windmillStructure.cost);
-            UpdateTextCostBuildSolar(inventory.solarPanelStructure.cost);
+                UpdateTextCostBuildCoal(inventory.coalFactoryStructure.cost);
+                UpdateTextCostBuildGas(inventory.gasExtractorStructure.cost);
+                UpdateTextCostBuildWind(inventory.windmillStructure.cost);
+                UpdateTextCostBuildSolar(inventory.solarPanelStructure.cost);
 
-            UpdateTextCostLiberty(inventory.statueOfLiberty.cost);
-            UpdateTextCostPark(inventory.park.cost);
+                UpdateTextCostLiberty(inventory.statueOfLiberty.cost);
+                UpdateTextCostPark(inventory.park.cost);
 
-            UpdateTextCostPisa(inventory.pisaTower.cost);
-            UpdateTextCostWheel(inventory.ferrisWheel.cost);
-            UpdateTextCostEiffle(inventory.eiffleTower.cost);
+                UpdateTextCostPisa(inventory.pisaTower.cost);
+                UpdateTextCostWheel(inventory.ferrisWheel.cost);
+                UpdateTextCostEiffle(inventory.eiffleTower.cost);
         }
 
+
         
-        this.gameObject.SetActive(false);
+        
 
 
 
 
     }
 
+    public void UpdateLockInBuildings()
+    {
+        if (Player.instance.unlockCoal)
+        {
+            UnlockCoalFactory();
+
+        }
+        if (Player.instance.unlockGas)
+        {
+            UnlockGasFactory();
+        }
+
+        if (Player.instance.unlockSolar)
+        {
+            UnlockSolar();
+        }
+        if (Player.instance.unlockWind)
+        {
+            UnlockWind();
+        }
+
+    }
+
+    public void UpdateAllTheCost()
+    {
+
+
+        UpdateLevelResearchCoal(inventory.coalFactoryStructure.levelResearch);
+        UpdateCostResearchCoal(inventory.coalFactoryStructure.costResearches[inventory.coalFactoryStructure.levelResearch - 1]);
+
+        UpdateLevelResearchGas(inventory.gasExtractorStructure.levelResearch);
+        UpdateCostResearchGas(inventory.gasExtractorStructure.costResearches[inventory.gasExtractorStructure.levelResearch - 1]);
+
+        UpdateLevelResearchWindmill(inventory.windmillStructure.levelResearch);
+        UpdateCostResearchWind(inventory.windmillStructure.costResearches[inventory.coalFactoryStructure.levelResearch - 1]);
+
+        UpdateLevelResearchSolar(inventory.solarPanelStructure.levelResearch);
+        UpdateCostResearchSolar(inventory.solarPanelStructure.costResearches[inventory.solarPanelStructure.levelResearch - 1]);
+
+
+
+        
+        /*if (CheckCoalSuccess())
+        {
+            UnlockCoalFactory();
+
+        }
+        if (CheckGasSuccess())
+        {
+
+            UnlockGasFactory();
+        }
+        if (CheckSolarSuccess())
+        {
+            UnlockSolar();
+        }
+        if (CheckWindSuccess())
+        {
+            UnlockWind();
+        }
+        */
+        UpdateTextCostBuildCoal(inventory.coalFactoryStructure.cost);
+        UpdateTextCostBuildGas(inventory.gasExtractorStructure.cost);
+        UpdateTextCostBuildWind(inventory.windmillStructure.cost);
+        UpdateTextCostBuildSolar(inventory.solarPanelStructure.cost);
+
+        UpdateTextCostLiberty(inventory.statueOfLiberty.cost);
+        UpdateTextCostPark(inventory.park.cost);
+
+        UpdateTextCostPisa(inventory.pisaTower.cost);
+        UpdateTextCostWheel(inventory.ferrisWheel.cost);
+        UpdateTextCostEiffle(inventory.eiffleTower.cost);
+
+        Debug.Log("LOADING THE COST OF THE BUILDINGS");
+
+        //this.gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
 
+
+       
     }
 
     public void BuyResearchCoal()
@@ -288,6 +374,7 @@ public class TabsManager : MonoBehaviour
 
     void UnlockCoalFactory()
     {
+        levelCoal.text = "COMPLETED!";
         coalBuy.transform.Find("Lock").gameObject.SetActive(false);
         coalBuy.GetComponent<Button>().interactable = true;
         coalBuyTab.transform.Find("Lock").gameObject.SetActive(false);
@@ -301,6 +388,7 @@ public class TabsManager : MonoBehaviour
 
     void UnlockGasFactory()
     {
+        levelGas.text = "COMPLETED!";
         gasBuy.transform.Find("Lock").gameObject.SetActive(false);
         gasBuy.GetComponent<Button>().interactable = true;
         gasBuyTab.transform.Find("Lock").gameObject.SetActive(false);
@@ -312,6 +400,7 @@ public class TabsManager : MonoBehaviour
 
     void UnlockSolar()
     {
+        levelSolar.text = "COMPLETED!";
         solarBuy.transform.Find("Lock").gameObject.SetActive(false);
         solarBuy.GetComponent<Button>().interactable = true;
         solarBuyTab.transform.Find("Lock").gameObject.SetActive(false);
@@ -322,6 +411,7 @@ public class TabsManager : MonoBehaviour
 
     void UnlockWind()
     {
+        levelWind.text = "COMPLETED!";
         windBuy.transform.Find("Lock").gameObject.SetActive(false);
         windBuy.GetComponent<Button>().interactable = true;
         windBuyTab.transform.Find("Lock").gameObject.SetActive(false);

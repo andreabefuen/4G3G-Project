@@ -248,7 +248,7 @@ MonoBehaviour:
     levelResearch: 1
     costResearches: 00000000000000000000000000000000
     costUpgrades: 00000000000000000000000000000000
-    cost: 0
+    cost: 120000
     nodeAsociate: {fileID: 0}
     timeMoney: 0
     moneyPerTap: 0

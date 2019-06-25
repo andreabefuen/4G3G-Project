@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip hitButton;
     public AudioClip demolishSound;
     public AudioClip constructionSound;
+    public AudioClip julioPopSound;
 
 
     AudioSource audioSource;
@@ -40,6 +41,11 @@ public class SoundManager : MonoBehaviour
     public void PlayConstruction()
     {
         audioSource.PlayOneShot(constructionSound);
+    }
+
+    public void TapSound()
+    {
+        audioSource.PlayOneShot(julioPopSound);
     }
 
     public void ChangeVolumen(float currentVolumen)

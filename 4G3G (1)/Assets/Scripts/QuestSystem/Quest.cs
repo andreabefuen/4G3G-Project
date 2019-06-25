@@ -8,7 +8,7 @@ public class Quest
     public int levelCity;
     public bool isActive;
     public bool isOnTheList;
-
+    public bool done = false;
     public string title;
     public string description;
 
@@ -22,6 +22,7 @@ public class Quest
     public void CompleteQuest()
     {
         isActive = false;
+        done = true;
         Debug.Log(title + " was completed!");
     }
 

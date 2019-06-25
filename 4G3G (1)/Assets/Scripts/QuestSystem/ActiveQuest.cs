@@ -26,10 +26,10 @@ public class ActiveQuest : MonoBehaviour
 
     public void AddQuest(Quest newQuest)
     {
-        if (questToShow.Contains(newQuest))
+        /*if (questToShow.Contains(newQuest))
         {
             return;
-        }
+        }*/
         questToShow.Add(newQuest);
         //Debug.Log("hay " + questToShow.Count);
         GameObject aux = Instantiate(panelOfQuests, quests.transform);
@@ -53,32 +53,35 @@ public class ActiveQuest : MonoBehaviour
     public void DeleteThisQuest(Quest q)
     {
         Debug.Log("Delete this quest: " + q.title);
-        questToShow.Remove(q);
+       
         //Destroy(allTheQuest[0].gameObject);
-        Destroy(allTheQuest[0]);
+       // Destroy(allTheQuest[0]);
+        allTheQuest[0].gameObject.SetActive(false);
+        allTheQuest.RemoveAt(0);
+        questToShow.RemoveAt(0);
         //Recorremos otra vez toda la lista para poner las que si estan
         //Eliminamos todos los gameobjects
-        foreach(GameObject g in allTheQuest)
-        {
-            Destroy(g);
-        }
+        // foreach(GameObject g in allTheQuest)
+        // {
+        //     Destroy(g);
+        // }
 
+        /*/
+                foreach (Quest qq in questToShow)
+                {
+                    GameObject aux = Instantiate(panelOfQuests, quests.transform);
+                    aux.SetActive(true);
+                    aux.GetComponentsInChildren<Text>()[0].text = qq.title;
+                    aux.GetComponentsInChildren<Text>()[1].text = qq.description;
 
-        foreach (Quest qq in questToShow)
-        {
-            GameObject aux = Instantiate(panelOfQuests, quests.transform);
-            aux.SetActive(true);
-            aux.GetComponentsInChildren<Text>()[0].text = qq.title;
-            aux.GetComponentsInChildren<Text>()[1].text = qq.description;
-
-            allTheQuest.Add(aux);
-        }
+                    allTheQuest.Add(aux);
+                }*/
         //allTheQuest[0].gameObject.GetComponent<Image>().color = Color.green;
-       // if (allTheQuest[0] != null)
-       // {
-       //     allTheQuest[0].GetComponent<Image>().color = Color.green;
-       //
-       // }
+        // if (allTheQuest[0] != null)
+        // {
+        //     allTheQuest[0].GetComponent<Image>().color = Color.green;
+        //
+        // }
 
 
     }

@@ -317,7 +317,7 @@ public class CreateEnvironment : MonoBehaviour
         Vector3 auxvect = matrixNodes[indexCenterRow - stageRows, indexCenterColumn - stageColumns].nodeGameobject.transform.position - matrixNodes[indexCenterRow + stageRows, indexCenterColumn + stageColumns].nodeGameobject.transform.position;
         float auxSize = Vector3.Magnitude(auxvect);
         auxPlaneLimit = Instantiate(planeLimit);
-        auxPlaneLimit.transform.position = new Vector3(0.5f, 0.1f, -0.8f);
+        auxPlaneLimit.transform.position = new Vector3(6.1f, 0.1f, -6.06f);
         auxPlaneLimit.transform.localScale = new Vector3(auxSize / 12, 1, auxSize / 12);
         if (spawnThings)
         {

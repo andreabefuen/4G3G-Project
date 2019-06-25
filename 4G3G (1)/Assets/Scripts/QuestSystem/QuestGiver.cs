@@ -42,6 +42,10 @@ public class QuestGiver : MonoBehaviour
     {
         if(cont< quest.Count)
         {
+            if(quest[cont].done == true)
+            {
+                cont++;
+            }
             if (quest[cont].levelCity <= player.levelCity)
             {
                 questWindow.SetActive(true);

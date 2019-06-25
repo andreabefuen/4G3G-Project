@@ -77,6 +77,12 @@ MonoBehaviour:
   sizeXPlane: 0
   sizeYPlane: 0
   loaded: 0
+  firstTimeCoal: 1
+  tutorial: 1
+  unlockIslandCoal: 0
+  unlockIslandGas: 0
+  unlockIslandWind: 0
+  unlockIslandSolar: 0
 --- !u!114 &3429916660772851406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +99,7 @@ MonoBehaviour:
   hitButton: {fileID: 8300000, guid: a9f5a9ec70eff9b44a444f99ee381a0a, type: 3}
   demolishSound: {fileID: 8300000, guid: b24db59b4ec95da4a946390f63d95f52, type: 3}
   constructionSound: {fileID: 8300000, guid: c5ee8987c1ce7ca499ee9bf4674b10a6, type: 3}
+  julioPopSound: {fileID: 8300000, guid: fbe2b20ec6ee98e478459d583d4c530f, type: 3}
 --- !u!82 &3429916660772851409
 AudioSource:
   m_ObjectHideFlags: 0
@@ -107,7 +114,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

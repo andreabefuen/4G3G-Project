@@ -130,6 +130,7 @@ public class UIManager : MonoBehaviour
     {
         buildManager.SelectStructureToBuild(structureBuy);
         HideInfoPanel();
+        SoundManager.soundManager.TapSound();
     }
 
     public void Motherlode()
