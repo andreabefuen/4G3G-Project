@@ -136,6 +136,8 @@ public class Player : MonoBehaviour
 
         levelCity = GameControl.control.levelCity;
 
+        levelText.text = levelCity.ToString();
+
         UpdateMoney();
 
         UpdateHappiness();
@@ -189,7 +191,7 @@ public class Player : MonoBehaviour
                 // Debug.Log("Problema???");
                 levelCity++;
                 levelText.text = levelCity.ToString();
-                levelObject.maxValue = CreateEnvironment.houses.Count * energyForEachHouse;
+                //levelObject.maxValue = CreateEnvironment.houses.Count * energyForEachHouse;
                 levelObject.value = totalEnergy;
                 //Call to the window of the new level reach
                 return;

@@ -18,8 +18,9 @@ public class UIManager : MonoBehaviour
     [Header("Level of building")]
     public TextMeshProUGUI textLevel;
     public TextMeshProUGUI textPriceUpdate;
-    
-    
+
+
+
 
     BuildManager buildManager;
 
@@ -108,7 +109,27 @@ public class UIManager : MonoBehaviour
 
         infoPanel.SetActive(true);
 
+        infoPanel.transform.Find("BuyButton").gameObject.SetActive(true);
+
         structureBuy = structure;
+    }
+
+    public void ShowInfoWithOutBuyButton(StructureBlueprint structure)
+    {
+       // buildManager.HideConstructionPanel();
+
+        icon.sprite = structure.icon;
+        titleText.text = structure.title;
+        descriptionText.text = structure.description;
+        moneyText.text = structure.moneyPerTap / 1000 + "K";
+        happinessText.text = "+" + structure.amountOfHappiness;
+        energyText.text = "+" + structure.amountOfEnergy;
+        pollutionText.text = "+" + structure.amountOfPollution;
+        costText.text = structure.cost.ToString();
+
+        infoPanel.SetActive(true);
+
+        infoPanel.transform.Find("BuyButton").gameObject.SetActive(false);
     }
 
     public void UpdateLevel(StructureBlueprint structure)

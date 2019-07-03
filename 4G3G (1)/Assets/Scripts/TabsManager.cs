@@ -112,8 +112,8 @@ public class TabsManager : MonoBehaviour
         }
 
 
-        
-        
+
+       // this.gameObject.SetActive(false);
 
 
 

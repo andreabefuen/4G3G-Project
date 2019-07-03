@@ -121,18 +121,18 @@ public class CreateEnvironment : MonoBehaviour
         //SpawnHouseAllScenario();
         //SpawnCoalFactories();
 
-        CreateStage();
+        //CreateStage();
         if (GameControl.control.loaded /*&& !GameControl.control.firstTimeCoal /*&& !GameControl.control.tutorial && !GameControl.control.firstTimeCoal*/)
         {
             stageRows = GameControl.control.stageSizeX;
             stageColumns = GameControl.control.stageSizeY;
-            //CreateStage();
+            CreateStage();
             Debug.Log("Reload info");
             ReloadSceneWithInfo();
             return;
            
         }
-        //CreateStage();
+        CreateStage();
     }
 
     public void ReloadSceneWithInfo()
@@ -323,6 +323,7 @@ public class CreateEnvironment : MonoBehaviour
         {
             numHouses += 10;
             SpawnHouses();
+            Player.instance.levelObject.maxValue = numHouses * Player.instance.energyForEachHouse;
             return;
         }
 

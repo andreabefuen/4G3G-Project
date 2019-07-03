@@ -585,6 +585,7 @@ public class BuildManager : MonoBehaviour
             player.DecreaseMoney(selectedNode.structureThere.costUpgrades[selectedNode.structureThere.levelBuilding-1]);
             selectedNode.structureThere.levelBuilding++;
             UIManager.instance.UpdateLevel(selectedNode.structureThere);
+            selectedNode.structureThere.moneyPerTap += 500;
 
         }
         else
@@ -592,6 +593,13 @@ public class BuildManager : MonoBehaviour
             player.NotEnoughMoneyPlay();
         }
     }
+
+    public void InfoBuildButton()
+    {
+        infoBuildingPanel.SetActive(false);
+        UIManager.instance.ShowInfoWithOutBuyButton(selectedNode.structureThere);
+    }
+
     public void HideInfoPanelBuildings()
     {
         infoBuildingPanel.SetActive(false);

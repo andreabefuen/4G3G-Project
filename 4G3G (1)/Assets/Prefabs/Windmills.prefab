@@ -608,6 +608,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindTurbine_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4773740683427264919, guid: d26eb25a950beb34f9da396e6103bd7b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d26eb25a950beb34f9da396e6103bd7b,
         type: 3}
       propertyPath: m_LocalPosition.x

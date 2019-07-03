@@ -685,8 +685,6 @@ public class GameControl : MonoBehaviour
             loaded = true;
 
             Debug.Log("Loading the main island");
-           
-            
 
         }
         else
