@@ -93,8 +93,9 @@ public class PauseMenu : MonoBehaviour
         //GameControl.control.SaveGeneralInfo();
         GameControl.control.Save();
         GameControl.control.LoadGeneralInfo();
+        UIManager.instance.LoadScreenAnim();
 
-        Invoke("TravelScene", 2f);
+        Invoke("TravelScene", 2.8f);
        // SceneManager.LoadScene("TravelScene");
 
 
@@ -106,7 +107,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         Debug.Log("Call the gas island");
         GameControl.control.LoadGasIsland();
-        SceneManager.LoadScene("GasIsland");
+        Invoke("TravelGas", 2f);
+        UIManager.instance.LoadScreenAnim();
 
     }
 
@@ -118,9 +120,10 @@ public class PauseMenu : MonoBehaviour
         GameControl.control.LoadCoalIsland();
 
         Invoke("TravelCoal", 2f);
+        UIManager.instance.LoadScreenAnim();
         //SceneManager.LoadScene("CoalIsland");
 
-       // SceneManager.LoadScene("CoalIsland");
+        // SceneManager.LoadScene("CoalIsland");
 
 
     }
@@ -131,7 +134,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         Debug.Log("Call the solar island");
         GameControl.control.LoadSolarIsland();
-        SceneManager.LoadScene("SolarIsland");
+        Invoke("TravelSolar", 2f);
+        UIManager.instance.LoadScreenAnim();
     }
 
     public void GoToWindIsland()
@@ -140,7 +144,9 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         Debug.Log("Call the wind island");
         GameControl.control.LoadWindIsland();
-        SceneManager.LoadScene("WindIsland");
+        Invoke("TravelWind", 2f);
+        UIManager.instance.LoadScreenAnim();
+
     }
 
     public void GoToMainIsland()
@@ -149,6 +155,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         GameControl.control.LoadMainIsland();
         Invoke("TravelMain", 2f);
+        UIManager.instance.LoadScreenAnim();
         //SceneManager.LoadScene(1);
 
     }
@@ -164,6 +171,19 @@ public class PauseMenu : MonoBehaviour
     void TravelCoal()
     {
         SceneManager.LoadScene("CoalIsland");
+    }
+    void TravelSolar()
+    {
+        SceneManager.LoadScene("SolarIsland");
+    }
+    void TravelWind()
+    {
+        SceneManager.LoadScene("WindIsland");
+
+    }
+    void TravelGas()
+    {
+        SceneManager.LoadScene("GasIsland");
     }
 
     /*public void TravelToCoalFactory()

@@ -44,6 +44,8 @@ public class TabsManager : MonoBehaviour
     public TextMeshProUGUI costEiffle;
     public TextMeshProUGUI costWheel;
     public TextMeshProUGUI costPisa;
+    public TextMeshProUGUI costFireStation;
+    public TextMeshProUGUI costPoliceStation;
 
 
     [Header("Tabs")]
@@ -109,6 +111,8 @@ public class TabsManager : MonoBehaviour
                 UpdateTextCostPisa(inventory.pisaTower.cost);
                 UpdateTextCostWheel(inventory.ferrisWheel.cost);
                 UpdateTextCostEiffle(inventory.eiffleTower.cost);
+                UpdateTextCostPolice(inventory.policeStation.cost);
+                UpdateTextCostFire(inventory.fireStation.cost);
         }
 
 
@@ -192,6 +196,8 @@ public class TabsManager : MonoBehaviour
         UpdateTextCostPisa(inventory.pisaTower.cost);
         UpdateTextCostWheel(inventory.ferrisWheel.cost);
         UpdateTextCostEiffle(inventory.eiffleTower.cost);
+        UpdateTextCostPolice(inventory.policeStation.cost);
+        UpdateTextCostFire(inventory.fireStation.cost);
 
         Debug.Log("LOADING THE COST OF THE BUILDINGS");
 
@@ -303,6 +309,16 @@ public class TabsManager : MonoBehaviour
     void UpdateTextCostEiffle(int cost)
     {
         costEiffle.text = "Cost: " + cost;
+    }
+
+    void UpdateTextCostPolice(int cost)
+    {
+        costPoliceStation.text = "Cost: " + cost;
+    }
+
+    void UpdateTextCostFire(int cost)
+    {
+        costFireStation.text = "Cost: " + cost;
     }
 
     void UpdateTextCostWheel(int cost)

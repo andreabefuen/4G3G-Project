@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textLevel;
     public TextMeshProUGUI textPriceUpdate;
 
+
+    public GameObject loadScreenObject;
 
 
 
@@ -83,11 +86,22 @@ public class UIManager : MonoBehaviour
             case "pisa":
                 ShowInfo(InventoryBuilding.inventory.pisaTower);
                 break;
+            case "fire":
+                ShowInfo(InventoryBuilding.inventory.fireStation);
+                break;
+            case "police":
+                ShowInfo(InventoryBuilding.inventory.policeStation);
+                break;
             default:
                 break;
 
         }
 
+    }
+
+     public void LoadScreenAnim()
+    {
+        loadScreenObject.SetActive(true);
     }
 
     public void ShowInfo(StructureBlueprint structure)

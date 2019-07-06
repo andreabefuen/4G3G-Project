@@ -18,7 +18,9 @@ public enum idBuildings
     park = 10,
     wheel = 11,
     eiffle = 12,
-    pisaTower = 13
+    pisaTower = 13,
+    policeStation = 14,
+    fireStation = 15
 };
 
 public class InventoryBuilding : MonoBehaviour
@@ -46,6 +48,9 @@ public class InventoryBuilding : MonoBehaviour
     public StructureBlueprint eiffleTower;
     public StructureBlueprint pisaTower;
 
+    public StructureBlueprint policeStation;
+    public StructureBlueprint fireStation;
+
     //List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 
 
@@ -68,7 +73,7 @@ public class InventoryBuilding : MonoBehaviour
     void Start()
     {
        
-
+        /*
         windmillStructure.id = idBuildings.windmill;
         solarPanelStructure.id = idBuildings.solarpanel; 
 
@@ -86,6 +91,8 @@ public class InventoryBuilding : MonoBehaviour
         ferrisWheel.id = idBuildings.wheel;
         eiffleTower.id = idBuildings.eiffle;
         pisaTower.id = idBuildings.pisaTower;
+
+        */
 
         //listOfBlueprints.Add(windmillStructure);
     }

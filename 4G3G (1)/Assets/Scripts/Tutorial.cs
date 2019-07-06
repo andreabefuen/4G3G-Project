@@ -59,7 +59,7 @@ public class Tutorial : MonoBehaviour
         else
         {
             windows = new List<GameObject>(tutorialInstructions.Count);
-            OpenTutorialWindow();
+            Invoke("OpenTutorialWindow", 1.5f);
            // WelcomeTutorial();
         }
        
