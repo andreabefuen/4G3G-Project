@@ -23,7 +23,7 @@ public class QuestGiver : MonoBehaviour
     BuildManager buildManager;
     ActiveQuest activeQuest;
 
-    int cont = 0;
+    int contActiveQuest = 0;
 
     private void Start()
     {
@@ -36,22 +36,26 @@ public class QuestGiver : MonoBehaviour
 
         activeQuest = activeQuestPanel.GetComponent<ActiveQuest>();
 
+        Invoke("ReloadActiveQuest", 1f);
+        
+
     }
 
     public void OpenQuestWindow()
     {
-        if(cont< quest.Count)
+        if(contActiveQuest< quest.Count)
         {
-            if(quest[cont].done == true)
+            if(quest[contActiveQuest].done == true)
             {
-                cont++;
+                contActiveQuest++;
+                OpenQuestWindow();
             }
-            if (quest[cont].levelCity <= player.levelCity)
+            if (quest[contActiveQuest].levelCity <= player.levelCity)
             {
                 questWindow.SetActive(true);
-                titleText.text = quest[cont].title;
-                descriptionText.text = quest[cont].description;
-                rewardText.text = "Reward: " + quest[cont].moneyReward.ToString() + "$";
+                titleText.text = quest[contActiveQuest].title;
+                descriptionText.text = quest[contActiveQuest].description;
+                rewardText.text = "Reward: " + quest[contActiveQuest].moneyReward.ToString() + "$";
             }
 
         }
@@ -61,15 +65,15 @@ public class QuestGiver : MonoBehaviour
     public void AcceptQuest()
     {
         questWindow.SetActive(false);
-        quest[cont].isActive = true;
+        quest[contActiveQuest].isActive = true;
         //give to the player the quest assign the quest
         //player.quest = quest; (create a list of quest)
-        player.activeQuest.Add(quest[cont]);
+        player.activeQuest.Add(quest[contActiveQuest]);
         
-        activeQuest.AddQuest(quest[cont]);
-        if (cont < quest.Count)
+        activeQuest.AddQuest(quest[contActiveQuest]);
+        if (contActiveQuest < quest.Count)
         {
-            cont++;
+            contActiveQuest++;
             //To open all the quest
             //OpenQuestWindow();
         }
@@ -87,8 +91,23 @@ public class QuestGiver : MonoBehaviour
             player.IncreaseMoney(player.activeQuest[0].moneyReward);
             player.activeQuest[0].CompleteQuest();
             player.activeQuest.Remove(player.activeQuest[0]);
-            
+
+            player.cantCompletedQuest++;
+        }
+    }
+
+    public void ReloadActiveQuest()
+    {
+        if(player.cantCompletedQuest == 0)
+        {
+            Debug.Log("Not quest activated");
+            return;
+        }
+        for (int i = 0; i < player.cantCompletedQuest; i++)
+        {
+            quest[i].done = true;
             
         }
+        Debug.Log("Player had done " + player.cantCompletedQuest + " quest");
     }
 }

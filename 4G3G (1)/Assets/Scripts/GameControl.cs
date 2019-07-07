@@ -36,7 +36,7 @@ public class GameControl : MonoBehaviour
 
     public bool unlockIslandCoal, unlockIslandGas, unlockIslandWind, unlockIslandSolar;
 
-
+    public int cantCompletedQuest;
 
     void Awake()
     {
@@ -174,6 +174,10 @@ public class GameControl : MonoBehaviour
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
 
+            cantCompletedQuest = data.cantCompletedQuest;
+
+           
+
             loaded = true;
 
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA GAS LOAD");
@@ -219,6 +223,7 @@ public class GameControl : MonoBehaviour
         data.pollution = player.totalPollution;
         data.maxPollution = (int)player.pollutionSlider.maxValue;
         data.happiness = player.totalHappiness;
+        data.cantCompletedQuest = player.cantCompletedQuest;
 
 
         Node[,] aux = ce.GetMatrixNode();
@@ -292,6 +297,8 @@ public class GameControl : MonoBehaviour
         data.pollution = player.totalPollution;
         data.maxPollution = (int)player.pollutionSlider.maxValue;
         data.happiness = player.totalHappiness;
+
+        data.cantCompletedQuest = player.cantCompletedQuest;
         // data.money = player.totalCurrency;
 
 
@@ -373,6 +380,9 @@ public class GameControl : MonoBehaviour
         data.pollution = player.totalPollution;
         data.maxPollution = (int)player.pollutionSlider.maxValue;
         data.happiness = player.totalHappiness;
+
+        data.cantCompletedQuest = player.cantCompletedQuest;
+
         // data.money = player.totalCurrency;
 
 
@@ -454,6 +464,8 @@ public class GameControl : MonoBehaviour
         data.pollution = player.totalPollution;
         data.maxPollution = (int)player.pollutionSlider.maxValue;
         data.happiness = player.totalHappiness;
+
+        data.cantCompletedQuest = player.cantCompletedQuest;
 
 
         Node[,] aux = ce.GetMatrixNode();
@@ -556,14 +568,15 @@ public class GameControl : MonoBehaviour
         data.pollution = player.totalPollution;
         data.maxPollution = (int)player.pollutionSlider.maxValue;
         data.happiness = player.totalHappiness;
-       // data.money = player.totalCurrency;
+        data.cantCompletedQuest = player.cantCompletedQuest;
+        // data.money = player.totalCurrency;
 
 
-      //  data.days = weather.fakeDays;
-      //  data.hour = weather.fakeHour;
-      //  data.minute = weather.fakeMinutes;
-      //  data.month = weather.actualMonthNumber;
-      //  data.night = weather.isNight;
+        //  data.days = weather.fakeDays;
+        //  data.hour = weather.fakeHour;
+        //  data.minute = weather.fakeMinutes;
+        //  data.month = weather.actualMonthNumber;
+        //  data.night = weather.isNight;
 
         Node[,] aux = ce.GetMatrixNode();
 
@@ -632,6 +645,8 @@ public class GameControl : MonoBehaviour
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
 
+            cantCompletedQuest = data.cantCompletedQuest;
+
             loaded = true;
 
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA GAS LOAD");
@@ -672,14 +687,16 @@ public class GameControl : MonoBehaviour
 
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
+            cantCompletedQuest = data.cantCompletedQuest;
 
-           // days = data.days;
-           // minute = data.minute;
-           // hour = data.hour;
-           // month = data.month;
-           // night = data.night;
 
-          //  Debug.Log(money);
+            // days = data.days;
+            // minute = data.minute;
+            // hour = data.hour;
+            // month = data.month;
+            // night = data.night;
+
+            //  Debug.Log(money);
 
             //Llamar a la función que cree todo el environment con los datos guardados
             loaded = true;
@@ -721,6 +738,9 @@ public class GameControl : MonoBehaviour
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
 
+            cantCompletedQuest = data.cantCompletedQuest;
+
+
             loaded = true;
 
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA COAL LOAD");
@@ -760,6 +780,10 @@ public class GameControl : MonoBehaviour
 
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
+
+            cantCompletedQuest = data.cantCompletedQuest;
+
+
 
             loaded = true;
 
@@ -801,6 +825,9 @@ public class GameControl : MonoBehaviour
 
             sizeXPlane = data.sizeXPlane;
             sizeYPlane = data.sizeYPlane;
+
+            cantCompletedQuest = data.cantCompletedQuest;
+
 
             loaded = true;
 
@@ -905,6 +932,7 @@ public class GameControl : MonoBehaviour
         public float sizeXPlane;
         public float sizeYPlane;
 
+        public int cantCompletedQuest;
 
     }
 

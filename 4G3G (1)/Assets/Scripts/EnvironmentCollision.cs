@@ -33,7 +33,7 @@ public class EnvironmentCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Ha entradoooooo");
+        //Debug.Log("Ha entradoooooo");
         if (other.gameObject.layer == 9)
         {
             Destroy(other.gameObject.GetComponent<BoxCollider>());

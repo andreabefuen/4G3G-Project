@@ -24,8 +24,9 @@ public class Player : MonoBehaviour
 
     public int levelCity;
 
-
+    [Header("Quest")]
     public List<Quest> activeQuest;
+    public int cantCompletedQuest;
 
 
 
@@ -88,6 +89,8 @@ public class Player : MonoBehaviour
             levelObject.maxValue = GameControl.control.maxEnergy;
             pollutionSlider.maxValue = GameControl.control.maxPollution;
 
+            cantCompletedQuest = GameControl.control.cantCompletedQuest;
+
             levelCity = GameControl.control.levelCity;
         }
         else
@@ -135,6 +138,7 @@ public class Player : MonoBehaviour
         pollutionSlider.maxValue = GameControl.control.maxPollution;
 
         levelCity = GameControl.control.levelCity;
+        cantCompletedQuest = GameControl.control.cantCompletedQuest;
 
         levelText.text = levelCity.ToString();
 

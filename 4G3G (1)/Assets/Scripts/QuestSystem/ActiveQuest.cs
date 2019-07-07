@@ -39,7 +39,7 @@ public class ActiveQuest : MonoBehaviour
         aux.SetActive(true);
         
         allTheQuest.Add(aux);
-        Debug.Log("Size of all the quest before: " + allTheQuest.Count);
+       // Debug.Log("Size of all the quest before: " + allTheQuest.Count);
 
         //if (allTheQuest[0] != null)
         //{
