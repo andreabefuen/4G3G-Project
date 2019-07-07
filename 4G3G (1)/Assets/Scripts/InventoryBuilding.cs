@@ -20,7 +20,8 @@ public enum idBuildings
     eiffle = 12,
     pisaTower = 13,
     policeStation = 14,
-    fireStation = 15
+    fireStation = 15,
+    diner = 16
 };
 
 public class InventoryBuilding : MonoBehaviour
@@ -50,6 +51,8 @@ public class InventoryBuilding : MonoBehaviour
 
     public StructureBlueprint policeStation;
     public StructureBlueprint fireStation;
+
+    public StructureBlueprint diner;
 
     //List<StructureBlueprint> listOfBlueprints = new List<StructureBlueprint>();
 

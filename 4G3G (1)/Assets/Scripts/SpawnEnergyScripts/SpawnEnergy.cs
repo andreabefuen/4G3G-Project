@@ -69,6 +69,33 @@ public class SpawnEnergy : MonoBehaviour
        // player.IncreaseEnergy(energy);
 
         timer = 0f;
+        ReloadSpawnMoney();
+        
+    }
+
+    public void ReloadSpawnMoney()
+    {
+        if (this.gameObject.tag == "Factory")
+        {
+            spawnTimer = inventory.coalFactoryStructure.timeMoney;
+            money = inventory.coalFactoryStructure.moneyPerTap;
+        }
+        else if (this.gameObject.tag == "Gas")
+        {
+            spawnTimer = inventory.gasExtractorStructure.timeMoney;
+            money = inventory.gasExtractorStructure.moneyPerTap;
+        }
+        else if (this.gameObject.tag == "Windmill")
+        {
+            spawnTimer = inventory.windmillStructure.timeMoney;
+            money = inventory.windmillStructure.moneyPerTap;
+        }
+        else if (this.gameObject.tag == "Solar")
+        {
+            spawnTimer = inventory.solarPanelStructure.timeMoney;
+            money = inventory.solarPanelStructure.moneyPerTap;
+        }
+
     }
 }
 

@@ -114,7 +114,8 @@ public class BuildManager : MonoBehaviour
             Debug.Log("The structure can't build in water");
             return;
         }
-       
+        
+        
        
         player.DecreaseMoney(structureToBuild.cost);
         player.IncreaseHappiness(structureToBuild.amountOfHappiness);
@@ -150,12 +151,23 @@ public class BuildManager : MonoBehaviour
             node.haveWater = true;
         }
         structureToBuild.nodeAsociate = node;
+
+        if (structureToBuild.id == idBuildings.diner)
+        {
+            if (SceneManager.GetActiveScene().name == "CoalIsland")
+            {
+                inventoryBuilding.coalFactoryStructure.timeMoney *= 0.75f;
+            }
+        }
+
         structureToBuild = null;
 
        
         GameObject aux = Instantiate(buildParticlePrefab, node.transform.position, Quaternion.identity);
         buildParticle = aux.GetComponentInChildren<ParticleSystem>();
         buildParticle.Play();
+
+  
 
     }
     

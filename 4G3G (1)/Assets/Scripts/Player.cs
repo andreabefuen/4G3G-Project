@@ -178,6 +178,7 @@ public class Player : MonoBehaviour
                 levelText.text = levelCity.ToString();
                 levelObject.maxValue += 100;
                 levelObject.value = totalEnergy;
+                UIManager.instance.ShowNewLevelWindow();
             }
             levelObject.value = totalEnergy;
             return;
@@ -194,6 +195,8 @@ public class Player : MonoBehaviour
                 //levelObject.maxValue = CreateEnvironment.houses.Count * energyForEachHouse;
                 levelObject.value = totalEnergy;
                 //Call to the window of the new level reach
+                UIManager.instance.ShowNewLevelWindow();
+
                 return;
 
             }

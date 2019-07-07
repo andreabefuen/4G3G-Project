@@ -24,6 +24,10 @@ public class UIManager : MonoBehaviour
     public GameObject loadScreenObject;
 
 
+    [Header("New Level Reach")]
+    public GameObject newLevelWindow;
+    public TextMeshProUGUI levelRewardText;
+
 
     BuildManager buildManager;
 
@@ -91,6 +95,9 @@ public class UIManager : MonoBehaviour
                 break;
             case "police":
                 ShowInfo(InventoryBuilding.inventory.policeStation);
+                break;
+            case "diner":
+                ShowInfo(InventoryBuilding.inventory.diner);
                 break;
             default:
                 break;
@@ -167,6 +174,18 @@ public class UIManager : MonoBehaviour
         HideInfoPanel();
         SoundManager.soundManager.TapSound();
     }
+
+    public void ShowNewLevelWindow()
+    {
+        newLevelWindow.SetActive(true);
+        levelRewardText.text = "REWARD: " + Player.instance.levelCity * 500;
+    }
+    public void CloseNewLevelWindow()
+    {
+        newLevelWindow.SetActive(false);
+        Player.instance.IncreaseMoney(Player.instance.levelCity * 500);
+    }
+
 
     public void Motherlode()
     {
