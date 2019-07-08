@@ -4229,6 +4229,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AdditionalVertexStreamMesh: {fileID: 0}
+--- !u!1 &764075137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 516399343273904905, guid: e69351e5eedb6fe4592fadbe2eab2206,
+    type: 3}
+  m_PrefabInstance: {fileID: 516399341876661222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &775183839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7117,9 +7123,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera_GameObject: {fileID: 1516390040}
   zoomModifierSpeed: 0.05
-  movementSpeed: 0
+  movementSpeed: 10
   maxZoom: 50
   minZoom: 2
+  panBorderThickness: 5
+  touchScreenSupport: 1
 --- !u!114 &1328966162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11525,6 +11533,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1687316385}
+    - target: {fileID: 1118700393, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.100097656
+      objectReference: {fileID: 0}
     - target: {fileID: 516399343347728597, guid: e69351e5eedb6fe4592fadbe2eab2206,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -11875,9 +11887,39 @@ PrefabInstance:
       objectReference: {fileID: 85208407}
     - target: {fileID: 516399342712990203, guid: e69351e5eedb6fe4592fadbe2eab2206,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 516399342712990203, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1328966157}
+    - target: {fileID: 516399342712990203, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 516399342712990203, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 516399342712990203, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1687316385}
+    - target: {fileID: 516399342712990203, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ActivateCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 516399342712990203, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 516399342730934563, guid: e69351e5eedb6fe4592fadbe2eab2206,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11908,6 +11950,36 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 85208407}
+    - target: {fileID: 4629052050141449709, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629052050141449709, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629052050141449709, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629052050141449709, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1687316385}
+    - target: {fileID: 4629052050141449709, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ActivateCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629052050141449709, guid: e69351e5eedb6fe4592fadbe2eab2206,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 619686667, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12078,7 +12150,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1687316385}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 12739487, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e69351e5eedb6fe4592fadbe2eab2206, type: 3}
 --- !u!114 &516399341876661223 stripped
 MonoBehaviour:
@@ -12321,6 +12394,16 @@ PrefabInstance:
       propertyPath: motherlodeButton
       value: 
       objectReference: {fileID: 516399341876661223}
+    - target: {fileID: 6598276458296108685, guid: bc8abaed9182a964db15bb86815acd03,
+        type: 3}
+      propertyPath: loadScreenObjectOut
+      value: 
+      objectReference: {fileID: 2108836493}
+    - target: {fileID: 6598276458296108685, guid: bc8abaed9182a964db15bb86815acd03,
+        type: 3}
+      propertyPath: loadScreenObjectIn
+      value: 
+      objectReference: {fileID: 764075137}
     - target: {fileID: 6598276458296108687, guid: bc8abaed9182a964db15bb86815acd03,
         type: 3}
       propertyPath: coalBuyTab

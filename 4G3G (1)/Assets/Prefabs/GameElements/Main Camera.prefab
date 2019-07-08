@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8443262095501211263}
   - component: {fileID: 8443262095501211259}
   - component: {fileID: 8443262095501211258}
+  - component: {fileID: 1516390046}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8443262095501211262}
-  m_LocalRotation: {x: 0.30014035, y: -0.36192623, z: 0.12432222, w: 0.87376726}
+  m_LocalRotation: {x: 0.30013773, y: -0.3619266, z: 0.1243211, w: 0.87376815}
   m_LocalPosition: {x: 3.3903427, y: 9.344941, z: -0.60458183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -111,3 +112,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   depthTextureMode: -1
+--- !u!114 &1516390046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443262095501211262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117c3a6aad0731640a281fd096e1fe27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panSpeed: 20
+  panBorderThickness: 5
+  scrollSpeed: 5
+  maxZoom: 50
+  minZoom: 2

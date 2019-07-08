@@ -2209,16 +2209,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -34.794003
       objectReference: {fileID: 0}
-    - target: {fileID: 856365191234717131, guid: f805fc6626ca8e34690a3605f1a69cd0,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ea8ccb83444e1ed468b70ed295b5f732, type: 2}
     - target: {fileID: -4861924686910468554, guid: f805fc6626ca8e34690a3605f1a69cd0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 49761af5a06afc840a0d193cdc571693, type: 2}
+    - target: {fileID: 856365191234717131, guid: f805fc6626ca8e34690a3605f1a69cd0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea8ccb83444e1ed468b70ed295b5f732, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f805fc6626ca8e34690a3605f1a69cd0, type: 3}
 --- !u!1001 &822978109
@@ -4521,6 +4521,8 @@ MonoBehaviour:
   movementSpeed: 0
   maxZoom: 15
   minZoom: 2
+  panBorderThickness: 5
+  touchScreenSupport: 1
 --- !u!4 &1649606219
 Transform:
   m_ObjectHideFlags: 0
@@ -4872,6 +4874,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37ff3b42f448f9f41be10a2c7c34cf0c, type: 3}
+--- !u!1 &1933317864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 267440245722159877, guid: 37ff3b42f448f9f41be10a2c7c34cf0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1933317863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1937208116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5391,6 +5399,16 @@ PrefabInstance:
       propertyPath: loadScreenObject
       value: 
       objectReference: {fileID: 1937208117}
+    - target: {fileID: 6598276458296108685, guid: bc8abaed9182a964db15bb86815acd03,
+        type: 3}
+      propertyPath: loadScreenObjectOut
+      value: 
+      objectReference: {fileID: 1937208117}
+    - target: {fileID: 6598276458296108685, guid: bc8abaed9182a964db15bb86815acd03,
+        type: 3}
+      propertyPath: loadScreenObjectIn
+      value: 
+      objectReference: {fileID: 1933317864}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8abaed9182a964db15bb86815acd03, type: 3}
 --- !u!1001 &474995093507822261

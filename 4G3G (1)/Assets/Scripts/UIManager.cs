@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    public bool cameraActivated = true;
 
     public GameObject infoPanel;
     public Image icon;
@@ -21,7 +22,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textPriceUpdate;
 
 
-    public GameObject loadScreenObject;
+    public GameObject loadScreenObjectOut;
+    public GameObject loadScreenObjectIn;
 
 
     [Header("New Level Reach")]
@@ -49,6 +51,13 @@ public class UIManager : MonoBehaviour
         buildManager = BuildManager.instance;
 
         SetActiveCheatsMode();
+
+        Invoke("RemoveLoadScreenIn", 1.5f);
+    }
+
+    void RemoveLoadScreenIn()
+    {
+        Destroy(loadScreenObjectIn);
     }
 
     // Update is called once per frame
@@ -111,7 +120,7 @@ public class UIManager : MonoBehaviour
 
      public void LoadScreenAnim()
     {
-        loadScreenObject.SetActive(true);
+        loadScreenObjectOut.SetActive(true);
     }
 
     public void ShowInfo(StructureBlueprint structure)
@@ -154,6 +163,8 @@ public class UIManager : MonoBehaviour
         infoPanel.SetActive(true);
 
         infoPanel.transform.Find("BuyButton").gameObject.SetActive(false);
+
+        cameraActivated = false;
     }
 
     public void UpdateLevel(StructureBlueprint structure)
@@ -170,6 +181,7 @@ public class UIManager : MonoBehaviour
     {
         infoPanel.SetActive(false);
         structureBuy = null;
+        cameraActivated = true;
     }
     public void BuyButton()
     {
@@ -191,6 +203,10 @@ public class UIManager : MonoBehaviour
 
     void SetActiveCheatsMode()
     {
+        if(motherlodeButton == null)
+        {
+            return;
+        }
         motherlodeButton.gameObject.SetActive(GameControl.control.cheatsOn); ;
         /*if (GameControl.control.cheatsOn)
         {
@@ -207,6 +223,16 @@ public class UIManager : MonoBehaviour
     public void Motherlode()
     {
         Player.instance.IncreaseMoney(50000);
+    }
+
+    public void ActivateCamera()
+    {
+        cameraActivated = true;
+    }
+
+    public void DisableCamera()
+    {
+        cameraActivated = false;
     }
 
 }

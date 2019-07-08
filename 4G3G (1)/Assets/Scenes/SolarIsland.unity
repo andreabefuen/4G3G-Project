@@ -2187,6 +2187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be26db12a0364949a0cbaa6a59d3ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraActivated: 1
   infoPanel: {fileID: 5779575621353970690}
   icon: {fileID: 6723610800978752227}
   titleText: {fileID: 5486789183614811679}
@@ -2198,9 +2199,11 @@ MonoBehaviour:
   costText: {fileID: 3943194249409980785}
   textLevel: {fileID: 7077274822515406335}
   textPriceUpdate: {fileID: 7172659214506415048}
-  loadScreenObject: {fileID: 2110957038}
+  loadScreenObjectOut: {fileID: 2110957038}
+  loadScreenObjectIn: {fileID: 3814563203763373199}
   newLevelWindow: {fileID: 0}
   levelRewardText: {fileID: 0}
+  motherlodeButton: {fileID: 0}
 --- !u!4 &1133084433
 Transform:
   m_ObjectHideFlags: 0
@@ -3023,6 +3026,8 @@ MonoBehaviour:
   movementSpeed: 0
   maxZoom: 50
   minZoom: 2
+  panBorderThickness: 5
+  touchScreenSupport: 1
 --- !u!114 &1328966162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4834,6 +4839,36 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6679695636867305796, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679695636867305796, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679695636867305796, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679695636867305796, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1133084432}
+    - target: {fileID: 6679695636867305796, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ActivateCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679695636867305796, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6679695637706166051, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4936,6 +4971,12 @@ PrefabInstance:
       objectReference: {fileID: 1133084432}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd, type: 3}
+--- !u!1 &3814563203763373199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3982922019777245881, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 3814563203763373198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3943194249409980785 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 164670845080727039, guid: 981a1cc8384e2a04ca0c56a1bbd1c9bd,

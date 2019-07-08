@@ -887,6 +887,11 @@ public class GameControl : MonoBehaviour
             File.Delete(Application.persistentDataPath + "/solarIslandInfo.dat");
             Debug.Log("Deleted save file");
         }
+        loaded = false;
+        firstTimeCoal = true;
+        tutorial = true;
+        cheatsOn = false;
+        cantCompletedQuest = 0;
 
     }
 

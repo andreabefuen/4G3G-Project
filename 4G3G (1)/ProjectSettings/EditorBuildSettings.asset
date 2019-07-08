@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SolarIsland.unity
     guid: 39b48947d5e34d541b33e9ec2af4086c
+  - enabled: 1
+    path: Assets/Scenes/WindIsland.unity
+    guid: 2b477053c86ee7d4c984382ab687c927
   m_configObjects: {}
