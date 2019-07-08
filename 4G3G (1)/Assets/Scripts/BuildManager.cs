@@ -353,7 +353,10 @@ public class BuildManager : MonoBehaviour
         {
             structureToBuild = inventoryBuilding.pisaTower;
         }
-
+        else if(id == (int)idBuildings.diner)
+        {
+            structureToBuild = inventoryBuilding.diner;
+        }
     }
 
     public void HideEverything()

@@ -32,6 +32,7 @@ public class GameControl : MonoBehaviour
     public bool loaded = false;
     public bool firstTimeCoal = true;
     public bool tutorial = true;
+    public bool cheatsOn = false;
 
 
     public bool unlockIslandCoal, unlockIslandGas, unlockIslandWind, unlockIslandSolar;
@@ -50,8 +51,9 @@ public class GameControl : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        
-    }
+        cheatsOn = false;
+
+}
 
     public void SaveGeneralInfo()
     {

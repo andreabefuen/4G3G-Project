@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Slider volumenSlider;
+    public Slider cheatSlider;
 
     public void PlayGame()
     {
@@ -46,5 +47,17 @@ public class MainMenu : MonoBehaviour
     public void OnValueChangeVolumen()
     {
         SoundManager.soundManager.ChangeVolumen(volumenSlider.value);
+    }
+
+    public void OnValueChangeCheats()
+    {
+        if(cheatSlider.value == 0)
+        {
+            GameControl.control.cheatsOn = false;
+        }
+        else
+        {
+            GameControl.control.cheatsOn = true;
+        }
     }
 }

@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     public GameObject newLevelWindow;
     public TextMeshProUGUI levelRewardText;
 
+    public Button motherlodeButton;
 
     BuildManager buildManager;
 
@@ -46,6 +47,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         buildManager = BuildManager.instance;
+
+        SetActiveCheatsMode();
     }
 
     // Update is called once per frame
@@ -186,6 +189,20 @@ public class UIManager : MonoBehaviour
         Player.instance.IncreaseMoney(Player.instance.levelCity * 500);
     }
 
+    void SetActiveCheatsMode()
+    {
+        motherlodeButton.gameObject.SetActive(GameControl.control.cheatsOn); ;
+        /*if (GameControl.control.cheatsOn)
+        {
+            //motherlodeButton.gameObject.SetActive(true);
+            Debug.Log("Cheats On");
+        }
+        else
+        {
+            //motherlodeButton.gameObject.SetActive(true);
+            Debug.Log("Cheats OFF");
+        }*/
+    }
 
     public void Motherlode()
     {
