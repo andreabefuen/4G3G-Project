@@ -234,7 +234,7 @@ MonoBehaviour:
     amountOfEnergy: 0
     amountOfHappiness: 20
     amountOfPollution: 1
-    costOfDemolition: 500
+    costOfDemolition: 20000
     needWater: 0
     isWater: 0
   eiffleTower:
@@ -294,10 +294,10 @@ MonoBehaviour:
     nodeAsociate: {fileID: 0}
     timeMoney: 0
     moneyPerTap: 0
-    amountOfEnergy: 0
-    amountOfHappiness: 0
+    amountOfEnergy: -3
+    amountOfHappiness: 7
     amountOfPollution: 0
-    costOfDemolition: 0
+    costOfDemolition: 20000
     needWater: 0
     isWater: 0
   fireStation:
@@ -314,10 +314,10 @@ MonoBehaviour:
     nodeAsociate: {fileID: 0}
     timeMoney: 0
     moneyPerTap: 0
-    amountOfEnergy: 0
-    amountOfHappiness: 0
+    amountOfEnergy: -5
+    amountOfHappiness: 10
     amountOfPollution: 0
-    costOfDemolition: 0
+    costOfDemolition: 20000
     needWater: 0
     isWater: 0
   diner:

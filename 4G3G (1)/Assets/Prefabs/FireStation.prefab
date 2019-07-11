@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4356585835871987659}
   - component: {fileID: 1939838329044119616}
   - component: {fileID: 2901729808877834917}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FireStation
-  m_TagString: Monuments
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 1267517687980747016}
   - component: {fileID: 2016412807072643724}
   - component: {fileID: 1632455944774338685}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CanvasFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 8365927989688371577}
   - component: {fileID: 4370229485176399875}
   - component: {fileID: 5456561465635390961}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: MoneySpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8080424651267329694}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SpawnEnergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 8254856557564993128}
   - component: {fileID: 895142407322154340}
   - component: {fileID: 5833796626415099703}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: pCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 8b2e8b09b0c612c4e92dbb8eb05c7304,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b2e8b09b0c612c4e92dbb8eb05c7304,
         type: 3}

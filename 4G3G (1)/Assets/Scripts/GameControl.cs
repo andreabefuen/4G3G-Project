@@ -893,6 +893,8 @@ public class GameControl : MonoBehaviour
         cheatsOn = false;
         cantCompletedQuest = 0;
 
+        unlockIslandCoal = false; unlockIslandGas = false; unlockIslandWind = false; unlockIslandSolar = false;
+
     }
 
     // Start is called before the first frame update

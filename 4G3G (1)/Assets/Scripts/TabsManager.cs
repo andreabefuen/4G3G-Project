@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TabsManager : MonoBehaviour
@@ -49,9 +50,9 @@ public class TabsManager : MonoBehaviour
 
 
     [Header("Tabs")]
-    public Toggle panel1;
-    public Toggle panel2;
-    public Toggle panel3;
+    public Toggle otherBuildingsTab;
+    public Toggle energyBuildingTab;
+    public Toggle monumentsBuildingTab;
     //---------------------------------------------------------
 
     Player player;
@@ -96,6 +97,8 @@ public class TabsManager : MonoBehaviour
             Debug.Log("Level of the coal research: " + inventory.coalFactoryStructure.levelResearch);
             if (!CheckCoalSuccess())
             {
+                LockAllEnergyBuildings();
+                LockTabs();
                 UpdateCostResearchCoal(inventory.coalFactoryStructure.costResearches[inventory.coalFactoryStructure.levelResearch]);
             }
             
@@ -119,6 +122,32 @@ public class TabsManager : MonoBehaviour
 
        // this.gameObject.SetActive(false);
 
+
+
+
+    }
+
+    void LockAllEnergyBuildings()
+    {
+        if (SceneManager.GetActiveScene().name != "MainIsland")
+            return;
+
+        coalBuy.GetComponent<Button>().interactable = false;
+        coalBuy.transform.Find("Lock").gameObject.SetActive(true);
+
+        gasBuy.GetComponent<Button>().interactable = false;
+        gasBuy.transform.Find("Lock").gameObject.SetActive(true);
+
+        windBuy.GetComponent<Button>().interactable = false;
+        windBuy.transform.Find("Lock").gameObject.SetActive(true);
+
+        solarBuy.GetComponent<Button>().interactable = false;
+        solarBuy.transform.Find("Lock").gameObject.SetActive(true);
+
+        solarBuyTab.transform.Find("Lock").gameObject.SetActive(true);
+        gasBuyTab.transform.Find("Lock").gameObject.SetActive(true);
+        coalBuyTab.transform.Find("Lock").gameObject.SetActive(true);
+        windBuyTab.transform.Find("Lock").gameObject.SetActive(true);
 
 
 
@@ -164,27 +193,6 @@ public class TabsManager : MonoBehaviour
         UpdateCostResearchSolar(inventory.solarPanelStructure.costResearches[inventory.solarPanelStructure.levelResearch ]);
 
 
-
-        
-        /*if (CheckCoalSuccess())
-        {
-            UnlockCoalFactory();
-
-        }
-        if (CheckGasSuccess())
-        {
-
-            UnlockGasFactory();
-        }
-        if (CheckSolarSuccess())
-        {
-            UnlockSolar();
-        }
-        if (CheckWindSuccess())
-        {
-            UnlockWind();
-        }
-        */
         UpdateTextCostBuildCoal(inventory.coalFactoryStructure.cost);
         UpdateTextCostBuildGas(inventory.gasExtractorStructure.cost);
         UpdateTextCostBuildWind(inventory.windmillStructure.cost);
@@ -219,7 +227,7 @@ public class TabsManager : MonoBehaviour
 
             levelCoal.text = "COMPLETED!";
             //Call the method for unlock the other panels
-            //UnlockTabs();
+            UnlockTabs();
             UnlockCoalFactory();
             Player.instance.unlockCoal = true;
             
@@ -467,13 +475,20 @@ public class TabsManager : MonoBehaviour
 
     void LockTabs()
     {
-        panel1.GetComponent<Toggle>().interactable = false;
-        panel2.interactable = false;
+        if (SceneManager.GetActiveScene().name != "MainIsland")
+            return;
+
+        otherBuildingsTab.GetComponent<Toggle>().interactable = false;
+        energyBuildingTab.interactable = false;
+        monumentsBuildingTab.interactable = false;
     }
     void UnlockTabs()
     {
-        panel1.GetComponent<Toggle>().interactable = true;
-        panel2.interactable = true;
+        if (SceneManager.GetActiveScene().name != "MainIsland")
+            return;
+        otherBuildingsTab.GetComponent<Toggle>().interactable = true;
+        energyBuildingTab.interactable = true;
+        monumentsBuildingTab.interactable = true;
     }
 
     void UpdateLevelResearchCoal(int level)

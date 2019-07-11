@@ -255,7 +255,7 @@ public class BuildManager : MonoBehaviour
                 }
 
                 //If in the node are something
-                if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall" && node.buildingThere.tag != "Monuments")
+                if(node.buildingThere != null && node.buildingThere.tag != "House" && node.buildingThere.tag != "CityHall")
                 {
                     selectedNode = node;
                 //infoPanel.SetActive(true);
@@ -271,31 +271,14 @@ public class BuildManager : MonoBehaviour
 
                     return;
                 }
-
-               //if (node.buildingThere.tag == "Factory")
-               //{
-               //    DeselectNode();
-               //    selectedNode = node;
-               //    structureToBuild = null;
-               //    nodeUI.SetTargetReplaceFactory(node);
-               //    return;
-               //}
-                if (node.buildingThere.tag == "CityHall")
-                {
-                    Debug.Log("Menu city hall");
-                    DeselectNode();
-                    uiAllQuests.SetActive(true);
-                    return;
-                }
-               //else //House
-               //{
-               //    DeselectNode();
-               //    Debug.Log("Is not a factory");
-               //    selectedNode = node;
-               //    structureToBuild = null;
-               //    //nodeUI.SetTargetHouses(node);
-               //}
-            }
+              //if(node.buildingThere != null && node.buildingThere.tag == "Monuments" && destroyActivate)
+              //{
+              //    Debug.Log("Demolish monument");
+              //    DestroyThisBuilding();
+              //    HideEverything();
+              //    return;
+              //}
+        }
             
            
        
@@ -356,6 +339,14 @@ public class BuildManager : MonoBehaviour
         else if(id == (int)idBuildings.diner)
         {
             structureToBuild = inventoryBuilding.diner;
+        }
+        else if(id == (int)idBuildings.fireStation)
+        {
+            structureToBuild = inventoryBuilding.fireStation;
+        }
+        else if(id == (int)idBuildings.policeStation)
+        {
+            structureToBuild = inventoryBuilding.policeStation;
         }
     }
 
@@ -503,6 +494,25 @@ public class BuildManager : MonoBehaviour
                 }
                 player.IncreaseEnergy(-inventoryBuilding.park.amountOfEnergy);
                 player.DecreaseMoney(inventoryBuilding.park.costOfDemolition);
+
+            }
+            else if (selectedNode.buildingThere.tag == "Monument")
+            {
+                Debug.Log("Selected monument");
+                if (player.GetTotalMoney() < 100000)
+                {
+                    Debug.Log("You can't demolish this building");
+                    //HideInfoPanel();
+                    HideEverything();
+                    NotDestroyThisBuilding();
+                    return;
+
+                }
+                //Reduce monument happiness or whatever
+               //player.IncreaseEnergy(-inventoryBuilding.gasExtractorStructure.amountOfEnergy);
+               //player.DecreaseMoney(inventoryBuilding.gasExtractorStructure.costOfDemolition);
+
+                //  player.IncreasePollution(-inventoryBuilding.gasExtractorStructure.amountOfPollution);
 
             }
             selectedNode.nodeInfo.idBuilding = 0;
