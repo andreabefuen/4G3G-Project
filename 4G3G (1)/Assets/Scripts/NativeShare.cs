@@ -27,7 +27,7 @@ public class NativeShare : MonoBehaviour
     public void OnShareButtonClick()
     {
 
-        screenshotName = "Screenshot" + System.DateTime.Now.Day+ "-"+System.DateTime.Now.Hour+ "-" + System.DateTime.Now.Minute + ".png";
+        screenshotName = "Screenshot_" + System.DateTime.Now.Year + System.DateTime.Now.Month + System.DateTime.Now.Day +  "_" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + ".png";
         shareSubject = "I challenge you to beat my high score in Fire Block";
         shareMessage = "My island has " + Player.instance.pollutionSlider.value + " of pollution and " + Player.instance.happinessSlider.value + " of happiness!" +
         "\nBecome a tester! \nhttps://play.google.com/apps/testing/com.GasCan.AlternativeEnergy";

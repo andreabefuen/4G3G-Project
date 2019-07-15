@@ -179,20 +179,23 @@ public class TabsManager : MonoBehaviour
     public void UpdateAllTheCost()
     {
 
-
+        //Coal
         UpdateLevelResearchCoal(inventory.coalFactoryStructure.levelResearch);
         UpdateCostResearchCoal(inventory.coalFactoryStructure.costResearches[inventory.coalFactoryStructure.levelResearch]);
 
+        //Gas
         UpdateLevelResearchGas(inventory.gasExtractorStructure.levelResearch);
         UpdateCostResearchGas(inventory.gasExtractorStructure.costResearches[inventory.gasExtractorStructure.levelResearch]);
 
+        //Windmill
         UpdateLevelResearchWindmill(inventory.windmillStructure.levelResearch);
         UpdateCostResearchWind(inventory.windmillStructure.costResearches[inventory.windmillStructure.levelResearch]);
 
+        //Solar
         UpdateLevelResearchSolar(inventory.solarPanelStructure.levelResearch);
         UpdateCostResearchSolar(inventory.solarPanelStructure.costResearches[inventory.solarPanelStructure.levelResearch ]);
 
-
+        //Text everything
         UpdateTextCostBuildCoal(inventory.coalFactoryStructure.cost);
         UpdateTextCostBuildGas(inventory.gasExtractorStructure.cost);
         UpdateTextCostBuildWind(inventory.windmillStructure.cost);
@@ -210,14 +213,6 @@ public class TabsManager : MonoBehaviour
         Debug.Log("LOADING THE COST OF THE BUILDINGS");
 
         //this.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-       
     }
 
     public void BuyResearchCoal()

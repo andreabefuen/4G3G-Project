@@ -10,7 +10,7 @@ public class ShareManager : MonoBehaviour
 {
     public Image screenshot;
     string ShareSubject = "Picture Share";
-    string shareLink = "Test Link" + "\nhttp://stackoverflow.com/questions/36512784/share-image-on-android-application-from-unity-game";
+    string shareLink = "Test Link" + "\nhttps://play.google.com/apps/testing/com.GasCan.AlternativeEnergy";
     string textToShare = "Text To share";
 
     public string shareSubject, shareMessage;
@@ -56,7 +56,7 @@ public class ShareManager : MonoBehaviour
 
     public void NormalScreenShot()
     {
-        string fileName = "Screenshot" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + "`.png";
+        string fileName = "Screenshot" + System.DateTime.Now.Day + System.DateTime.Now.Month + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + "`.png";
         string screenShotPath = Application.persistentDataPath + "/" + fileName;
         ScreenCapture.CaptureScreenshot(fileName, 1);
 
@@ -70,7 +70,7 @@ public class ShareManager : MonoBehaviour
         isProcessing = true;
         yield return new WaitForSeconds(2f);
 
-        string fileName = "Screenshot" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + "`.png";
+        string fileName = "Screenshot" + System.DateTime.Now.Day + System.DateTime.Now.Month +  +System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + "`.png";
         string screenShotPath = Application.persistentDataPath + "/" + fileName;
         ScreenCapture.CaptureScreenshot(fileName, 1);
 
@@ -109,7 +109,7 @@ public class ShareManager : MonoBehaviour
 
     IEnumerator CaputureScreenShot()
     {
-        string fileName = "Screenshot" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second +".png";
+        string fileName = "Screenshot" + System.DateTime.Now.Day + System.DateTime.Now.Month + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second +".png";
         ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/" + fileName);
         yield return new WaitForSeconds(0.5f);
         Debug.Log("Capture image");

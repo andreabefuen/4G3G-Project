@@ -152,19 +152,6 @@ public class WeatherController : MonoBehaviour
             directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, 1f, Time.deltaTime);
 
         }
-        /*
-        if(fakeHour >= hourNight)
-        {
-            Debug.Log("NIGHT");
-            directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, 0.3f, Time.deltaTime);
-            isNight = true;
-        }
-        if(fakeHour <= hourDay && fakeHour < hourNight)
-        {
-            Debug.Log("day");
-            isNight = false;
-            directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, 1f, Time.deltaTime);
-        }*/
     }
 
     void UpdateTimerText()
