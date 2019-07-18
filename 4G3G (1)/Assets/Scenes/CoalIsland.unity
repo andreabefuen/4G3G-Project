@@ -4588,9 +4588,9 @@ MonoBehaviour:
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 1 Get money
-    description: sadfdsfadsf
-    moneyReward: 10
+    title: Get money in the coal island!
+    description: This is a different task, try to get 1000 of money here!
+    moneyReward: 2000
     goal:
       goalType: 2
       requiredElements: 1000
@@ -4599,29 +4599,29 @@ MonoBehaviour:
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 2 Get more money
-    description: 2000
-    moneyReward: 50
+    title: Get happiness
+    description: Make your workers happy creating shops and diner buildings
+    moneyReward: 3000
     goal:
-      goalType: 2
-      requiredElements: 2000
-      currentElements: 0
-  - levelCity: 0
-    isActive: 0
-    isOnTheList: 0
-    done: 0
-    title: 3 A LOT OF MONEY
-    description: To make energy you need to place energy buildings
-    moneyReward: 500
-    goal:
-      goalType: 2
-      requiredElements: 5000
+      goalType: 0
+      requiredElements: 10
       currentElements: 0
   - levelCity: 1
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 4 Give me your moneeeey
+    title: More money for your island
+    description: Place more coal factories in order to save more money
+    moneyReward: 5000
+    goal:
+      goalType: 2
+      requiredElements: 3000
+      currentElements: 0
+  - levelCity: 1
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: 
     description: To make energy you need to place energy buildings
     moneyReward: 99999
     goal:

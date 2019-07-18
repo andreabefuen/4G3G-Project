@@ -2891,42 +2891,31 @@ MonoBehaviour:
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 1 Get money
-    description: sadfdsfadsf
-    moneyReward: 10
+    title: Windmills yes!
+    description: Build the first 3 windmills in this island
+    moneyReward: 50000
     goal:
-      goalType: 2
-      requiredElements: 1000
-      currentElements: 0
-  - levelCity: 0
-    isActive: 0
-    isOnTheList: 0
-    done: 0
-    title: 2 Get more money
-    description: 2000
-    moneyReward: 50
-    goal:
-      goalType: 2
-      requiredElements: 2000
-      currentElements: 0
-  - levelCity: 0
-    isActive: 0
-    isOnTheList: 0
-    done: 0
-    title: 3 A LOT OF MONEY
-    description: To make energy you need to place energy buildings
-    moneyReward: 500
-    goal:
-      goalType: 2
-      requiredElements: 5000
+      goalType: 3
+      requiredElements: 3
       currentElements: 0
   - levelCity: 1
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 4 Give me your moneeeey
-    description: To make energy you need to place energy buildings
-    moneyReward: 99999
+    title: More windmills
+    description: More windmills means more green energy! Build 10 windmills
+    moneyReward: 100000
+    goal:
+      goalType: 3
+      requiredElements: 10
+      currentElements: 0
+  - levelCity: 1
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: Money!
+    description: Green energy doesn't mean you don't get money, get 5000 bolts
+    moneyReward: 90000
     goal:
       goalType: 2
       requiredElements: 5000

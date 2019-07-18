@@ -2888,20 +2888,9 @@ MonoBehaviour:
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 1 Get money
-    description: sadfdsfadsf
-    moneyReward: 10
-    goal:
-      goalType: 2
-      requiredElements: 1000
-      currentElements: 0
-  - levelCity: 0
-    isActive: 0
-    isOnTheList: 0
-    done: 0
-    title: 2 Get more money
-    description: 2000
-    moneyReward: 50
+    title: Get money froim gas extractors
+    description: Place gas extractors and get an amount of 2000 bolts
+    moneyReward: 3000
     goal:
       goalType: 2
       requiredElements: 2000
@@ -2910,19 +2899,30 @@ MonoBehaviour:
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 3 A LOT OF MONEY
-    description: To make energy you need to place energy buildings
-    moneyReward: 500
+    title: Make your island happier!
+    description: Reach 10 of happiness to make your workers better
+    moneyReward: 3500
     goal:
-      goalType: 2
-      requiredElements: 5000
+      goalType: 0
+      requiredElements: 10
       currentElements: 0
   - levelCity: 1
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 4 Give me your moneeeey
-    description: To make energy you need to place energy buildings
+    title: Make more and more money
+    description: Become rich (10.000 bolts) with gas extractors! Polluted but rich
+    moneyReward: 5000
+    goal:
+      goalType: 2
+      requiredElements: 10000
+      currentElements: 0
+  - levelCity: 2
+    isActive: 0
+    isOnTheList: 0
+    done: 0
+    title: ITS THE FINAL TASK
+    description: Final task to show how difficult it is :D
     moneyReward: 99999
     goal:
       goalType: 2
@@ -5034,22 +5034,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1133084432}
-    - target: {fileID: 8028115726951216691, guid: bc7e86a8bc01d144996776af9bbbf509,
-        type: 3}
-      propertyPath: m_Name
-      value: GasExtractor
-      objectReference: {fileID: 0}
     - target: {fileID: 2659847673257554017, guid: bc7e86a8bc01d144996776af9bbbf509,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1328966157}
-    - target: {fileID: 8028115726951216702, guid: bc7e86a8bc01d144996776af9bbbf509,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300008, guid: 4947386aa09c739419144daca3a77999,
-        type: 3}
     - target: {fileID: 2016909696, guid: bc7e86a8bc01d144996776af9bbbf509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5058,14 +5047,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1291294924}
-    - target: {fileID: 1257410284, guid: bc7e86a8bc01d144996776af9bbbf509, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1257410284, guid: bc7e86a8bc01d144996776af9bbbf509, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2087372959, guid: bc7e86a8bc01d144996776af9bbbf509, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5128,6 +5109,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1257410284, guid: bc7e86a8bc01d144996776af9bbbf509, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257410284, guid: bc7e86a8bc01d144996776af9bbbf509, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028115726951216691, guid: bc7e86a8bc01d144996776af9bbbf509,
+        type: 3}
+      propertyPath: m_Name
+      value: GasExtractor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028115726951216702, guid: bc7e86a8bc01d144996776af9bbbf509,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300008, guid: 4947386aa09c739419144daca3a77999,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc7e86a8bc01d144996776af9bbbf509, type: 3}
 --- !u!114 &7512856089549220865 stripped

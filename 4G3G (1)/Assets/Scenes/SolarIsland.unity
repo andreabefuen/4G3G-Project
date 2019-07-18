@@ -2822,20 +2822,21 @@ MonoBehaviour:
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 1 Get money
-    description: sadfdsfadsf
-    moneyReward: 10
+    title: Solar is the future
+    description: Here you become greener and rich only with solar panels. Build 3
+      of them.
+    moneyReward: 2000
     goal:
-      goalType: 2
-      requiredElements: 1000
+      goalType: 4
+      requiredElements: 3
       currentElements: 0
   - levelCity: 0
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 2 Get more money
-    description: 2000
-    moneyReward: 50
+    title: Get money with solar panels
+    description: Solar panels gives you more and more energy, but also money
+    moneyReward: 5000
     goal:
       goalType: 2
       requiredElements: 2000
@@ -2844,23 +2845,23 @@ MonoBehaviour:
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 3 A LOT OF MONEY
-    description: To make energy you need to place energy buildings
-    moneyReward: 500
+    title: Build MORE solar panels
+    description: Now you have money, build 10 solar panels
+    moneyReward: 50000
     goal:
-      goalType: 2
-      requiredElements: 5000
+      goalType: 4
+      requiredElements: 10
       currentElements: 0
   - levelCity: 1
     isActive: 0
     isOnTheList: 0
     done: 0
-    title: 4 Give me your moneeeey
-    description: To make energy you need to place energy buildings
+    title: The master of solar panels
+    description: More solar panels means more energy! Buiild 20 solar panels
     moneyReward: 99999
     goal:
-      goalType: 2
-      requiredElements: 5000
+      goalType: 4
+      requiredElements: 20
       currentElements: 0
   player: {fileID: 1291294924}
   questWindow: {fileID: 7512856091240925745}

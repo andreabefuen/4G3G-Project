@@ -329,15 +329,15 @@ MonoBehaviour:
       type: 3}
     levelBuilding: 1
     levelResearch: 1
-    costResearches: 00000000000000000000000000000000
-    costUpgrades: 00000000000000000000000000000000
-    cost: 0
+    costResearches: d0070000b80b0000a00f000088130000
+    costUpgrades: d0070000c4090000b80b0000ac0d0000
+    cost: 1000
     nodeAsociate: {fileID: 0}
     timeMoney: 0
     moneyPerTap: 0
     amountOfEnergy: 0
-    amountOfHappiness: 0
+    amountOfHappiness: 3
     amountOfPollution: 0
-    costOfDemolition: 0
+    costOfDemolition: 5000
     needWater: 0
     isWater: 0
